@@ -159,7 +159,7 @@
                                 <a href="../productos/nuevo.php">Registrar</a>
                             </li>
                             <li>
-                                <a href="../../folder/productos">Listar / Modificar</a>
+                                <a href="../../folder/productos.php">Listar / Modificar</a>
                             </li>
                         </ul>
                     </li>
@@ -320,7 +320,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-pink hover-expand-effect">
 
-                    	<a href="../../folder/productos">
+                    	<a href="../../folder/productos.php">
                         	<div class="icon">
                             	<i class="material-icons">inbox</i>                                                                                                              
                         	</div>
@@ -354,7 +354,7 @@ $total = $result->fetchColumn();
 
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-cyan hover-expand-effect">
-                    	<a href="../../folder/categorias">
+                    	<a href="../../folder/categorias.php">
                         	<div class="icon">
                             	<i class="material-icons">low_priority</i>
                         	</div>
@@ -389,7 +389,7 @@ $total = $result->fetchColumn();
 
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-light-green hover-expand-effect">
-                    	<a href="../../folder/clientes">
+                    	<a href="../../folder/clientes.php">
                         <div class="icon">
                             <i class="material-icons">supervisor_account</i>
                         </div>
@@ -494,7 +494,7 @@ $total = $result->fetchColumn();
 
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-cyan hover-expand-effect">
-                    	<a href="../../folder/veterinarios">
+                    	<a href="../../folder/veterinarios.php">
                         <div class="icon">
                             <i class="material-icons">person_pin</i>
                         </div>
@@ -528,7 +528,7 @@ $total = $result->fetchColumn();
 
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-light-green hover-expand-effect">
-                    	<a href="../../folder/venta">
+                    	<a href="../../folder/venta.php">
                         <div class="icon">
                             <i class="material-icons">trending_up</i>
                         </div>
@@ -619,7 +619,7 @@ $total = $result->fetchColumn();
                                 <div class="col-xs-6 col-sm-6">
                                     <h2><strong>ULTIMOS PRODUCTOS</strong></h2>
                                 </div>
-                                <a href="../../folder/productos" class="btn btn-sm btn-danger btn-flat pull-right">Ver todos</a>
+                                <a href="../../folder/productos.php" class="btn btn-sm btn-danger btn-flat pull-right">Ver todos</a>
                               <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -977,3 +977,4 @@ var settings = {
 </body>
 
 </html>
+ Laura 
