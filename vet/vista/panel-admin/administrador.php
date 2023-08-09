@@ -2,7 +2,7 @@
      session_start();
     
     if(!isset($_SESSION['cargo']) == 1){
-    header('location: ../pages-login');
+    header('location: ../pages-login.php');
   }
 ?>
 
@@ -130,7 +130,7 @@
                             <li role="separator" class="divider"></li>
                             <li role="separator" class="divider"></li>
 
-                            <li><a href="../pages-logout"><i class="material-icons">input</i>Cerrar Sesión</a></li>
+                            <li><a href="../pages-logout.php"><i class="material-icons">input</i>Cerrar Sesión</a></li>
                         </ul>
                     </div>
                 </div>
@@ -156,7 +156,7 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="../productos/nuevo">Registrar</a>
+                                <a href="../productos/nuevo.php">Registrar</a>
                             </li>
                             <li>
                                 <a href="../../folder/productos">Listar / Modificar</a>
@@ -171,10 +171,10 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="../categorias/nuevo">Registrar</a>
+                                <a href="../categorias/nuevo.php">Registrar</a>
                             </li>
                             <li>
-                                <a href="../../folder/categorias">Listar / Modificar</a>
+                                <a href="../../folder/categorias.php">Listar / Modificar</a>
                             </li>
                         </ul>
                     </li>
@@ -186,10 +186,10 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="../clientes/nuevo">Registrar</a>
+                                <a href="../clientes/nuevo.php">Registrar</a>
                             </li>
                             <li>
-                                <a href="../../folder/clientes">Listar / Modificar</a>
+                                <a href="../../folder/clientes.php">Listar / Modificar</a>
                             </li>
                         </ul>
                     </li>
@@ -201,10 +201,10 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="../proveedores/nuevo">Registrar</a>
+                                <a href="../proveedores/nuevo.php">Registrar</a>
                             </li>
                             <li>
-                                <a href="../../folder/proveedores">Listar / Modificar</a>
+                                <a href="../../folder/proveedores.php">Listar / Modificar</a>
                             </li>
                         </ul>
                     </li>
@@ -216,10 +216,10 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="../veterinarios/nuevo">Registrar</a>
+                                <a href="../veterinarios/nuevo.php">Registrar</a>
                             </li>
                             <li>
-                                <a href="../../folder/veterinarios">Listar / Modificar</a>
+                                <a href="../../folder/veterinarios.php">Listar / Modificar</a>
                             </li>
                         </ul>
                     </li>
@@ -231,16 +231,16 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="../mascotas/nuevo">Registrar</a>
+                                <a href="../mascotas/nuevo.php">Registrar</a>
                             </li>
                             <li>
-                                <a href="../../folder/mascotas">Listar / Modificar</a>
+                                <a href="../../folder/mascotas.php">Listar / Modificar</a>
                             </li>
                             <li>
-                                <a href="../../folder/tipo">Tipos</a>
+                                <a href="../../folder/tipo.php">Tipos</a>
                             </li>
                             <li>
-                                <a href="../../folder/raza">Razas</a>
+                                <a href="../../folder/raza.php">Razas</a>
                             </li>
                         </ul>
 </li>
@@ -252,14 +252,14 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="../citas/nuevo">Registrar</a>
+                                <a href="../citas/nuevo.php">Registrar</a>
                             </li>
                             <li>
-                                <a href="../../folder/citas">Listar / Modificar</a>
+                                <a href="../../folder/citas.php">Listar / Modificar</a>
                             </li>
 
                             <li>
-                                <a href="../../folder/servicio">Servicio</a>
+                                <a href="../../folder/servicio.php">Servicio</a>
                             </li>
                         </ul>
     </li>
@@ -271,14 +271,14 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="../compra/nuevo">Registrar</a>
+                                <a href="../compra/nuevo.php">Registrar</a>
                             </li>
                             <li>
-                                <a href="../../folder/compra">Listar / Modificar</a>
+                                <a href="../../folder/compra.php">Listar / Modificar</a>
                             </li>
 
                              <li>
-                                <a href="../compra/compras_fecha">Consultar por fecha</a>
+                                <a href="../compra/compras_fecha.php">Consultar por fecha</a>
                             </li>
                         </ul>
     </li>
@@ -290,14 +290,14 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="../venta/nuevo">Registrar</a>
+                                <a href="../venta/nuevo.php">Registrar</a>
                             </li>
                             <li>
-                                <a href="../../folder/venta">Listar / Modificar</a>
+                                <a href="../../folder/venta.php">Listar / Modificar</a>
                             </li>
 
                              <li>
-                                <a href="../venta/venta_fecha">Consultar por fecha</a>
+                                <a href="../venta/venta_fecha.php">Consultar por fecha</a>
                             </li>
                         </ul>
     </li>
@@ -322,7 +322,7 @@
 
                     	<a href="../../folder/productos">
                         	<div class="icon">
-                            	<i class="material-icons">inbox</i>
+                            	<i class="material-icons">inbox</i>                                                                                                              
                         	</div>
                         </a>
 
