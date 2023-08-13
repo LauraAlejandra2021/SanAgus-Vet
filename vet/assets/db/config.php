@@ -7,15 +7,12 @@ define('dbuser', 'root');
 define('dbpass', '');
 define('dbname', 'vetdog');
 
-// Function to establish database connection
+// Function to establish database connection using mysqli
 function connectDB() {
-    try {
-        $connect = new PDO("mysql:host=".dbhost."; dbname=".dbname, dbuser, dbpass);
-        $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        return $connect;
-    } catch(PDOException $e) {
-        echo $e->getMessage();
-        return null;
+    $mysqli = new mysqli(dbhost, dbuser, dbpass, dbname);
+    if ($mysqli->connect_error) {
+        die('Connection failed: ' . $mysqli->connect_error);
     }
+    return $mysqli;
 }
 ?>

@@ -2,62 +2,63 @@
 require_once '../assets/db/config.php';
 
 if (isset($_POST['login'])) {
-  $errMsg = '';
+    $errMsg = '';
 
-  // Get data from FORM
-  $usuario = $_POST['usuario'];
+    // Get data from FORM
+    $usuario = $_POST['usuario'];
+    $contra = MD5($_POST['contra']);
 
-  $contra = MD5($_POST['contra']);
-
-  if ($usuario == '')
-    $errMsg = 'Digite su usuario';
-  if ($contra == '')
-    $errMsg = 'Digite su contraseña';
-
-  if ($errMsg == '') {
-    try {
-      $stmt = $connect->prepare('SELECT id, nombre, usuario, correo,contra, cargo FROM usuarios WHERE usuario = :usuario');
-
-
-      $stmt->execute(array(
-        ':usuario' => $usuario
-
-
-      ));
-      $data = $stmt->fetch(PDO::FETCH_ASSOC);
-
-      if ($data == false) {
-        $errMsg = "User $usuario no encontrado.";
-      } else {
-        if ($contra == $data['contra']) {
-
-          $_SESSION['id'] = $data['id'];
-          $_SESSION['nombre'] = $data['nombre'];
-          $_SESSION['usuario'] = $data['usuario'];
-          $_SESSION['correo'] = $data['correo'];
-          $_SESSION['contra'] = $data['contra'];
-          $_SESSION['cargo'] = $data['cargo'];
-
-
-          if ($_SESSION['cargo'] == 1) {
-            header('Location: panel-admin/administrador.php');
-          }
-
-          //perfil vet opc 3
-          if ($_SESSION['cargo'] == 3) {
-            header('Location: citas/cita_rapida.php');
-          }
-          exit;
-
-        } else
-          $errMsg = 'Contraseña incorrecta.';
-      }
-    } catch (PDOException $e) {
-      $errMsg = $e->getMessage();
+    if ($usuario == '') {
+        $errMsg = 'Digite su usuario';
     }
-  }
+    if ($contra == '') {
+        $errMsg = 'Digite su contraseña';
+    }
+
+    if ($errMsg == '') {
+        $mysqli = connectDB(); // Obtén la conexión mysqli desde common.php
+        if ($mysqli) {
+            try {
+                $query = 'SELECT id, nombre, usuario, correo, contra, cargo FROM usuarios WHERE usuario = ?';
+                $stmt = $mysqli->prepare($query);
+                $stmt->bind_param('s', $usuario);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $data = $result->fetch_assoc();
+
+                if (!$data) {
+                    $errMsg = "Usuario $usuario no encontrado.";
+                } else {
+                    if ($contra == $data['contra']) {
+                        $_SESSION['id'] = $data['id'];
+                        $_SESSION['nombre'] = $data['nombre'];
+                        $_SESSION['usuario'] = $data['usuario'];
+                        $_SESSION['correo'] = $data['correo'];
+                        $_SESSION['contra'] = $data['contra'];
+                        $_SESSION['cargo'] = $data['cargo'];
+
+                        if ($_SESSION['cargo'] == 1) {
+                            header('Location: panel-admin/administrador.php');
+                        }
+                        // Otros casos de redirección
+                        exit;
+                    } else {
+                        $errMsg = 'Contraseña incorrecta.';
+                    }
+                }
+            } catch (Exception $e) {
+                $errMsg = $e->getMessage();
+            } finally {
+                $stmt->close();
+                $mysqli->close();
+            }
+        } else {
+            $errMsg = 'Error de conexión a la base de datos.';
+        }
+    }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
@@ -100,8 +101,6 @@ if (isset($_POST['login'])) {
                 <span class="text-gray-700 dark:text-gray-400">Contraseña</span>
                 <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="***************" type="password" required="true" name="contra" value="<?php if (isset($_POST['contra'])) echo MD5($_POST['contra']) ?>" />
               </label>
-
-
               <hr class="my-8" />
               <button class="flex items-center justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-white text-gray-700 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400 active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray" name='login' type="submit">Acceder</button>
             </form>
@@ -112,5 +111,4 @@ if (isset($_POST['login'])) {
     </div>
   </div>
 </body>
-
 </html>
