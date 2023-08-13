@@ -1,12 +1,13 @@
 ﻿<?php
-     session_start();
-    
-    if(!isset($_SESSION['cargo']) == 1){
+session_start();
+
+if (!isset($_SESSION['cargo']) == 1) {
     header('location: ../pages-login');
-  }
+}
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -24,13 +25,13 @@
     <link href="../../css/style.css" rel="stylesheet">
     <link href="../../assets/css/themes/all-themes.css" rel="stylesheet" />
     <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/lll.png" />
-       
+
 
 
 </head>
 
 <body class="theme-red">
-     <!-- Page Loader -->
+    <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
@@ -74,7 +75,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                  
+
                     <!-- Call Search -->
                     <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
                     <!-- #END# Call Search -->
@@ -111,180 +112,18 @@
 
 
             <!-- Menu -->
-            <div class="menu">
-                <ul class="list">
-                    <li class="header">MENÚ DE NAVEGACIÓN</li>
-                    <li>
-                        <a href="../panel-admin/administrador">
-                            <i class="material-icons">home</i>
-                            <span>INICIO</span>
-                        </a>
-                    </li>
-<!--======================================================================================================-->
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">inbox</i>
-                            <span>PRODUCTOS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../productos/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/productos">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-<!--======================================================================================================-->
-                    <li class="active">
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">low_priority</i>
-                            <span>CATEGORÍAS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li class="active">
-                                <a href="../categorias/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/categorias">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-<!--======================================================================================================-->
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">supervisor_account</i>
-                            <span>CLIENTES</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../clientes/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/clientes">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-<!--======================================================================================================-->
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">business</i>
-                            <span>PROVEEDORES</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../proveedores/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/proveedores">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-<!--======================================================================================================-->
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">person_pin</i>
-                            <span>VETERINARIOS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../veterinarios/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/veterinarios">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-<!--======================================================================================================-->
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">flutter_dash</i>
-                            <span>MASCOTAS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../mascotas/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/mascotas">Listar / Modificar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/tipo">Tipos</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/raza">Razas</a>
-                            </li>
-                        </ul>
-</li>
-<!--======================================================================================================-->
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">calendar_today</i>
-                            <span>CITAS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../citas/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/citas">Listar / Modificar</a>
-                            </li>
-
-                            <li>
-                                <a href="../../folder/servicio">Servicio</a>
-                            </li>
-                        </ul>
-    </li>
-    <!--======================================================================================================-->
-    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">shopping_basket</i>
-                            <span>COMPRA</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../compra/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/compra">Listar / Modificar</a>
-                            </li>
-                            <li>
-                                <a href="../compra/compras_fecha">Consultar por fecha</a>
-                            </li>
-                        </ul>
-    </li>
-<!--======================================================================================================-->
-<li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">monetization_on</i>
-                            <span>VENTA</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../venta/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/venta">Listar / Modificar</a>
-                            </li>
-                            <li>
-                                <a href="../venta/venta_fecha">Consultar por fecha</a>
-                            </li>
-                        </ul>
-    </li>
-    <!--======================================================================================================-->
-        <aside id="rightsidebar" class="right-sidebar">
-        </aside>
+            <?php include('../menu.php');?>
     </section>
 
-<!--============================CONTENIDO DE LA PÁGINA ==========================================================-->
+    <!--============================CONTENIDO DE LA PÁGINA ==========================================================-->
 
     <section class="content">
         <div class="container-fluid">
             <!-- Input -->
 
             <div class="alert alert-info">
-  <strong>Estimado usuario!</strong>    Los campos remarcados con <span class="text-danger">*</span> son necesarios.
-</div>
+                <strong>Estimado usuario!</strong> Los campos remarcados con <span class="text-danger">*</span> son necesarios.
+            </div>
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -295,29 +134,29 @@
                             </h2>
                         </div>
 
-                    <div class="body">
-                        <form method="POST"  autocomplete="off" enctype="multipart/form-data">
-                            <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <label class="control-label">Nombre de la Categoría<span class="text-danger">*</span>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" name="nomcate" required class="form-control" placeholder="Nombre de la Categoría..." />
-                                        </div>
+                        <div class="body">
+                            <form method="POST" autocomplete="off" enctype="multipart/form-data">
+                                <div class="row clearfix">
+                                    <div class="col-sm-12">
+                                        <label class="control-label">Nombre de la Categoría<span class="text-danger">*</span>
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="text" name="nomcate" required class="form-control" placeholder="Nombre de la Categoría..." />
+                                                </div>
+                                            </div>
                                     </div>
+
+                                    <div class="col-sm-5" style="display:none;">
+                                        <select name="estado" class="form-control show-tick">
+
+                                            <option value="1">1</option>
+
+                                        </select>
+                                    </div>
+
+
+
                                 </div>
-
-                                <div class="col-sm-5" style="display:none;">
-                                    <select name="estado" class="form-control show-tick">
-                                        
-                                        <option value="1">1</option>
-                                        
-                                    </select>
-                                </div>
-
-
-
-                            </div>
 
                                 <div class="container-fluid" align="center">
                                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
@@ -328,19 +167,19 @@
                                     </div>
 
                                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                                        
 
-                                         <button class="btn bg-green" name="agregar">GUARDAR<i class="material-icons">save</i></button>
+
+                                        <button class="btn bg-green" name="agregar">GUARDAR<i class="material-icons">save</i></button>
                                     </div>
-                                    
+
                                 </div>
-                        </form>
-                    </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- #END# Input -->
+        </div>
+        <!-- #END# Input -->
         </div>
     </section>
 
@@ -359,9 +198,9 @@
     <!-- Moment Plugin Js -->
     <script src="../../assets/plugins/momentjs/moment.js"></script>
     <!-- Bootstrap Material Datetime Picker Plugin Js -->
-    
+
     <!-- Bootstrap Datepicker Plugin Js -->
-   
+
     <!-- Custom Js -->
     <script src="../../assets/js/admin.js"></script>
     <script src="../../assets/js/pages/forms/basic-form-elements.js"></script>
@@ -369,95 +208,85 @@
 
     <script src="../../assets/js/demo.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    
+
 
     <!--------------------------------script nuevo----------------------------->
 
     <?php
-if(isset($_POST["agregar"])){
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "vetdog";
+    if (isset($_POST["agregar"])) {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "vetdog";
 
-// Creamos la conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
+        // Creamos la conexión
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Revisamos la conexión
-if ($conn->connect_error) {
-       die("Connection failed: " . $conn->connect_error);
-   } 
-$nomcate=$_POST['nomcate'];
-$estado=$_POST['estado'];
+        // Revisamos la conexión
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $nomcate = $_POST['nomcate'];
+        $estado = $_POST['estado'];
 
-// Realizamos la consulta para saber si coincide con uno de esos criterios
-$sql = "select * from category where nomcate='$nomcate'";
-$result = mysqli_query($conn, $sql);
-?>
-
-
-<?php
- // Validamos si hay resultados
- if(mysqli_num_rows($result)>0)
- {
-        // Si es mayor a cero imprimimos que ya existe el usuario
-      
-        if($result){
-   ?>
-
-        <script type="text/javascript">
-
-swal("Oops...!", "Ya existe el registro a agregar!", "error")
+        // Realizamos la consulta para saber si coincide con uno de esos criterios
+        $sql = "select * from category where nomcate='$nomcate'";
+        $result = mysqli_query($conn, $sql);
+    ?>
 
 
-        </script>
+        <?php
+        // Validamos si hay resultados
+        if (mysqli_num_rows($result) > 0) {
+            // Si es mayor a cero imprimimos que ya existe el usuario
 
-    <?php
-    }
-  
- }
- else
- {
-// Si no hay resultados, ingresamos el registro a la base de datos
-$sql2 = "insert into category(nomcate,estado) 
+            if ($result) {
+        ?>
+
+                <script type="text/javascript">
+                    swal("Oops...!", "Ya existe el registro a agregar!", "error")
+                </script>
+
+                <?php
+            }
+        } else {
+            // Si no hay resultados, ingresamos el registro a la base de datos
+            $sql2 = "insert into category(nomcate,estado) 
 values ('$nomcate','$estado')";
 
-if (mysqli_query($conn, $sql2)) {
-      
-       if($sql2){
-   ?>
+            if (mysqli_query($conn, $sql2)) {
 
-       
-
-        <script type="text/javascript">
-swal("¡Registrado!", "Agregado correctamente", "success").then(function() {
-            window.location = "../../folder/categorias";
-        });
-        </script>
+                if ($sql2) {
+                ?>
 
 
+
+                    <script type="text/javascript">
+                        swal("¡Registrado!", "Agregado correctamente", "success").then(function() {
+                            window.location = "../../folder/categorias";
+                        });
+                    </script>
+
+
+                <?php
+                } else {
+                ?>
+                    <script type="text/javascript">
+                        swal("Oops...!", "No se pudo guardar!", "error")
+                    </script>
     <?php
+
+                }
+            } else {
+
+                echo "Error: " . $sql2 . "" . mysqli_error($conn);
+            }
+        }
+        // Cerramos la conexión
+        $conn->close();
     }
-    else{
-       ?>
-       <script type="text/javascript">
-         swal("Oops...!", "No se pudo guardar!", "error")
-       </script>
-       <?php
-
-    }
-    
-} else {
-      
-       echo "Error: " . $sql2 . "" . mysqli_error($conn);
-}
-
-}
-// Cerramos la conexión
-$conn->close();
-
-}
-?>
+    ?>
 
 </body>
+
 </html>

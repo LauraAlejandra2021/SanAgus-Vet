@@ -1,9 +1,9 @@
 ﻿<?php
-     session_start();
-    
-    if(!isset($_SESSION['cargo']) == 1){
+session_start();
+
+if (!isset($_SESSION['cargo']) == 1) {
     header('location: ../vista/pages-login');
-  }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,7 +32,7 @@
 </head>
 
 <body class="theme-red">
-<!-- Page Loader -->
+    <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
@@ -76,7 +76,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                  
+
                     <!-- Call Search -->
                     <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
                     <!-- #END# Call Search -->
@@ -100,7 +100,7 @@
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                           <li><a href="../vista/config/configuracion"><i class="material-icons">brightness_low</i>Mi Cuenta</a></li>
+                            <li><a href="../vista/config/configuracion"><i class="material-icons">brightness_low</i>Mi Cuenta</a></li>
                             <li role="separator" class="divider"></li>
                             <li role="separator" class="divider"></li>
 
@@ -113,12 +113,9 @@
 
 
             <!-- Menu -->
-            <?php include('../menu.php');?>
+            <?php include('../menu.php'); ?>
     </section>
-
-
-
-<!--=============================================================CONTENIDO DE LA PÁGINA =============================================================-->
+    <!--=============================================================CONTENIDO DE LA PÁGINA =============================================================-->
     <section class="content">
         <div class="container-fluid">
             <div class="row clearfix">
@@ -135,53 +132,54 @@
                                 <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                     <thead>
                                         <tr>
-                                        <th>Nº</th>
-                                        <th>NOMBRE</th>
-                                        <th>FECHA</th>
-                                        <th>ESTADO</th>
-                                        <th>ACCIONES</th>
-                                      
-                                    </tr>
-                                    </thead>
-                                    
-                                    <tbody>
-                                       <?php
-                          foreach ($dato as $key => $value){
-                              foreach ($value as $va) { ?>
-                                        <tr>
-            <td><?php echo $va['id_cate'];?></td>            
-            <td><?php echo $va['nomcate'];?></td> 
-            <td><?php echo $va['fere'];?></td> 
-
-<td><?php    
-
-                if($va['estado']==1)  { ?> 
-                <form  method="get" action="javascript:activo('<?php echo $va['id_cate']; ?>')">
-                   
-                    <span class="label label-success">Activo</span>
-                </form>
-                <?php  }   else {?> 
-
-                    <form  method="get" action="javascript:inactivo('<?php echo $va['id_cate']; ?>')"> 
-                        <button type="submit" class="btn btn-danger btn-xs">Inactivo</button>
-                     </form>
-                        <?php  } ?></td> 
-
-<td><a type="button" href="../vista/categorias/edit?id=<?php echo $va["id_cate"]; ?>"  class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
-                    <i class="material-icons">autorenew</i>
-                </a>
-                <a type="button" href="../vista/categorias/borrar?id=<?php echo $va["id_cate"]; ?>"  class="btn bg-red btn-circle waves-effect waves-circle waves-float">
-                    <i class="material-icons">delete</i>
-                </a>
-              
+                                            <th>Nº</th>
+                                            <th>NOMBRE</th>
+                                            <th>FECHA</th>
+                                            <th>ESTADO</th>
+                                            <th>ACCIONES</th>
 
                                         </tr>
-                                       
-                            <?php
-                              }
-                              }
-                              ?>  
-                                       
+                                    </thead>
+
+                                    <tbody>
+                                        <?php
+                                        foreach ($dato as $key => $value) {
+                                            foreach ($value as $va) { ?>
+                                                <tr>
+                                                    <td><?php echo $va['id_cate']; ?></td>
+                                                    <td><?php echo $va['nomcate']; ?></td>
+                                                    <td><?php echo $va['fere']; ?></td>
+
+                                                    <td><?php
+
+                                                        if ($va['estado'] == 1) { ?>
+                                                            <form method="get" action="javascript:activo('<?php echo $va['id_cate']; ?>')">
+
+                                                                <span class="label label-success">Activo</span>
+                                                            </form>
+                                                        <?php  } else { ?>
+
+                                                            <form method="get" action="javascript:inactivo('<?php echo $va['id_cate']; ?>')">
+                                                                <button type="submit" class="btn btn-danger btn-xs">Inactivo</button>
+                                                            </form>
+                                                        <?php  } ?>
+                                                    </td>
+
+                                                    <td><a type="button" href="../vista/categorias/edit?id=<?php echo $va["id_cate"]; ?>" class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
+                                                            <i class="material-icons">autorenew</i>
+                                                        </a>
+                                                        <a type="button" href="../vista/categorias/borrar?id=<?php echo $va["id_cate"]; ?>" class="btn bg-red btn-circle waves-effect waves-circle waves-float">
+                                                            <i class="material-icons">delete</i>
+                                                        </a>
+
+
+                                                </tr>
+
+                                        <?php
+                                            }
+                                        }
+                                        ?>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -224,100 +222,88 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <!--------------------------------script edit cate----------------------------->
     <?php
-if(isset($_POST["update"])){
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "vetdog";
+    if (isset($_POST["update"])) {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "vetdog";
 
-// Creamos la conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
+        // Creamos la conexión
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Revisamos la conexión
-if ($conn->connect_error) {
-       die("Connection failed: " . $conn->connect_error);
-   } 
-    $id = $_GET['id'];
+        // Revisamos la conexión
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $id = $_GET['id'];
 
-    $nomcate=$_POST['nomcate'];
- 
-  
-// Realizamos la consulta para saber si coincide con uno de esos criterios
-
-$result = mysqli_query($conn);
-?>
+        $nomcate = $_POST['nomcate'];
 
 
-<?php
- // Validamos si hay resultados
- if(mysqli_num_rows($result)>0)
- {
-        // Si es mayor a cero imprimimos que ya existe el usuario
-      
-        if($result){
-   ?>
+        // Realizamos la consulta para saber si coincide con uno de esos criterios
 
-        <script type="text/javascript">
-
-Swal.fire({
-  icon: 'error',
-  title: 'Oops...',
-  text: 'Ya existe el registro a editar!'
- 
-})
+        $result = mysqli_query($conn);
+    ?>
 
 
+        <?php
+        // Validamos si hay resultados
+        if (mysqli_num_rows($result) > 0) {
+            // Si es mayor a cero imprimimos que ya existe el usuario
 
-        </script>
+            if ($result) {
+        ?>
 
+                <script type="text/javascript">
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Ya existe el registro a editar!'
+
+                    })
+                </script>
+
+                <?php
+            }
+        } else {
+            // Si no hay resultados, ingresamos el registro a la base de datos
+            $sql2 = "update category set nomcate='$nomcate'where id_cate='$id'";
+
+
+            if (mysqli_query($conn, $sql2)) {
+
+                if ($sql2) {
+                ?>
+
+                    <script type="text/javascript">
+                        swal("¡Update!", "Actualizado correctamente", "success").then(function() {
+                            window.location = "categorias";
+                        });
+                    </script>
+
+                <?php
+                } else {
+                ?>
+                    <script type="text/javascript">
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'No se pudo guardar!'
+
+                        })
+                    </script>
     <?php
+
+                }
+            } else {
+
+                echo "Error: " . $sql2 . "" . mysqli_error($conn);
+            }
+        }
+        // Cerramos la conexión
+        $conn->close();
     }
-  
- }
- else
- {
-// Si no hay resultados, ingresamos el registro a la base de datos
-$sql2 = "update category set nomcate='$nomcate'where id_cate='$id'";
-
-
-if (mysqli_query($conn, $sql2)) {
-      
-       if($sql2){
-   ?>
-
-        <script type="text/javascript">
-swal("¡Update!", "Actualizado correctamente", "success").then(function() {
-            window.location = "categorias";
-        });
-        </script>
-
-    <?php
-    }
-    else{
-       ?>
-       <script type="text/javascript">
-        Swal.fire({
-  icon: 'error',
-  title: 'Oops...',
-  text: 'No se pudo guardar!'
- 
-})
-       </script>
-       <?php
-
-    }
-    
-} else {
-      
-       echo "Error: " . $sql2 . "" . mysqli_error($conn);
-}
-
-}
-// Cerramos la conexión
-$conn->close();
-
-}
-?>
+    ?>
 </body>
 
 </html>
