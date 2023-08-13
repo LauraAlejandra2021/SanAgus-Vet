@@ -1,12 +1,13 @@
 ﻿<?php
-     session_start();
-    
-    if(!isset($_SESSION['cargo']) == 1){
+session_start();
+
+if (!isset($_SESSION['cargo']) == 1) {
     header('location: ../pages-login.php');
-  }
+}
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -24,14 +25,14 @@
     <link href="../../css/style.css" rel="stylesheet">
     <link href="../../assets/css/themes/all-themes.css" rel="stylesheet" />
     <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/lll.png" />
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js" integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js" integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 </head>
 
 <body class="theme-red">
-     <!-- Page Loader -->
+    <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
@@ -75,7 +76,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                  
+
                     <!-- Call Search -->
                     <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
                     <!-- #END# Call Search -->
@@ -111,240 +112,230 @@
             <!-- #User Info -->
 
 
-            
-                            </li>
 
-                            <li>
-                                <a href="../compra/compras_fecha.php">Consultar por fecha</a>
-                            </li>
-                        </ul>
-    </li>
-<!--======================================================================================================-->
-<li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">monetization_on</i>
-                            <span>VENTA</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../venta/nuevo.php">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/venta.php">Listar / Modificar</a>
-                            </li>
-                            <li>
-                                <a href="../venta/venta_fecha.php">Consultar por fecha</a>
-                            </li>
-                        </ul>
-    </li>
-    
+            </li>
 
-<!--============================CONTENIDO DE LA PÁGINA ==========================================================-->
+            <li>
+                <a href="../compra/compras_fecha.php">Consultar por fecha</a>
+            </li>
+            </ul>
+            </li>
+            <!--======================================================================================================-->
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">monetization_on</i>
+                    <span>VENTA</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="../venta/nuevo.php">Registrar</a>
+                    </li>
+                    <li>
+                        <a href="../../folder/venta.php">Listar / Modificar</a>
+                    </li>
+                    <li>
+                        <a href="../venta/venta_fecha.php">Consultar por fecha</a>
+                    </li>
+                </ul>
+            </li>
 
-    <section class="content">
-        <div class="container-fluid">
-            <!-- Input -->
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                MODIFICAR CATEGORÍAS
-                                <small>Modificar cualquier categoría de un producto...</small>
-                            </h2>
-                        </div>
 
-                    <div class="body">
-<?php         
-function connect(){
-return new mysqli("localhost","root","","vetdog");
-}
-$con = connect();
-$id = $_GET['id'];
-$sql = "SELECT * FROM category  WHERE id_cate= '$id'";
-$query  =$con->query($sql);
-$data =  array();
-if($query){
-  while($r = $query->fetch_object()){
-    $data[] = $r;
-  }
-}
+            <!--============================CONTENIDO DE LA PÁGINA ==========================================================-->
 
-?> 
-<?php if(count($data)>0):?>
-    <?php foreach($data as $d):?>
-                        <form method="POST"  autocomplete="off" action="../../folder/categorias.php?id=<?php echo $d->id_cate; ?>">
-                            <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <label class="control-label">Nombre de la Categoría</label>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" name="nomcate" value="<?php echo $d->nomcate; ?>"  class="form-control" placeholder="Nombre de la Categoría..." />
-                                        </div>
-                                    </div>
+            <section class="content">
+                <div class="container-fluid">
+                    <!-- Input -->
+                    <div class="row clearfix">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="card">
+                                <div class="header">
+                                    <h2>
+                                        MODIFICAR CATEGORÍAS
+                                        <small>Modificar cualquier categoría de un producto...</small>
+                                    </h2>
                                 </div>
+
+                                <div class="body">
+                                    <?php
+                                    function connect()
+                                    {
+                                        return new mysqli("localhost", "root", "", "vetdog");
+                                    }
+                                    $con = connect();
+                                    $id = $_GET['id'];
+                                    $sql = "SELECT * FROM category  WHERE id_cate= '$id'";
+                                    $query  = $con->query($sql);
+                                    $data =  array();
+                                    if ($query) {
+                                        while ($r = $query->fetch_object()) {
+                                            $data[] = $r;
+                                        }
+                                    }
+
+                                    ?>
+                                    <?php if (count($data) > 0) : ?>
+                                        <?php foreach ($data as $d) : ?>
+                                            <form method="POST" autocomplete="off" action="../../folder/categorias.php?id=<?php echo $d->id_cate; ?>">
+                                                <div class="row clearfix">
+                                                    <div class="col-sm-12">
+                                                        <label class="control-label">Nombre de la Categoría</label>
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" name="nomcate" value="<?php echo $d->nomcate; ?>" class="form-control" placeholder="Nombre de la Categoría..." />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="container-fluid" align="center">
+                                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                                    </div>
+
+                                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                                        <a type="button" href="../../folder/categorias.php" class="btn bg-red"><i class="material-icons">cancel</i> LIMPIAR </a>
+                                                    </div>
+
+                                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+
+
+                                                        <button class="btn bg-green" name="update">ACTUALIZAR<i class="material-icons">save</i></button>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+                                </div>
+                            <?php endforeach; ?>
+
+                        <?php else : ?>
+                            <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
+                                No hay datos
+                            </span>
+                        <?php endif; ?>
                             </div>
-
-                                <div class="container-fluid" align="center">
-                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                                    </div>
-
-                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                                        <a type="button" href="../../folder/categorias.php" class="btn bg-red"><i class="material-icons">cancel</i> LIMPIAR </a>
-                                    </div>
-
-                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                                        
-
-                                         <button class="btn bg-green" name="update">ACTUALIZAR<i class="material-icons">save</i></button>
-                                    </div>
-                                    
-                                </div>
-                        </form>
-                 </div>
- <?php endforeach; ?>
-  
-    <?php else:?>  
-      <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
-          No hay datos
-        </span>
-    <?php endif; ?>      
-                    </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- #END# Input -->
-        </div>
-    </section>
+                </div>
+                <!-- #END# Input -->
+                </div>
+            </section>
 
-    <!-- Jquery Core Js -->
-    <script src="../../assets/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap Core Js -->
-    <script src="../../assets/plugins/bootstrap/js/bootstrap.js"></script>
-    <!-- Select Plugin Js -->
-    <script src="../../assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
-    <!-- Slimscroll Plugin Js -->
-    <script src="../../assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-    <!-- Waves Effect Plugin Js -->
-    <script src="../../assets/plugins/node-waves/waves.js"></script>
-    <!-- Autosize Plugin Js -->
-    <script src="../../assets/plugins/autosize/autosize.js"></script>
-    <!-- Moment Plugin Js -->
-    <script src="../../assets/plugins/momentjs/moment.js"></script>
-    <!-- Bootstrap Material Datetime Picker Plugin Js -->
-    
-    <!-- Bootstrap Datepicker Plugin Js -->
-   
-    <!-- Custom Js -->
-    <script src="../../assets/js/admin.js"></script>
-    <script src="../../assets/js/pages/forms/basic-form-elements.js"></script>
-    <!-- Demo Js -->
+            <!-- Jquery Core Js -->
+            <script src="../../assets/plugins/jquery/jquery.min.js"></script>
+            <!-- Bootstrap Core Js -->
+            <script src="../../assets/plugins/bootstrap/js/bootstrap.js"></script>
+            <!-- Select Plugin Js -->
+            <script src="../../assets/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+            <!-- Slimscroll Plugin Js -->
+            <script src="../../assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+            <!-- Waves Effect Plugin Js -->
+            <script src="../../assets/plugins/node-waves/waves.js"></script>
+            <!-- Autosize Plugin Js -->
+            <script src="../../assets/plugins/autosize/autosize.js"></script>
+            <!-- Moment Plugin Js -->
+            <script src="../../assets/plugins/momentjs/moment.js"></script>
+            <!-- Bootstrap Material Datetime Picker Plugin Js -->
 
-    <script src="../../assets/js/demo.js"></script>
-    
+            <!-- Bootstrap Datepicker Plugin Js -->
 
-    <!--------------------------------script nuevo----------------------------->
+            <!-- Custom Js -->
+            <script src="../../assets/js/admin.js"></script>
+            <script src="../../assets/js/pages/forms/basic-form-elements.js"></script>
+            <!-- Demo Js -->
 
-    <?php
-if(isset($_POST["agregar"])){
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "vetdog";
-
-// Creamos la conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Revisamos la conexión
-if ($conn->connect_error) {
-       die("Connection failed: " . $conn->connect_error);
-   } 
-$nomcate=$_POST['nomcate'];
-$estado=$_POST['estado'];
-
-// Realizamos la consulta para saber si coincide con uno de esos criterios
-$sql = "select * from category where nomcate='$nomcate'";
-$result = mysqli_query($conn, $sql);
-?>
+            <script src="../../assets/js/demo.js"></script>
 
 
-<?php
- // Validamos si hay resultados
- if(mysqli_num_rows($result)>0)
- {
-        // Si es mayor a cero imprimimos que ya existe el usuario
-      
-        if($result){
-   ?>
+            <!--------------------------------script nuevo----------------------------->
 
-        <script type="text/javascript">
+            <?php
+            if (isset($_POST["agregar"])) {
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "vetdog";
 
-Swal.fire({
-  icon: 'error',
-  title: 'Oops...',
-  text: 'Ya existe el registro a agregar!'
- 
-})
+                // Creamos la conexión
+                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                // Revisamos la conexión
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+                $nomcate = $_POST['nomcate'];
+                $estado = $_POST['estado'];
+
+                // Realizamos la consulta para saber si coincide con uno de esos criterios
+                $sql = "select * from category where nomcate='$nomcate'";
+                $result = mysqli_query($conn, $sql);
+            ?>
 
 
-        </script>
+                <?php
+                // Validamos si hay resultados
+                if (mysqli_num_rows($result) > 0) {
+                    // Si es mayor a cero imprimimos que ya existe el usuario
 
-    <?php
-    }
-  
- }
- else
- {
-// Si no hay resultados, ingresamos el registro a la base de datos
-$sql2 = "insert into category(nomcate,estado) 
+                    if ($result) {
+                ?>
+
+                        <script type="text/javascript">
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Ya existe el registro a agregar!'
+
+                            })
+                        </script>
+
+                        <?php
+                    }
+                } else {
+                    // Si no hay resultados, ingresamos el registro a la base de datos
+                    $sql2 = "insert into category(nomcate,estado) 
 values ('$nomcate','$estado')";
 
-if (mysqli_query($conn, $sql2)) {
-      
-       if($sql2){
-   ?>
+                    if (mysqli_query($conn, $sql2)) {
 
-        <script type="text/javascript">
-             
-Swal.fire({
-  position: 'top-end',
-  icon: 'success',
-  title: 'Agregado correctamente',
-  showConfirmButton: false,
-  timer: 1500
-}).then(function() {
-            window.location = "../../folder/categorias.php";
-        });
-        </script>
+                        if ($sql2) {
+                        ?>
 
-    <?php
-    }
-    else{
-       ?>
-       <script type="text/javascript">
-        Swal.fire({
-  icon: 'error',
-  title: 'Oops...',
-  text: 'No se pudo guardar!'
- 
-})
-       </script>
-       <?php
+                            <script type="text/javascript">
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Agregado correctamente',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                }).then(function() {
+                                    window.location = "../../folder/categorias.php";
+                                });
+                            </script>
 
-    }
-    
-} else {
-      
-       echo "Error: " . $sql2 . "" . mysqli_error($conn);
-}
+                        <?php
+                        } else {
+                        ?>
+                            <script type="text/javascript">
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'No se pudo guardar!'
 
-}
-// Cerramos la conexión
-$conn->close();
+                                })
+                            </script>
+            <?php
 
-}
-?>
+                        }
+                    } else {
+
+                        echo "Error: " . $sql2 . "" . mysqli_error($conn);
+                    }
+                }
+                // Cerramos la conexión
+                $conn->close();
+            }
+            ?>
 
 </body>
+
 </html>

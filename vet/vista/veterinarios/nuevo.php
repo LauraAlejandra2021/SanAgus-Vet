@@ -1,12 +1,13 @@
 ﻿<?php
-     session_start();
-    
-    if(!isset($_SESSION['cargo']) == 1){
+session_start();
+
+if (!isset($_SESSION['cargo']) == 1) {
     header('location: ../pages-login');
-  }
+}
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -26,13 +27,13 @@
     <link href="../../css/style.css" rel="stylesheet">
     <link href="../../assets/css/themes/all-themes.css" rel="stylesheet" />
     <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/lll.png" />
-       
+
 
 
 </head>
 
 <body class="theme-red">
-     <!-- Page Loader -->
+    <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
@@ -76,7 +77,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                  
+
                     <!-- Call Search -->
                     <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
                     <!-- #END# Call Search -->
@@ -100,7 +101,7 @@
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                           <li><a href="../config/configuracion"><i class="material-icons">brightness_low</i>Mi Cuenta</a></li>
+                            <li><a href="../config/configuracion"><i class="material-icons">brightness_low</i>Mi Cuenta</a></li>
                             <li role="separator" class="divider"></li>
                             <li role="separator" class="divider"></li>
 
@@ -113,178 +114,17 @@
 
 
             <!-- Menu -->
-            <div class="menu">
-                <ul class="list">
-                    <li class="header">MENÚ DE NAVEGACIÓN</li>
-                    <li>
-                        <a href="../panel-admin/administrador">
-                            <i class="material-icons">home</i>
-                            <span>INICIO</span>
-                        </a>
-                    </li>
-<!--======================================================================================================-->
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">inbox</i>
-                            <span>PRODUCTOS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../productos/nuevo.php">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/productos.php">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-<!--======================================================================================================-->
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">low_priority</i>
-                            <span>CATEGORÍAS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../categorias/nuevo.php">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/categorias.php">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-<!--======================================================================================================-->
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">supervisor_account</i>
-                            <span>CLIENTES</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../clientes/nuevo.php">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/clientes.php">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-<!--======================================================================================================-->
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">business</i>
-                            <span>PROVEEDORES</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../proveedores/nuevo.php">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/proveedores.php">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-<!--======================================================================================================-->
-                    <li class="active">
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">person_pin</i>
-                            <span>VETERINARIOS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li class="active">
-                                <a href="../veterinarios/nuevo.php">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/veterinarios.php">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-<!--======================================================================================================-->
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">flutter_dash</i>
-                            <span>MASCOTAS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../mascotas/nuevo.php">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/mascotas.php">Listar / Modificar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/tipo.php">Tipos</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/raza.php">Razas</a>
-                            </li>
-                        </ul>
-</li>
-<!--======================================================================================================-->
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">calendar_today</i>
-                            <span>CITAS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../citas/nuevo.php">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/citas.php">Listar / Modificar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/servicio">Servicio</a>
-                            </li>
-                        </ul>
-    </li>
-    <!--======================================================================================================-->
-    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">shopping_basket</i>
-                            <span>COMPRA</span> 
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../compra/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/compra">Listar / Modificar</a>
-                            </li>
-                            <li>
-                                <a href="../compra/compras_fecha">Consultar por fecha</a>
-                            </li>
-                        </ul>
-    </li>
-<!--======================================================================================================-->
-<li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">monetization_on</i>
-                            <span>VENTA</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../venta/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="../../folder/venta">Listar / Modificar</a>
-                            </li>
-                            <li>
-                                <a href="../venta/venta_fecha">Consultar por fecha</a>
-                            </li>
-                        </ul>
-    </li>
-    <!--======================================================================================================-->
-        <aside id="rightsidebar" class="right-sidebar">
-        </aside>
+            <?php include('../menu.php'); ?>
     </section>
 
-<!--============================CONTENIDO DE LA PÁGINA ==========================================================-->
+    <!--============================CONTENIDO DE LA PÁGINA ==========================================================-->
 
     <section class="content">
         <div class="container-fluid">
 
             <div class="alert alert-info">
-  <strong>Estimado usuario!</strong>    Los campos remarcados con <span class="text-danger">*</span> son necesarios.
-</div>
+                <strong>Estimado usuario!</strong> Los campos remarcados con <span class="text-danger">*</span> son necesarios.
+            </div>
             <!-- Input -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -296,125 +136,125 @@
                             </h2>
                         </div>
 
-                    <div class="body">
-                        <form method="POST"  autocomplete="off" enctype="multipart/form-data">
-                            <div class="row clearfix">
-                                <div class="col-sm-6">
-                                    <label class="control-label">DNI del veterinario<span class="text-danger">*</span></label>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" name="dnivet" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="8" required class="form-control" placeholder="DNI del veterinario..." />
+                        <div class="body">
+                            <form method="POST" autocomplete="off" enctype="multipart/form-data">
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <label class="control-label">DNI del veterinario<span class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="dnivet" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="8" required class="form-control" placeholder="DNI del veterinario..." />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-sm-6">
-                                    <label class="control-label">Nombre del veterinario<span class="text-danger">*</span></label>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" name="nomvet" required class="form-control" placeholder="Nombre del veterinario..." />
+                                    <div class="col-sm-6">
+                                        <label class="control-label">Nombre del veterinario<span class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="nomvet" required class="form-control" placeholder="Nombre del veterinario..." />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <label class="control-label">Apellido del veterinario<span class="text-danger">*</span></label>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" name="apevet" required class="form-control" placeholder="Apellido del veterinario..." />
+                                    <div class="col-sm-6">
+                                        <label class="control-label">Apellido del veterinario<span class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="apevet" required class="form-control" placeholder="Apellido del veterinario..." />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-sm-6">
-                                     <label class="control-label">Direccion del veterinario<span class="text-danger">*</span></label>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" name="direcc" required class="form-control" placeholder="Direccion..." />
+                                    <div class="col-sm-6">
+                                        <label class="control-label">Direccion del veterinario<span class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="direcc" required class="form-control" placeholder="Direccion..." />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-sm-5">
-                                    <label class="control-label">Sexo del veterinario</label>
-                                    <select name="sexo" class="form-control show-tick">
-                                        <option value="">-- Seleccione un sexo --</option>
-                                        <option value="Masculino">Masculino</option>
-                                        <option value="Femenino">Femenino</option>
-                                        
-                                    </select>
-                                </div>
-                                <div class="col-sm-4">
-                                      <label class="control-label">Correo del veterinario<span class="text-danger">*</span></label>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="email" name="correo" required class="form-control" placeholder="Correo..." />
+                                    <div class="col-sm-5">
+                                        <label class="control-label">Sexo del veterinario</label>
+                                        <select name="sexo" class="form-control show-tick">
+                                            <option value="">-- Seleccione un sexo --</option>
+                                            <option value="Masculino">Masculino</option>
+                                            <option value="Femenino">Femenino</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="control-label">Correo del veterinario<span class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="email" name="correo" required class="form-control" placeholder="Correo..." />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-sm-3">
-                                    <label class="control-label"> Telefono movil del veterinario<span class="text-danger">*</span></label>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" name="movil" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="9" required class="form-control" placeholder="Telefono movil..." />
+                                    <div class="col-sm-3">
+                                        <label class="control-label"> Telefono movil del veterinario<span class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="movil" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="9" required class="form-control" placeholder="Telefono movil..." />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-sm-4">
-                                    <label class="control-label"> Telefono fijo del veterinario<span class="text-danger">*</span></label>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" name="fijo" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="6" required class="form-control" placeholder="Telefono fijo..." />
+                                    <div class="col-sm-4">
+                                        <label class="control-label"> Telefono fijo del veterinario<span class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="fijo" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="6" required class="form-control" placeholder="Telefono fijo..." />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-sm-4">
-                                     <label class="control-label"> Usuario del veterinario<span class="text-danger">*</span></label>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" name="usuario" required class="form-control" placeholder="Usuario..." />
+                                    <div class="col-sm-4">
+                                        <label class="control-label"> Usuario del veterinario<span class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="usuario" required class="form-control" placeholder="Usuario..." />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-sm-4">
-                                    <label class="control-label"> Contraseña del veterinario<span class="text-danger">*</span></label>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="password" name="contra" required class="form-control" placeholder="Contraseña..." />
+                                    <div class="col-sm-4">
+                                        <label class="control-label"> Contraseña del veterinario<span class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="password" name="contra" required class="form-control" placeholder="Contraseña..." />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-sm-4">
-                                    <label class="control-label"> Imagen del veterinario</label>
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                          <input type="file" id="imagen" name="foto" onchange="readURL(this);" data-toggle="tooltip">
-                 <img id="blah" src="http://placehold.it/180" alt="your image" style="max-width:90px;" />  
+                                    <div class="col-sm-4">
+                                        <label class="control-label"> Imagen del veterinario</label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="file" id="imagen" name="foto" onchange="readURL(this);" data-toggle="tooltip">
+                                                <img id="blah" src="http://placehold.it/180" alt="your image" style="max-width:90px;" />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-sm-5" style="display:none;">
-                                    <select name="estado" class="form-control show-tick">
-                                        
-                                        <option value="1">1</option>
-                                        
-                                    </select>
-                                </div>
+                                    <div class="col-sm-5" style="display:none;">
+                                        <select name="estado" class="form-control show-tick">
 
-                                <div class="col-sm-5" style="display:none;">
-                                    <select name="cargo" class="form-control show-tick">
-                                        
-                                        <option value="3">3</option>
-                                        
-                                    </select>
-                                </div>
+                                            <option value="1">1</option>
 
-                            </div>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-sm-5" style="display:none;">
+                                        <select name="cargo" class="form-control show-tick">
+
+                                            <option value="3">3</option>
+
+                                        </select>
+                                    </div>
+
+                                </div>
 
                                 <div class="container-fluid" align="center">
                                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
@@ -425,19 +265,19 @@
                                     </div>
 
                                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                                        
 
-                                         <button class="btn bg-green" name="agregar">GUARDAR<i class="material-icons">save</i></button>
+
+                                        <button class="btn bg-green" name="agregar">GUARDAR<i class="material-icons">save</i></button>
                                     </div>
-                                    
+
                                 </div>
-                        </form>
-                    </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- #END# Input -->
+        </div>
+        <!-- #END# Input -->
         </div>
     </section>
 
@@ -456,9 +296,9 @@
     <!-- Moment Plugin Js -->
     <script src="../../assets/plugins/momentjs/moment.js"></script>
     <!-- Bootstrap Material Datetime Picker Plugin Js -->
-    
+
     <!-- Bootstrap Datepicker Plugin Js -->
-   
+
     <!-- Custom Js -->
     <script src="../../assets/js/admin.js"></script>
     <script src="../../assets/js/pages/forms/basic-form-elements.js"></script>
@@ -466,116 +306,106 @@
 
     <script src="../../assets/js/demo.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    
+
 
     <!--------------------------------script nuevo----------------------------->
 
     <?php
-if(isset($_POST["agregar"])){
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "vetdog";
+    if (isset($_POST["agregar"])) {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "vetdog";
 
-// Creamos la conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
+        // Creamos la conexión
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Revisamos la conexión
-if ($conn->connect_error) {
-       die("Connection failed: " . $conn->connect_error);
-   } 
-$dnivet=$_POST['dnivet'];
-$nomvet=$_POST['nomvet'];
-$apevet=$_POST['apevet'];
-$direcc=$_POST['direcc'];
-$sexo=$_POST['sexo'];
-$correo=$_POST['correo'];
-$foto=$_FILES['foto']['name'];
-$fijo=$_POST['fijo'];
-$movil=$_POST['movil'];
-$usuario=$_POST['usuario'];
-$contra=MD5($_POST['contra']);
-$cargo=$_POST['cargo'];
-$estado=$_POST['estado'];
-
-
-// Realizamos la consulta para saber si coincide con uno de esos criterios
-$sql = "select * from veterinarian where dnivet='$dnivet' or correo='$correo' or fijo='$fijo' or movil='$movil'";
-$result = mysqli_query($conn, $sql);
-?>
+        // Revisamos la conexión
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $dnivet = $_POST['dnivet'];
+        $nomvet = $_POST['nomvet'];
+        $apevet = $_POST['apevet'];
+        $direcc = $_POST['direcc'];
+        $sexo = $_POST['sexo'];
+        $correo = $_POST['correo'];
+        $foto = $_FILES['foto']['name'];
+        $fijo = $_POST['fijo'];
+        $movil = $_POST['movil'];
+        $usuario = $_POST['usuario'];
+        $contra = MD5($_POST['contra']);
+        $cargo = $_POST['cargo'];
+        $estado = $_POST['estado'];
 
 
-<?php
- // Validamos si hay resultados
- if(mysqli_num_rows($result)>0)
- {
-        // Si es mayor a cero imprimimos que ya existe el usuario
-      
-        if($result){
-   ?>
+        // Realizamos la consulta para saber si coincide con uno de esos criterios
+        $sql = "select * from veterinarian where dnivet='$dnivet' or correo='$correo' or fijo='$fijo' or movil='$movil'";
+        $result = mysqli_query($conn, $sql);
+    ?>
 
-        <script type="text/javascript">
 
-swal("Oops...!", "Ya existe el registro a agregar!", "error")
-        </script>
+        <?php
+        // Validamos si hay resultados
+        if (mysqli_num_rows($result) > 0) {
+            // Si es mayor a cero imprimimos que ya existe el usuario
+
+            if ($result) {
+        ?>
+
+                <script type="text/javascript">
+                    swal("Oops...!", "Ya existe el registro a agregar!", "error")
+                </script>
 
 
 
-    <?php
-    }
-  
- }
- else
- {
-// Si no hay resultados, ingresamos el registro a la base de datos
-$sql2 = "insert into veterinarian (dnivet,nomvet,apevet,direcc,sexo,correo,foto,fijo,movil,usuario,contra,cargo,estado) 
+                <?php
+            }
+        } else {
+            // Si no hay resultados, ingresamos el registro a la base de datos
+            $sql2 = "insert into veterinarian (dnivet,nomvet,apevet,direcc,sexo,correo,foto,fijo,movil,usuario,contra,cargo,estado) 
 values ('$dnivet','$nomvet','$apevet','$direcc','$sexo','$correo','$foto','$fijo','$movil','$usuario','$contra','$cargo','$estado')";
-$foto = $_FILES['foto'];
-    
-    move_uploaded_file($foto['tmp_name'], "../../assets/img/subidas/".$foto['name']);
-if (mysqli_query($conn, $sql2)) {
-      
-       if($sql2){
-   ?>
+            $foto = $_FILES['foto'];
+
+            move_uploaded_file($foto['tmp_name'], "../../assets/img/subidas/" . $foto['name']);
+            if (mysqli_query($conn, $sql2)) {
+
+                if ($sql2) {
+                ?>
 
 
-        <script type="text/javascript">
-swal("¡Registrado!", "Agregado correctamente", "success").then(function() {
-            window.location = "../../folder/veterinarios";
-        });
-        </script>
+                    <script type="text/javascript">
+                        swal("¡Registrado!", "Agregado correctamente", "success").then(function() {
+                            window.location = "../../folder/veterinarios";
+                        });
+                    </script>
+
+                <?php
+                } else {
+                ?>
+                    <script type="text/javascript">
+                        swal("Oops...!", "No se pudo guardar!", "error")
+                    </script>
+
 
     <?php
+
+                }
+            } else {
+
+                echo "Error: " . $sql2 . "" . mysqli_error($conn);
+            }
+        }
+        // Cerramos la conexión
+        $conn->close();
     }
-    else{
-       ?>
-       <script type="text/javascript">
-
-        swal("Oops...!", "No se pudo guardar!", "error")
-       </script>
-
-
-       <?php
-
-    }
-    
-} else {
-      
-       echo "Error: " . $sql2 . "" . mysqli_error($conn);
-}
-
-}
-// Cerramos la conexión
-$conn->close();
-
-}
-?>
-<script>
-   function readURL(input) {
+    ?>
+    <script>
+        function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
-                reader.onload = function (e) {
+                reader.onload = function(e) {
                     $('#blah')
                         .attr('src', e.target.result);
                 };
@@ -583,7 +413,8 @@ $conn->close();
                 reader.readAsDataURL(input.files[0]);
             }
         }
-  </script>
+    </script>
 
 </body>
+
 </html>

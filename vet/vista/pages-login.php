@@ -42,7 +42,13 @@ if (isset($_POST['login'])) {
           if ($_SESSION['cargo'] == 1) {
             header('Location: panel-admin/administrador.php');
           }
+
+          //perfil vet opc 3
+          if ($_SESSION['cargo'] == 3) {
+            header('Location: citas/cita_rapida.php');
+          }
           exit;
+
         } else
           $errMsg = 'Contraseña incorrecta.';
       }
