@@ -2,7 +2,7 @@
      session_start();
     
     if(!isset($_SESSION['cargo']) == 1){
-    header('location: ../pages-login');
+    header('location: ../pages-login.php');
   }
 ?>
 <!DOCTYPE html>
@@ -72,7 +72,7 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="../panel-admin/administrador"> VETDOG - DASHBOARD </a>
+                <a class="navbar-brand" href="../panel-admin/administrador.php"> VETDOG - DASHBOARD </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
