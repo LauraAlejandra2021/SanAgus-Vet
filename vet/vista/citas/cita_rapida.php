@@ -89,59 +89,9 @@ if (!isset($_SESSION['cargo']) == 1) {
     </nav>
     <!-- #Top Bar -->
 
-    <section>
-        <!-- Left Sidebar -->
-        <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
-            <div class="user-info">
-                <div class="image">
-                    <img src="../../assets/img/mujerico.png" width="48" height="48" alt="User" />
-                </div>
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ucfirst($_SESSION['nombre']); ?></div>
-                    <div class="email"><?php echo ucfirst($_SESSION['correo']); ?></div>
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="../config/configuracion"><i class="material-icons">brightness_low</i>Mi Cuenta</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li role="separator" class="divider"></li>
-
-                            <li><a href="../pages-logout"><i class="material-icons">input</i>Cerrar Sesión</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- #User Info -->
-
-
-            <!-- Menu -->
-            <?php include('../menu.php'); ?>
-            <!--======================================================================================================-->
-            <li>
-                <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">monetization_on</i>
-                    <span>VENTA</span>
-                </a>
-                <ul class="ml-menu">
-                    <li>
-                        <a href="../venta/nuevo.php">Registrar</a>
-                    </li>
-                    <li>
-                        <a href="../../folder/venta.php">Listar / Modificar</a>
-                    </li>
-
-                    <li>
-                        <a href="../venta/venta_fecha.php">Consultar por fecha</a>
-                    </li>
-                </ul>
-            </li>
-            <!--======================================================================================================-->
-            <aside id="rightsidebar" class="right-sidebar">
-            </aside>
-    </section>
-
+    <!-- Menu -->
+    <?php include('../menu.php'); ?>
+    
     <!--============================CONTENIDO DE LA PÁGINA ==========================================================-->
     <section class="content">
         <div class="container-fluid">
@@ -364,7 +314,7 @@ if (!isset($_SESSION['cargo']) == 1) {
                                     </div>
 
                                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                                        <a type="button" href="../../folder/citas" class="btn bg-red"><i class="material-icons">cancel</i> LIMPIAR </a>
+                                        <a type="button" href="../../folder/citas.php" class="btn bg-red"><i class="material-icons">cancel</i> LIMPIAR </a>
                                     </div>
 
                                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">

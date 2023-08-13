@@ -88,37 +88,8 @@ if (!isset($_SESSION['cargo']) == 1) {
     </nav>
     <!-- #Top Bar -->
 
-    <section>
-        <!-- Left Sidebar -->
-        <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
-            <div class="user-info">
-                <div class="image">
-                    <img src="../assets/img/mujerico.png" width="48" height="48" alt="User" />
-                </div>
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ucfirst($_SESSION['nombre']); ?></div>
-                    <div class="email"><?php echo ucfirst($_SESSION['correo']); ?></div>
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="../vista/config/configuracion"><i class="material-icons">brightness_low</i>Mi Cuenta</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li role="separator" class="divider"></li>
-
-                            <li><a href="../vista/pages-logout"><i class="material-icons">input</i>Cerrar Sesión</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- #User Info -->
-
-
-            <!-- Menu -->
-            <?php include('../menu.php'); ?>
-    </section>
-
-
+    <!-- Menu -->
+    <?php include('../menu.php'); ?>
 
     <section class="content">
         <div class="container-fluid">
@@ -184,7 +155,7 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                         <?php  } ?>
                                                     </td>
 
-                                                    <td><a type="button" href="../vista/citas/edit?id=<?php echo $va["id"]; ?>" class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
+                                                    <td><a type="button" href="../vista/citas/edit.php?id=<?php echo $va["id"]; ?>" class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
                                                             <i class="material-icons">autorenew</i>
                                                         </a>
 

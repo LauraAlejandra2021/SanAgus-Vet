@@ -60,6 +60,6 @@ $sql = "UPDATE quotes SET id_vet = '$id_vet',id_tiM = '$id_tiM',id_servi = '$id_
         $_SESSION['message'] = 'Complete el formulario de edición';
     }
 
-    header('location: ../../folder/citas');
+    header('location: ../../folder/citas.php');
 
 ?>
