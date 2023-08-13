@@ -130,10 +130,10 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="../productos/nuevo">Registrar</a>
+                                <a href="../productos/nuevo.php">Registrar</a>
                             </li>
                             <li>
-                                <a href="../../folder/productos">Listar / Modificar</a>
+                                <a href="../../folder/productos.php">Listar / Modificar</a>
                             </li>
                         </ul>
                     </li>
@@ -145,10 +145,10 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="../categorias/nuevo">Registrar</a>
+                                <a href="../categorias/nuevo.php">Registrar</a>
                             </li>
                             <li>
-                                <a href="../../folder/categorias">Listar / Modificar</a>
+                                <a href="../../folder/categorias.php">Listar / Modificar</a>
                             </li>
                         </ul>
                     </li>
@@ -160,10 +160,10 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="../clientes/nuevo">Registrar</a>
+                                <a href="../clientes/nuevo.php">Registrar</a>
                             </li>
                             <li>
-                                <a href="../../folder/clientes">Listar / Modificar</a>
+                                <a href="../../folder/clientes.php">Listar / Modificar</a>
                             </li>
                         </ul>
                     </li>
@@ -175,10 +175,10 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="../proveedores/nuevo">Registrar</a>
+                                <a href="../proveedores/nuevo.php">Registrar</a>
                             </li>
                             <li>
-                                <a href="../../folder/proveedores">Listar / Modificar</a>
+                                <a href="../../folder/proveedores.php">Listar / Modificar</a>
                             </li>
                         </ul>
                     </li>
@@ -190,10 +190,10 @@
                         </a>
                         <ul class="ml-menu">
                             <li class="active">
-                                <a href="../veterinarios/nuevo">Registrar</a>
+                                <a href="../veterinarios/nuevo.php">Registrar</a>
                             </li>
                             <li>
-                                <a href="../../folder/veterinarios">Listar / Modificar</a>
+                                <a href="../../folder/veterinarios.php">Listar / Modificar</a>
                             </li>
                         </ul>
                     </li>
@@ -205,16 +205,16 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="../mascotas/nuevo">Registrar</a>
+                                <a href="../mascotas/nuevo.php">Registrar</a>
                             </li>
                             <li>
-                                <a href="../../folder/mascotas">Listar / Modificar</a>
+                                <a href="../../folder/mascotas.php">Listar / Modificar</a>
                             </li>
                             <li>
-                                <a href="../../folder/tipo">Tipos</a>
+                                <a href="../../folder/tipo.php">Tipos</a>
                             </li>
                             <li>
-                                <a href="../../folder/raza">Razas</a>
+                                <a href="../../folder/raza.php">Razas</a>
                             </li>
                         </ul>
 </li>
@@ -226,10 +226,10 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="../citas/nuevo">Registrar</a>
+                                <a href="../citas/nuevo.php">Registrar</a>
                             </li>
                             <li>
-                                <a href="../../folder/citas">Listar / Modificar</a>
+                                <a href="../../folder/citas.php">Listar / Modificar</a>
                             </li>
                             <li>
                                 <a href="../../folder/servicio">Servicio</a>
@@ -240,7 +240,7 @@
     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">shopping_basket</i>
-                            <span>COMPRA</span>
+                            <span>COMPRA</span> 
                         </a>
                         <ul class="ml-menu">
                             <li>
