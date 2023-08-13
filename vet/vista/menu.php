@@ -183,7 +183,20 @@
                     </ul>
                 </li>
                 <!--======================================================================================================-->
-
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">person_pin</i>
+                        <span>USUARIOS</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="../veterinarios/nuevo.php">Registrar</a>
+                        </li>
+                        <li>
+                            <a href="../../folder/veterinarios.php">Listar / Modificar</a>
+                        </li>
+                    </ul>
+                </li>               
                 <!--======================================================================================================-->
                 <aside id="rightsidebar" class="right-sidebar">
                 </aside>
