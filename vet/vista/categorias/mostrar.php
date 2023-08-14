@@ -196,6 +196,7 @@ if (!isset($_SESSION['cargo']) == 1) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <!--------------------------------script edit cate----------------------------->
     <?php
+    
     if (isset($_POST["update"])) {
         $servername = "localhost";
         $username = "root";
@@ -215,65 +216,39 @@ if (!isset($_SESSION['cargo']) == 1) {
 
 
         // Realizamos la consulta para saber si coincide con uno de esos criterios
+        $sql2 = "select id_cate from category where nomcate='$nomcate'";
+        $result = mysqli_query($conn, $sql2);
+    
+      
+        // Si no hay resultados, ingresamos el registro a la base de datos
+        $sql2 = "update category set nomcate='$nomcate'where id_cate='$id'";
 
-        $result = mysqli_query($conn);
-    ?>
 
-
-        <?php
-        // Validamos si hay resultados
-        if (mysqli_num_rows($result) > 0) {
-            // Si es mayor a cero imprimimos que ya existe el usuario
-
-            if ($result) {
-        ?>
-
+        if (mysqli_query($conn, $sql2)) {
+            if ($sql2) {
+            ?>
                 <script type="text/javascript">
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Ya existe el registro a editar!'
-
-                    })
+                    swal("¡Update!", "Actualizado correctamente", "success").then(function() {
+                        window.location = "categorias";
+                    });
                 </script>
 
-                <?php
-            }
-        } else {
-            // Si no hay resultados, ingresamos el registro a la base de datos
-            $sql2 = "update category set nomcate='$nomcate'where id_cate='$id'";
+            <?php
+            } else {
+            ?>
+            <script type="text/javascript">
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'No se pudo guardar!'
 
-
-            if (mysqli_query($conn, $sql2)) {
-
-                if ($sql2) {
-                ?>
-
-                    <script type="text/javascript">
-                        swal("¡Update!", "Actualizado correctamente", "success").then(function() {
-                            window.location = "categorias";
-                        });
-                    </script>
-
-                <?php
-                } else {
-                ?>
-                    <script type="text/javascript">
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'No se pudo guardar!'
-
-                        })
-                    </script>
-    <?php
-
+                })
+            </script>
+            <?php
                 }
             } else {
-
                 echo "Error: " . $sql2 . "" . mysqli_error($conn);
             }
-        }
         // Cerramos la conexión
         $conn->close();
     }

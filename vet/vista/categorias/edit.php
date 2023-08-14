@@ -72,7 +72,7 @@ if (!isset($_SESSION['cargo']) == 1) {
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="../panel-admin/administrador.php"> VETDOG - DASHBOARD </a>
+                <a class="navbar-brand" href="../panel-admin/administrador"> VETDOG - DASHBOARD </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -87,7 +87,7 @@ if (!isset($_SESSION['cargo']) == 1) {
     <!-- #Top Bar -->
 
     <!-- Menu -->
-    <?php include('../menu.php'); ?>
+    <?php include('../menu'); ?>
 
     <!--============================CONTENIDO DE LA PÁGINA ==========================================================-->
 
@@ -105,12 +105,8 @@ if (!isset($_SESSION['cargo']) == 1) {
                         </div>
 
                         <div class="body">
-                            <?php
-                            function connect()
-                            {
-                                return new mysqli("localhost", "root", "", "vetdog");
-                            }
-                            $con = connect();
+                            <?php                            
+                            $con = connectDB();
                             $id = $_GET['id'];
                             $sql = "SELECT * FROM category  WHERE id_cate= '$id'";
                             $query  = $con->query($sql);
@@ -124,7 +120,7 @@ if (!isset($_SESSION['cargo']) == 1) {
                             ?>
                             <?php if (count($data) > 0) : ?>
                                 <?php foreach ($data as $d) : ?>
-                                    <form method="POST" autocomplete="off" action="../../folder/categorias.php?id=<?php echo $d->id_cate; ?>">
+                                    <form method="POST" autocomplete="off" action="../../folder/categorias?id=<?php echo $d->id_cate; ?>">
                                         <div class="row clearfix">
                                             <div class="col-sm-12">
                                                 <label class="control-label">Nombre de la Categoría</label>
@@ -141,7 +137,7 @@ if (!isset($_SESSION['cargo']) == 1) {
                                             </div>
 
                                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                                                <a type="button" href="../../folder/categorias.php" class="btn bg-red"><i class="material-icons">cancel</i> LIMPIAR </a>
+                                                <a type="button" href="../../folder/categorias" class="btn bg-red"><i class="material-icons">cancel</i> LIMPIAR </a>
                                             </div>
 
                                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
@@ -198,7 +194,7 @@ if (!isset($_SESSION['cargo']) == 1) {
     <!--------------------------------script nuevo----------------------------->
 
     <?php
-    if (isset($_POST["agregar"])) {
+    if (isset($_POST["agregar"])) {        
         $servername = "localhost";
         $username = "root";
         $password = "";
@@ -257,7 +253,7 @@ values ('$nomcate','$estado')";
                             showConfirmButton: false,
                             timer: 1500
                         }).then(function() {
-                            window.location = "../../folder/categorias.php";
+                            window.location = "../../folder/categorias";
                         });
                     </script>
 

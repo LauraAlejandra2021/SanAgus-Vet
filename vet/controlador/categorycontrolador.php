@@ -3,7 +3,7 @@ require_once '../modelo/modelocategory.php';
 class categorycontrolador{
 
     public $model;
-  public function __construct() {
+    public function __construct() {
         $this->model=new Modelo();
     }
     function mostrar(){
@@ -15,21 +15,20 @@ class categorycontrolador{
 
 
     //INSERTAR
-  public  function nuevo(){
+    public  function nuevo(){
         require_once '../vista/categorias/nuevo';
     }
     //aca ando haciendo
     public function recibir(){
-                $alm = new Modelo();
-                $alm->nomcate=$_POST['txtnomcate'];
-                $alm->estado=$_POST['txtestado'];
+        $alm = new Modelo();
+        $alm->nomcate=$_POST['txtnomcate'];
+        $alm->estado=$_POST['txtestado'];
                 
                 
-     $this->model->insertar($alm);
+        $this->model->insertar($alm);
      //-------------
-header("Location: category.php");
-
-          }
-
+        header("Location: category.php");
 
     }
+}
+?>

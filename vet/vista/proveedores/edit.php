@@ -303,7 +303,7 @@ values ('$nomcate','$estado')";
                             showConfirmButton: false,
                             timer: 1500
                         }).then(function() {
-                            window.location = "../../folder/categorias.php";
+                            window.location = "../../folder/categorias";
                         });
                     </script>
 

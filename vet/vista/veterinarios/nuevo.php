@@ -169,16 +169,16 @@ if (!isset($_SESSION['cargo']) == 1) {
                                         <label class="control-label"> Telefono movil del veterinario<span class="text-danger">*</span></label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="movil" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="9" required class="form-control" placeholder="Telefono movil..." />
+                                                <input type="text" name="movil" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="12" required class="form-control" placeholder="Teléfono movil..." />
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-4">
-                                        <label class="control-label"> Telefono fijo del veterinario<span class="text-danger">*</span></label>
+                                        <label class="control-label"> Telefono fijo del veterinario<span class="text-danger"></span></label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="fijo" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="6" required class="form-control" placeholder="Telefono fijo..." />
+                                                <input type="text" name="fijo" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" class="form-control" placeholder="Telefono fijo..." />
                                             </div>
                                         </div>
                                     </div>
