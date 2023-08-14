@@ -1,9 +1,9 @@
 ﻿<?php
-     session_start();
-    
-    if(!isset($_SESSION['cargo']) == 1){
+session_start();
+
+if (!isset($_SESSION['cargo']) == 1) {
     header('location: ../vista/pages-login');
-  }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,7 +32,7 @@
 </head>
 
 <body class="theme-red">
-<!-- Page Loader -->
+    <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
@@ -76,7 +76,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                  
+
                     <!-- Call Search -->
                     <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
                     <!-- #END# Call Search -->
@@ -86,200 +86,12 @@
     </nav>
     <!-- #Top Bar -->
 
-    <section>
-        <!-- Left Sidebar -->
-        <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
-            <div class="user-info">
-                <div class="image">
-                    <img src="../assets/img/mujerico.png" width="48" height="48" alt="User" />
-                </div>
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ucfirst($_SESSION['nombre']); ?></div>
-                    <div class="email"><?php echo ucfirst($_SESSION['correo']); ?></div>
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="../vista/config/configuracion"><i class="material-icons">brightness_low</i>Mi Cuenta</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li role="separator" class="divider"></li>
-
-                            <li><a href="../vista/pages-logout"><i class="material-icons">input</i>Cerrar Sesión</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- #User Info -->
-
-
-            <!-- Menu -->
-            <div class="menu">
-                <ul class="list">
-                    <li class="header">MENÚ DE NAVEGACIÓN</li>
-                    <li>
-                        <a href="../vista/panel-admin/administrador">
-                            <i class="material-icons">home</i>
-                            <span>INICIO</span>
-                        </a>
-                    </li>
-<!--======================================================================================================-->
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">inbox</i>
-                            <span>PRODUCTOS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/productos/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="productos">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-<!--======================================================================================================-->
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">low_priority</i>
-                            <span>CATEGORÍAS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/categorias/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="categorias">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-<!--======================================================================================================-->
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">supervisor_account</i>
-                            <span>CLIENTES</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/clientes/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="clientes">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-<!--======================================================================================================-->
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">business</i>
-                            <span>PROVEEDORES</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/proveedores/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="proveedores">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-<!--======================================================================================================-->
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">person_pin</i>
-                            <span>VETERINARIOS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/veterinarios/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="veterinarios">Listar / Modificar</a>
-                            </li>
-                        </ul>
-                    </li>
-<!--======================================================================================================-->
-                    <li class="active">
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">flutter_dash</i>
-                            <span>MASCOTAS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/mascotas/nuevo">Registrar</a>
-                            </li>
-                            <li class="active">
-                                <a href="mascotas">Listar / Modificar</a>
-                            </li>
-                            <li>
-                                <a href="tipo">Tipos</a>
-                            </li>
-                            <li>
-                                <a href="raza">Razas</a>
-                            </li>
-                        </ul>
-</li>
-<!--======================================================================================================-->
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">calendar_today</i>
-                            <span>CITAS</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/citas/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="citas">Listar / Modificar</a>
-                            </li>
-                            <li>
-                                <a href="servicio">Servicio</a>
-                            </li>
-                        </ul>
-    </li>
-    <!--======================================================================================================-->
-    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">shopping_basket</i>
-                            <span>COMPRA</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/compra/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="compra">Listar / Modificar</a>
-                            </li>
-                            <li>
-                                <a href="../vista/compra/compras_fecha">Consultar por fecha</a>
-                            </li>
-                        </ul>
-    </li>
-<!--======================================================================================================-->
-<li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">monetization_on</i>
-                            <span>VENTA</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../vista/venta/nuevo">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="venta">Listar / Modificar</a>
-                            </li>
-                            <li>
-                                <a href="../vista/venta/venta_fecha">Consultar por fecha</a>
-                            </li>
-                        </ul>
-    </li>
-    <!--======================================================================================================-->
-        <aside id="rightsidebar" class="right-sidebar">
-        </aside>
-    </section>
+    <!-- Menu -->
+    <?php include('../menu.php'); ?>
 
 
 
-<!--=============================================================CONTENIDO DE LA PÁGINA =============================================================-->
+    <!--=============================================================CONTENIDO DE LA PÁGINA =============================================================-->
     <section class="content">
         <div class="container-fluid">
             <div class="row clearfix">
@@ -290,7 +102,7 @@
                                 Listado de las mascotas :
                             </h2><br>
 
-                            
+
 
                         </div>
                         <div class="body">
@@ -298,59 +110,60 @@
                                 <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                     <thead>
                                         <tr>
-                                        <th>Nº</th>
-                                        <th>NOMBRE</th>
-                                        <th>TIPO</th>
-                                        <th>RAZA</th>
-                                        <th>DUEÑO</th>
-                                        <th>FECHA</th>
-                                        <th>ESTADO</th>
-                                        <th>ACCIONES</th>
-                                      
-                                    </tr>
-                                    </thead>
-                                    
-                                    <tbody>
-                                       <?php
-                          foreach ($dato as $key => $value){
-                              foreach ($value as $va) { ?>
-                                        <tr>
-            <td><?php echo $va['id_pet'];?></td>            
-            <td><?php echo $va['nomas'];?></td>
-            <td><?php echo $va['noTiM'];?></td>
-            <td><?php echo $va['nomraza'];?></td>
-            <td><?php echo $va['nom_due'];?>&nbsp;<?php echo $va['ape_due'];?></td> 
-            <td><?php echo $va['fere'];?></td> 
-
-<td><?php    
-
-                if($va['estado']==1)  { ?> 
-                <form  method="get" action="javascript:activo('<?php echo $va['id_pet']; ?>')">
-                   
-                    <span class="label label-success">Activo</span>
-                </form>
-                <?php  }   else {?> 
-
-                    <form  method="get" action="javascript:inactivo('<?php echo $va['id_pet']; ?>')"> 
-                        <button type="submit" class="btn btn-danger btn-xs">Inactivo</button>
-                     </form>
-                        <?php  } ?></td> 
-
-<td><a type="button" href="../vista/mascotas/edit?id=<?php echo $va["id_pet"]; ?>"  class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
-                    <i class="material-icons">autorenew</i>
-                </a>
-                <a type="button" href="../vista/mascotas/borrar?id=<?php echo $va["id_pet"]; ?>"  class="btn bg-red btn-circle waves-effect waves-circle waves-float">
-                    <i class="material-icons">delete</i>
-                </a>
-              
+                                            <th>Nº</th>
+                                            <th>NOMBRE</th>
+                                            <th>TIPO</th>
+                                            <th>RAZA</th>
+                                            <th>DUEÑO</th>
+                                            <th>FECHA</th>
+                                            <th>ESTADO</th>
+                                            <th>ACCIONES</th>
 
                                         </tr>
-                                       
-                            <?php
-                              }
-                              }
-                              ?>  
-                                       
+                                    </thead>
+
+                                    <tbody>
+                                        <?php
+                                        foreach ($dato as $key => $value) {
+                                            foreach ($value as $va) { ?>
+                                                <tr>
+                                                    <td><?php echo $va['id_pet']; ?></td>
+                                                    <td><?php echo $va['nomas']; ?></td>
+                                                    <td><?php echo $va['noTiM']; ?></td>
+                                                    <td><?php echo $va['nomraza']; ?></td>
+                                                    <td><?php echo $va['nom_due']; ?>&nbsp;<?php echo $va['ape_due']; ?></td>
+                                                    <td><?php echo $va['fere']; ?></td>
+
+                                                    <td><?php
+
+                                                        if ($va['estado'] == 1) { ?>
+                                                            <form method="get" action="javascript:activo('<?php echo $va['id_pet']; ?>')">
+
+                                                                <span class="label label-success">Activo</span>
+                                                            </form>
+                                                        <?php  } else { ?>
+
+                                                            <form method="get" action="javascript:inactivo('<?php echo $va['id_pet']; ?>')">
+                                                                <button type="submit" class="btn btn-danger btn-xs">Inactivo</button>
+                                                            </form>
+                                                        <?php  } ?>
+                                                    </td>
+
+                                                    <td><a type="button" href="../vista/mascotas/edit?id=<?php echo $va["id_pet"]; ?>" class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
+                                                            <i class="material-icons">autorenew</i>
+                                                        </a>
+                                                        <a type="button" href="../vista/mascotas/borrar?id=<?php echo $va["id_pet"]; ?>" class="btn bg-red btn-circle waves-effect waves-circle waves-float">
+                                                            <i class="material-icons">delete</i>
+                                                        </a>
+
+
+                                                </tr>
+
+                                        <?php
+                                            }
+                                        }
+                                        ?>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -393,100 +206,88 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <!--------------------------------script edit cate----------------------------->
     <?php
-if(isset($_POST["update"])){
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "vetdog";
+    if (isset($_POST["update"])) {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "vetdog";
 
-// Creamos la conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
+        // Creamos la conexión
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Revisamos la conexión
-if ($conn->connect_error) {
-       die("Connection failed: " . $conn->connect_error);
-   } 
-    $id = $_GET['id'];
+        // Revisamos la conexión
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $id = $_GET['id'];
 
-    $nomcate=$_POST['nomcate'];
- 
-  
-// Realizamos la consulta para saber si coincide con uno de esos criterios
-
-$result = mysqli_query($conn);
-?>
+        $nomcate = $_POST['nomcate'];
 
 
-<?php
- // Validamos si hay resultados
- if(mysqli_num_rows($result)>0)
- {
-        // Si es mayor a cero imprimimos que ya existe el usuario
-      
-        if($result){
-   ?>
+        // Realizamos la consulta para saber si coincide con uno de esos criterios
 
-        <script type="text/javascript">
-
-Swal.fire({
-  icon: 'error',
-  title: 'Oops...',
-  text: 'Ya existe el registro a editar!'
- 
-})
+        $result = mysqli_query($conn);
+    ?>
 
 
+        <?php
+        // Validamos si hay resultados
+        if (mysqli_num_rows($result) > 0) {
+            // Si es mayor a cero imprimimos que ya existe el usuario
 
-        </script>
+            if ($result) {
+        ?>
 
+                <script type="text/javascript">
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Ya existe el registro a editar!'
+
+                    })
+                </script>
+
+                <?php
+            }
+        } else {
+            // Si no hay resultados, ingresamos el registro a la base de datos
+            $sql2 = "update category set nomcate='$nomcate'where id_cate='$id'";
+
+
+            if (mysqli_query($conn, $sql2)) {
+
+                if ($sql2) {
+                ?>
+
+                    <script type="text/javascript">
+                        swal("¡Update!", "Actualizado correctamente", "success").then(function() {
+                            window.location = "categorias";
+                        });
+                    </script>
+
+                <?php
+                } else {
+                ?>
+                    <script type="text/javascript">
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'No se pudo guardar!'
+
+                        })
+                    </script>
     <?php
+
+                }
+            } else {
+
+                echo "Error: " . $sql2 . "" . mysqli_error($conn);
+            }
+        }
+        // Cerramos la conexión
+        $conn->close();
     }
-  
- }
- else
- {
-// Si no hay resultados, ingresamos el registro a la base de datos
-$sql2 = "update category set nomcate='$nomcate'where id_cate='$id'";
-
-
-if (mysqli_query($conn, $sql2)) {
-      
-       if($sql2){
-   ?>
-
-        <script type="text/javascript">
-swal("¡Update!", "Actualizado correctamente", "success").then(function() {
-            window.location = "categorias";
-        });
-        </script>
-
-    <?php
-    }
-    else{
-       ?>
-       <script type="text/javascript">
-        Swal.fire({
-  icon: 'error',
-  title: 'Oops...',
-  text: 'No se pudo guardar!'
- 
-})
-       </script>
-       <?php
-
-    }
-    
-} else {
-      
-       echo "Error: " . $sql2 . "" . mysqli_error($conn);
-}
-
-}
-// Cerramos la conexión
-$conn->close();
-
-}
-?>
+    ?>
 </body>
 
 </html>

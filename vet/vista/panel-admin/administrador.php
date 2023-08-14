@@ -96,6 +96,7 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
+
                     <!-- Call Search -->
                     <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
                     <!-- #END# Call Search -->
@@ -107,19 +108,20 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
 
     <!-- Menu -->
     <?php include('../menu.php'); ?>
-    
     <!--=============================================================CONTENIDO DE LA PÁGINA =============================================================-->
 
     <section class="content">
         <div class="container-fluid">
             <div class="block-header">
+
             </div>
+
             <!-- SubMenu1 -->
             <div class="row clearfix">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-pink hover-expand-effect">
 
-                        <a href="../../folder/productos.php">
+                        <a href="../../folder/productos">
                             <div class="icon">
                                 <i class="material-icons">inbox</i>
                             </div>
@@ -146,9 +148,11 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         </div>
                     </div>
                 </div>
+
+
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-cyan hover-expand-effect">
-                        <a href="../../folder/categorias.php">
+                        <a href="../../folder/categorias">
                             <div class="icon">
                                 <i class="material-icons">low_priority</i>
                             </div>
@@ -175,9 +179,12 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         </div>
                     </div>
                 </div>
+
+
+
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-light-green hover-expand-effect">
-                        <a href="../../folder/clientes.php">
+                        <a href="../../folder/clientes">
                             <div class="icon">
                                 <i class="material-icons">supervisor_account</i>
                             </div>
@@ -203,6 +210,8 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         </div>
                     </div>
                 </div>
+
+
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-orange hover-expand-effect">
                         <a href="../../folder/compra">
@@ -225,6 +234,9 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         $result = $db->query($sql); //$pdo sería el objeto conexión
                         $total = $result->fetchColumn();
                         ?>
+
+
+
                         <div class="content">
                             <div class="text">COMPRAS</div>
                             <div class="number count-to" data-from="0" data-to="<?php echo  $total; ?>" data-speed="1000" data-fresh-interval="20"></div>
@@ -264,13 +276,16 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         </div>
                     </div>
                 </div>
+
+
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-cyan hover-expand-effect">
-                        <a href="../../folder/veterinarios.php">
+                        <a href="../../folder/veterinarios">
                             <div class="icon">
                                 <i class="material-icons">person_pin</i>
                             </div>
                         </a>
+
                         <?php
                         $db_host = "localhost";
                         $db_user = "root";
@@ -292,9 +307,11 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         </div>
                     </div>
                 </div>
+
+
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-light-green hover-expand-effect">
-                        <a href="../../folder/venta.php">
+                        <a href="../../folder/venta">
                             <div class="icon">
                                 <i class="material-icons">trending_up</i>
                             </div>
@@ -321,7 +338,17 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         </div>
                     </div>
                 </div>
+
+
+
+
+
             </div>
+
+
+
+
+
             <div class="row clearfix">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="panel panel-default">
@@ -335,6 +362,8 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                     </div>
                 </div>
             </div>
+
+
             <div class="row clearfix">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="card">
@@ -348,6 +377,9 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                                     ?>
                                     <h2>PODUCTOS DEL AÑO <?php echo $year; ?></h2>
                                 </div>
+
+
+
                             </div>
                         </div>
                         <div id="chart-container">
@@ -356,6 +388,9 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                     </div>
                 </div>
             </div>
+
+
+
             <div class="row clearfix">
                 <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
                     <div class="card">
@@ -364,7 +399,7 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                                 <div class="col-xs-6 col-sm-6">
                                     <h2><strong>ULTIMOS PRODUCTOS</strong></h2>
                                 </div>
-                                <a href="../../folder/productos.php" class="btn btn-sm btn-danger btn-flat pull-right">Ver todos</a>
+                                <a href="../../folder/productos" class="btn btn-sm btn-danger btn-flat pull-right">Ver todos</a>
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
@@ -423,9 +458,12 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                                         ?>
 
                                     </tbody>
+
                                 </table>
+
                             </div>
                         </div>
+
                     </div>
 
 
@@ -435,6 +473,8 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
 
                 </div>
             </div>
+
+
 
             <?php include('data.php'); ?>
             <!-- Jquery Core Js -->
@@ -547,6 +587,9 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
             <!-- Custom Js -->
             <script src="../../assets/js/admin.js"></script>
             <script src="../../assets/js/pages/index.js"></script>
+
+
+
             <script>
                 $(function() {
                     var barChartData = {
@@ -657,6 +700,8 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                     ]
                 };
 
+
+
                 var settings = {
                     responsive: false,
                     animation: {
@@ -695,5 +740,4 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
             </script>
 
 </body>
-
 </html>

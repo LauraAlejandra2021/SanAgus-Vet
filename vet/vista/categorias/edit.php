@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['cargo']) == 1) {
-    header('location: ../pages-login.php');
+    header('location: ../pages-login');
 }
 ?>
 <!DOCTYPE html>
@@ -86,58 +86,8 @@ if (!isset($_SESSION['cargo']) == 1) {
     </nav>
     <!-- #Top Bar -->
 
-    <section>
-        <!-- Left Sidebar -->
-        <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
-            <div class="user-info">
-                <div class="image">
-                    <img src="../../assets/img/mujerico.png" width="48" height="48" alt="User" />
-                </div>
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ucfirst($_SESSION['nombre']); ?></div>
-                    <div class="email"><?php echo ucfirst($_SESSION['correo']); ?></div>
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="../config/configuracion.php"><i class="material-icons">brightness_low</i>Mi Cuenta</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li role="separator" class="divider"></li>
-
-                            <li><a href="../pages-logout"><i class="material-icons">input</i>Cerrar Sesión</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- #User Info -->
-
-
-
-            </li>
-
-            <li>
-                <a href="../compra/compras_fecha.php">Consultar por fecha</a>
-            </li>
-            </ul>
-            </li>
-            <!--======================================================================================================-->
-            <li>
-                <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">monetization_on</i>
-                    <span>VENTA</span>
-                </a>
-                <ul class="ml-menu">
-                    <li>
-                        <a href="../venta/nuevo.php">Registrar</a>
-                    </li>
-                    <li>
-                        <a href="../../folder/venta.php">Listar / Modificar</a>
-                    </li>
-                    <li>
-                        <a href="../venta/venta_fecha.php">Consultar por fecha</a>
-                    </li>
-                </ul>
-            </li>
+   <!-- Menu -->
+   <?php include('../menu.php'); ?>
 
 
             <!--============================CONTENIDO DE LA PÁGINA ==========================================================-->
