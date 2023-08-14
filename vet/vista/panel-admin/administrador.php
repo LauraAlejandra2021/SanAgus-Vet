@@ -135,7 +135,7 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         $total = $result->fetchColumn();
                         ?>
                         <div class="content">
-                            <div class="text">PRODUCTOSasd</div>
+                            <div class="text">PRODUCTOS</div>
                             <div class="number count-to" data-from="0" data-to="<?php echo  $total; ?>" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
@@ -562,7 +562,7 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         }
                     ]
                 };
-                
+
                 var settings = {
                     responsive: false,
                     animation: {
