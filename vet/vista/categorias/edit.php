@@ -105,8 +105,9 @@ if (!isset($_SESSION['cargo']) == 1) {
                         </div>
 
                         <div class="body">
-                            <?php                            
-                            $con = connectDB();
+                            <?php
+                            $db = new Database();
+                            $con = $db->getMysqli();                            
                             $id = $_GET['id'];
                             $sql = "SELECT * FROM category  WHERE id_cate= '$id'";
                             $query  = $con->query($sql);

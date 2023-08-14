@@ -4,8 +4,8 @@ require_once '../../assets/db/config.php';
 if (!isset($_SESSION['cargo']) == 1) {
     header('location: ../pages-login.php');
 }
-
-$mysqli = connectDB();
+$db = new Database();
+$mysqli = $db->getMysqli();
 /* Getting demo_viewer table data */
 
 $sql = "SELECT SUM(total) as count FROM venta 
@@ -127,23 +127,15 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                             </div>
                         </a>
 
-                        <?php
-                        $db_host = "localhost";
-                        $db_user = "root";
-                        $db_password = "";
-                        $db_name = "vetdog";
-                        try {
-                            $db = new PDO("mysql:host={$db_host};dbname={$db_name}", $db_user, $db_password);
-                            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        } catch (PDOEXCEPTION $e) {
-                            $e->getMessage();
-                        }
+                        <?php                        
+                        $db = new Database();
+                        $conn = $db->open();
                         $sql = "SELECT COUNT(*) total FROM products";
-                        $result = $db->query($sql); //$pdo sería el objeto conexión
+                        $result = $conn->query($sql); //$pdo sería el objeto conexión
                         $total = $result->fetchColumn();
                         ?>
                         <div class="content">
-                            <div class="text">PRODUCTOS</div>
+                            <div class="text">PRODUCTOSasd</div>
                             <div class="number count-to" data-from="0" data-to="<?php echo  $total; ?>" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
@@ -159,18 +151,10 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         </a>
 
                         <?php
-                        $db_host = "localhost";
-                        $db_user = "root";
-                        $db_password = "";
-                        $db_name = "vetdog";
-                        try {
-                            $db = new PDO("mysql:host={$db_host};dbname={$db_name}", $db_user, $db_password);
-                            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        } catch (PDOEXCEPTION $e) {
-                            $e->getMessage();
-                        }
+                        $db = new Database();
+                        $conn = $db->open();
                         $sql = "SELECT COUNT(*) total FROM category";
-                        $result = $db->query($sql); //$pdo sería el objeto conexión
+                        $result = $conn->query($sql); //$pdo sería el objeto conexión
                         $total = $result->fetchColumn();
                         ?>
                         <div class="content">
@@ -190,18 +174,10 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                             </div>
                         </a>
                         <?php
-                        $db_host = "localhost";
-                        $db_user = "root";
-                        $db_password = "";
-                        $db_name = "vetdog";
-                        try {
-                            $db = new PDO("mysql:host={$db_host};dbname={$db_name}", $db_user, $db_password);
-                            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        } catch (PDOEXCEPTION $e) {
-                            $e->getMessage();
-                        }
+                        $db = new Database();
+                        $conn = $db->open();
                         $sql = "SELECT COUNT(*) total FROM owner";
-                        $result = $db->query($sql); //$pdo sería el objeto conexión
+                        $result = $conn->query($sql); //$pdo sería el objeto conexión
                         $total = $result->fetchColumn();
                         ?>
                         <div class="content">
@@ -220,23 +196,12 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                             </div>
                         </a>
                         <?php
-                        $db_host = "localhost";
-                        $db_user = "root";
-                        $db_password = "";
-                        $db_name = "vetdog";
-                        try {
-                            $db = new PDO("mysql:host={$db_host};dbname={$db_name}", $db_user, $db_password);
-                            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        } catch (PDOEXCEPTION $e) {
-                            $e->getMessage();
-                        }
+                        $db = new Database();
+                        $conn = $db->open();
                         $sql = "SELECT SUM(total) FROM compra;";
-                        $result = $db->query($sql); //$pdo sería el objeto conexión
+                        $result = $conn->query($sql); //$pdo sería el objeto conexión
                         $total = $result->fetchColumn();
                         ?>
-
-
-
                         <div class="content">
                             <div class="text">COMPRAS</div>
                             <div class="number count-to" data-from="0" data-to="<?php echo  $total; ?>" data-speed="1000" data-fresh-interval="20"></div>
@@ -256,18 +221,10 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         </a>
 
                         <?php
-                        $db_host = "localhost";
-                        $db_user = "root";
-                        $db_password = "";
-                        $db_name = "vetdog";
-                        try {
-                            $db = new PDO("mysql:host={$db_host};dbname={$db_name}", $db_user, $db_password);
-                            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        } catch (PDOEXCEPTION $e) {
-                            $e->getMessage();
-                        }
+                        $db = new Database();
+                        $conn = $db->open();
                         $sql = "SELECT COUNT(*) total FROM supplier";
-                        $result = $db->query($sql); //$pdo sería el objeto conexión
+                        $result = $conn->query($sql); //$pdo sería el objeto conexión
                         $total = $result->fetchColumn();
                         ?>
                         <div class="content">
@@ -276,8 +233,6 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         </div>
                     </div>
                 </div>
-
-
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-cyan hover-expand-effect">
                         <a href="../../folder/veterinarios">
@@ -287,18 +242,10 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         </a>
 
                         <?php
-                        $db_host = "localhost";
-                        $db_user = "root";
-                        $db_password = "";
-                        $db_name = "vetdog";
-                        try {
-                            $db = new PDO("mysql:host={$db_host};dbname={$db_name}", $db_user, $db_password);
-                            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        } catch (PDOEXCEPTION $e) {
-                            $e->getMessage();
-                        }
+                        $db = new Database();
+                        $conn = $db->open();
                         $sql = "SELECT COUNT(*) total FROM veterinarian";
-                        $result = $db->query($sql); //$pdo sería el objeto conexión
+                        $result = $conn->query($sql); //$pdo sería el objeto conexión
                         $total = $result->fetchColumn();
                         ?>
                         <div class="content">
@@ -307,8 +254,6 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         </div>
                     </div>
                 </div>
-
-
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-light-green hover-expand-effect">
                         <a href="../../folder/venta">
@@ -318,18 +263,10 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         </a>
 
                         <?php
-                        $db_host = "localhost";
-                        $db_user = "root";
-                        $db_password = "";
-                        $db_name = "vetdog";
-                        try {
-                            $db = new PDO("mysql:host={$db_host};dbname={$db_name}", $db_user, $db_password);
-                            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        } catch (PDOEXCEPTION $e) {
-                            $e->getMessage();
-                        }
+                        $db = new Database();
+                        $conn = $db->open();
                         $sql = "SELECT SUM(total) FROM venta;";
-                        $result = $db->query($sql); //$pdo sería el objeto conexión
+                        $result = $conn->query($sql); //$pdo sería el objeto conexión
                         $total = $result->fetchColumn();
                         ?>
                         <div class="content">
@@ -338,32 +275,16 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         </div>
                     </div>
                 </div>
-
-
-
-
-
             </div>
-
-
-
-
-
             <div class="row clearfix">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="panel panel-default">
-
                         <div class="panel-body">
-
                             <div id="containers"></div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
-
-
             <div class="row clearfix">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="card">
@@ -377,9 +298,6 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                                     ?>
                                     <h2>PODUCTOS DEL AÑO <?php echo $year; ?></h2>
                                 </div>
-
-
-
                             </div>
                         </div>
                         <div id="chart-container">
@@ -388,9 +306,6 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                     </div>
                 </div>
             </div>
-
-
-
             <div class="row clearfix">
                 <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
                     <div class="card">
@@ -410,43 +325,18 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
 
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        class Connection
-                                        {
-
-                                            private $server = "mysql:host=localhost;dbname=vetdog";
-                                            private $username = "root";
-                                            private $password = "";
-                                            private $options  = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,);
-                                            protected $conn;
-
-                                            public function open()
-                                            {
-                                                try {
-                                                    $this->conn = new PDO($this->server, $this->username, $this->password, $this->options);
-                                                    return $this->conn;
-                                                } catch (PDOException $e) {
-                                                    echo "Hubo un problema con la conexión: " . $e->getMessage();
-                                                }
-                                            }
-                                            public function close()
-                                            {
-                                                $this->conn = null;
-                                            }
-                                        }
-                                        $database = new Connection();
+                                        <?php                                        
+                                        $database = new Database();
                                         $db = $database->open();
                                         try {
                                             $sql = 'SELECT * FROM products ORDER BY id_prod DESC  LIMIT 5 ';
                                             foreach ($db->query($sql) as $row) {
                                         ?>
-                                                <tr>
-                                                    <td><label class="badge badge-primary"><?php echo $row['codigo']; ?></label></td>
-
-                                                    <td><?php echo $row['nompro']; ?></td>
-                                                    <td><?php echo $row['stock']; ?></td>
-
-                                                </tr>
+                                            <tr>
+                                                <td><label class="badge badge-primary"><?php echo $row['codigo']; ?></label></td>
+                                                <td><?php echo $row['nompro']; ?></td>
+                                                <td><?php echo $row['stock']; ?></td>
+                                            </tr>
                                         <?php
                                             }
                                         } catch (PDOException $e) {
@@ -456,25 +346,14 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                                         //Cerrar la Conexion
                                         $database->close();
                                         ?>
-
                                     </tbody>
-
                                 </table>
-
                             </div>
                         </div>
-
                     </div>
-
-
                     <!-- ACA VA LAS VENTAS -->
-
-
-
                 </div>
             </div>
-
-
 
             <?php include('data.php'); ?>
             <!-- Jquery Core Js -->
@@ -493,38 +372,26 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         },
 
                         title: {
-
                             text: 'COMPARATIVA DE VENTAS Y COMPRAS '
-
                         },
 
                         xAxis: {
-
                             categories: ['2021', '2022', '2023', '2024', '2025', '2026', '2027']
-
                         },
 
                         yAxis: {
-
                             title: {
-
                                 text: 'MONTO'
                             }
-
                         },
                         series: [{
-
                             name: 'Compras',
-
                             data: data_click
                         }, {
                             name: 'Ventas',
                             data: data_viewer
-
                         }]
-
                     });
-
                 });
             </script>
 
@@ -587,9 +454,6 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
             <!-- Custom Js -->
             <script src="../../assets/js/admin.js"></script>
             <script src="../../assets/js/pages/index.js"></script>
-
-
-
             <script>
                 $(function() {
                     var barChartData = {
@@ -676,7 +540,6 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
 
                     barChartOptions.datasetFill = false
                     barChart.Bar(barChartData, barChartOptions)
-
                 })
             </script>
 
@@ -699,9 +562,7 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         }
                     ]
                 };
-
-
-
+                
                 var settings = {
                     responsive: false,
                     animation: {

@@ -16,7 +16,8 @@ if (isset($_POST['login'])) {
     }
 
     if ($errMsg == '') {
-        $mysqli = connectDB(); // Obtén la conexión mysqli desde common.php
+      $db = new Database();
+        $mysqli = $db->getMysqli(); // Obtén la conexión mysqli desde common.php
         if ($mysqli) {
             try {
                 $query = 'SELECT id, nombre, usuario, correo, contra, cargo FROM usuarios WHERE usuario = ?';
