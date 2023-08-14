@@ -92,7 +92,7 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="administrador"> VETDOG - DASHBOARD </a>
+                <a class="navbar-brand" href="administrador.php"> VETDOG - DASHBOARD </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -205,7 +205,7 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-orange hover-expand-effect">
-                        <a href="../../folder/compra">
+                        <a href="../../folder/compra.php">
                             <div class="icon">
                                 <i class="material-icons">monetization_on</i>
                             </div>
@@ -237,7 +237,7 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
             <div class="row clearfix">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-pink hover-expand-effect">
-                        <a href="../../folder/proveedores">
+                        <a href="../../folder/proveedores.php">
                             <div class="icon">
                                 <i class="material-icons">business</i>
                             </div>
