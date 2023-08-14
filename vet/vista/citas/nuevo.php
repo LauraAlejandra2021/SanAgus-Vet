@@ -71,7 +71,7 @@ if (!isset($_SESSION['cargo']) == 1) {
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="../panel-admin/administrador.php"> VETDOG - DASHBOARD </a>
+                <a class="navbar-brand" href="../panel-admin/administrador"> VETDOG - DASHBOARD </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -105,7 +105,7 @@ if (!isset($_SESSION['cargo']) == 1) {
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
                     <div class="card">
-                        <a href="cita_rapida.php">
+                        <a href="cita_rapida">
                             <div class="header bg-light-blue">
                                 <h2>
                                     CITAS RÁPIDAS <small></small>

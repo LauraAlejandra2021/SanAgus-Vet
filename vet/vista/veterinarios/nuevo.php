@@ -86,36 +86,9 @@ if (!isset($_SESSION['cargo']) == 1) {
         </div>
     </nav>
     <!-- #Top Bar -->
-
-    <section>
-        <!-- Left Sidebar -->
-        <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
-            <div class="user-info">
-                <div class="image">
-                    <img src="../../assets/img/mujerico.png" width="48" height="48" alt="User" />
-                </div>
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ucfirst($_SESSION['nombre']); ?></div>
-                    <div class="email"><?php echo ucfirst($_SESSION['correo']); ?></div>
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="../config/configuracion"><i class="material-icons">brightness_low</i>Mi Cuenta</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li role="separator" class="divider"></li>
-
-                            <li><a href="../pages-logout"><i class="material-icons">input</i>Cerrar Sesión</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- #User Info -->
-
-
-            <!-- Menu -->
-            <?php include('../menu.php'); ?>
-    </section>
+    
+    <!-- Menu -->
+    <?php include('../menu.php'); ?>
 
     <!--============================CONTENIDO DE LA PÁGINA ==========================================================-->
 
@@ -196,16 +169,16 @@ if (!isset($_SESSION['cargo']) == 1) {
                                         <label class="control-label"> Telefono movil del veterinario<span class="text-danger">*</span></label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="movil" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="9" required class="form-control" placeholder="Telefono movil..." />
+                                                <input type="text" name="movil" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="12" required class="form-control" placeholder="Teléfono movil..." />
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-4">
-                                        <label class="control-label"> Telefono fijo del veterinario<span class="text-danger">*</span></label>
+                                        <label class="control-label"> Telefono fijo del veterinario<span class="text-danger"></span></label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="fijo" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="6" required class="form-control" placeholder="Telefono fijo..." />
+                                                <input type="text" name="fijo" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" class="form-control" placeholder="Telefono fijo..." />
                                             </div>
                                         </div>
                                     </div>

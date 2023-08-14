@@ -155,7 +155,7 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                         <?php  } ?>
                                                     </td>
 
-                                                    <td><a type="button" href="../vista/citas/edit.php?id=<?php echo $va["id"]; ?>" class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
+                                                    <td><a type="button" href="../vista/citas/edit?id=<?php echo $va["id"]; ?>" class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
                                                             <i class="material-icons">autorenew</i>
                                                         </a>
 

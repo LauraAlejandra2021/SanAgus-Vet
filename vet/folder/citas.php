@@ -5,7 +5,7 @@ $op="mostrar";
 if(isset($_REQUEST['op']))
     $op=$_REQUEST['op'];
     if($op=="mostrar")
-    $objquotes->mostrar();
+        $objquotes->mostrar();
     elseif ($op=="nuevo")
         $objquotes->nuevo();
     elseif ($op=="guardar")

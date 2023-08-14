@@ -75,7 +75,7 @@ if (!isset($_SESSION['cargo']) == 1) {
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="../panel-admin/administrador.php"> VETDOG - DASHBOARD </a>
+                <a class="navbar-brand" href="../panel-admin/administrador"> VETDOG - DASHBOARD </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -91,7 +91,7 @@ if (!isset($_SESSION['cargo']) == 1) {
 
     <!-- Menu -->
     <?php include('../menu.php'); ?>
-    
+
     <!--============================CONTENIDO DE LA PÁGINA ==========================================================-->
     <section class="content">
         <div class="container-fluid">
@@ -314,7 +314,7 @@ if (!isset($_SESSION['cargo']) == 1) {
                                     </div>
 
                                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                                        <a type="button" href="../../folder/citas.php" class="btn bg-red"><i class="material-icons">cancel</i> LIMPIAR </a>
+                                        <a type="button" href="../../folder/citas" class="btn bg-red"><i class="material-icons">cancel</i> LIMPIAR </a>
                                     </div>
 
                                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">

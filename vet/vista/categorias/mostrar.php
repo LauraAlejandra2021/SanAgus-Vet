@@ -86,35 +86,9 @@ if (!isset($_SESSION['cargo']) == 1) {
     </nav>
     <!-- #Top Bar -->
 
-    <section>
-        <!-- Left Sidebar -->
-        <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
-            <div class="user-info">
-                <div class="image">
-                    <img src="../assets/img/mujerico.png" width="48" height="48" alt="User" />
-                </div>
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ucfirst($_SESSION['nombre']); ?></div>
-                    <div class="email"><?php echo ucfirst($_SESSION['correo']); ?></div>
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="../vista/config/configuracion"><i class="material-icons">brightness_low</i>Mi Cuenta</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li role="separator" class="divider"></li>
+    <!-- Menu -->
+    <?php include('../menu.php'); ?>
 
-                            <li><a href="../vista/pages-logout"><i class="material-icons">input</i>Cerrar Sesión</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- #User Info -->
-
-
-            <!-- Menu -->
-            <?php include('../menu.php'); ?>
-    </section>
     <!--=============================================================CONTENIDO DE LA PÁGINA =============================================================-->
     <section class="content">
         <div class="container-fluid">
@@ -222,6 +196,7 @@ if (!isset($_SESSION['cargo']) == 1) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <!--------------------------------script edit cate----------------------------->
     <?php
+    
     if (isset($_POST["update"])) {
         $servername = "localhost";
         $username = "root";
@@ -241,65 +216,39 @@ if (!isset($_SESSION['cargo']) == 1) {
 
 
         // Realizamos la consulta para saber si coincide con uno de esos criterios
+        $sql2 = "select id_cate from category where nomcate='$nomcate'";
+        $result = mysqli_query($conn, $sql2);
+    
+      
+        // Si no hay resultados, ingresamos el registro a la base de datos
+        $sql2 = "update category set nomcate='$nomcate'where id_cate='$id'";
 
-        $result = mysqli_query($conn);
-    ?>
 
-
-        <?php
-        // Validamos si hay resultados
-        if (mysqli_num_rows($result) > 0) {
-            // Si es mayor a cero imprimimos que ya existe el usuario
-
-            if ($result) {
-        ?>
-
+        if (mysqli_query($conn, $sql2)) {
+            if ($sql2) {
+            ?>
                 <script type="text/javascript">
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Ya existe el registro a editar!'
-
-                    })
+                    swal("¡Update!", "Actualizado correctamente", "success").then(function() {
+                        window.location = "categorias";
+                    });
                 </script>
 
-                <?php
-            }
-        } else {
-            // Si no hay resultados, ingresamos el registro a la base de datos
-            $sql2 = "update category set nomcate='$nomcate'where id_cate='$id'";
+            <?php
+            } else {
+            ?>
+            <script type="text/javascript">
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'No se pudo guardar!'
 
-
-            if (mysqli_query($conn, $sql2)) {
-
-                if ($sql2) {
-                ?>
-
-                    <script type="text/javascript">
-                        swal("¡Update!", "Actualizado correctamente", "success").then(function() {
-                            window.location = "categorias";
-                        });
-                    </script>
-
-                <?php
-                } else {
-                ?>
-                    <script type="text/javascript">
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'No se pudo guardar!'
-
-                        })
-                    </script>
-    <?php
-
+                })
+            </script>
+            <?php
                 }
             } else {
-
                 echo "Error: " . $sql2 . "" . mysqli_error($conn);
             }
-        }
         // Cerramos la conexión
         $conn->close();
     }

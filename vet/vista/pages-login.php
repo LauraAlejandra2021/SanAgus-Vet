@@ -38,7 +38,7 @@ if (isset($_POST['login'])) {
                         $_SESSION['cargo'] = $data['cargo'];
 
                         if ($_SESSION['cargo'] == 1) {
-                            header('Location: panel-admin/administrador.php');
+                            header('Location: panel-admin/administrador');
                         }
                         // Otros casos de redirección
                         exit;
