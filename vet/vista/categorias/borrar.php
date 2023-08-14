@@ -45,6 +45,6 @@
 		$_SESSION['message'] = 'Seleccionar miembro para eliminar primero';
 	}
 
-	header('location: ../../folder/categorias.php');
+	header('location: ../../folder/categorias');
 
 ?>

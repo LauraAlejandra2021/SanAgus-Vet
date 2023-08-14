@@ -89,8 +89,6 @@ if (!isset($_SESSION['cargo']) == 1) {
     <!-- Menu -->
     <?php include('../menu.php'); ?>
 
-
-
     <!--=============================================================CONTENIDO DE LA PÁGINA =============================================================-->
     <section class="content">
         <div class="container-fluid">

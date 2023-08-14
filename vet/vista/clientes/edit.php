@@ -89,8 +89,6 @@ if (!isset($_SESSION['cargo']) == 1) {
     </nav>
     <!-- #Top Bar -->
 
-
-
     <!-- Menu -->
     <?php include('../menu.php'); ?>
 
