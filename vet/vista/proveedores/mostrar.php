@@ -145,7 +145,7 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                     </td>
 
                                                     <td><a type="button" href="../vista/proveedores/edit?id=<?php echo $va["id_prove"]; ?>" class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
-                                                            <i class="material-icons">autorenew</i>
+                                                            <i class="material-icons">edit</i>
                                                         </a>
                                                         <a type="button" href="../vista/proveedores/borrar?id=<?php echo $va["id_prove"]; ?>" class="btn bg-red btn-circle waves-effect waves-circle waves-float">
                                                             <i class="material-icons">delete</i>
