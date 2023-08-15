@@ -1,6 +1,5 @@
 ﻿<?php
-session_start();
-
+include('../../assets/db/config.php');
 if (!isset($_SESSION['cargo']) == 1) {
     header('location: ../pages-login');
 }
@@ -108,7 +107,6 @@ if (!isset($_SESSION['cargo']) == 1) {
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-
                     <!-- Call Search -->
                     <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
                     <!-- #END# Call Search -->
@@ -122,48 +120,29 @@ if (!isset($_SESSION['cargo']) == 1) {
         <?php include_once __DIR__ . '../../menu.php'; ?>
     <!--============================CONTENIDO DE LA PÁGINA ==========================================================-->
 
-
     <section class="content">
         <div class="container-fluid">
             <div class="row clearfix">
-
                 <div class="col-xs-12 col-sm-12">
                     <div class="card">
                         <div class="body">
                             <div>
-
                                 <ul class="nav nav-tabs" role="tablist">
                                     <?php
-                                    $db_host = "localhost";
-                                    $db_user = "root";
-                                    $db_password = "";
-                                    $db_name = "vetdog";
-                                    try {
-                                        $db = new PDO("mysql:host={$db_host};dbname={$db_name}", $db_user, $db_password);
-                                        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                    } catch (PDOEXCEPTION $e) {
-                                        $e->getMessage();
-                                    }
+                                    $db = new Database();
+                                    $dbcon = $db->open();
                                     $sql = "SELECT COUNT(*) total FROM venta WHERE estado = '1'";
-                                    $result = $db->query($sql); //$pdo sería el objeto conexión
+                                    $result = $dbcon->query($sql); //$pdo sería el objeto conexión
                                     $total = $result->fetchColumn();
                                     ?>
 
                                     <li role="presentation" class="active"><span class="badge badge-purple"><?php echo  $total; ?></span><a href="#profile_settings" aria-controls="settings" role="tab" data-toggle="tab">Aceptadas</a></li>
 
                                     <?php
-                                    $db_host = "localhost";
-                                    $db_user = "root";
-                                    $db_password = "";
-                                    $db_name = "vetdog";
-                                    try {
-                                        $db = new PDO("mysql:host={$db_host};dbname={$db_name}", $db_user, $db_password);
-                                        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                    } catch (PDOEXCEPTION $e) {
-                                        $e->getMessage();
-                                    }
+                                    $db = new Database();
+                                    $dbcon = $db->open();
                                     $sql = "SELECT COUNT(*) total FROM venta WHERE estado = '0'";
-                                    $result = $db->query($sql); //$pdo sería el objeto conexión
+                                    $result = $dbcon->query($sql); //$pdo sería el objeto conexión
                                     $total = $result->fetchColumn();
                                     ?>
                                     <li role="presentation"><span class="badge badge-danger"><?php echo  $total; ?></span><a href="#change_password_settings" aria-controls="settings" role="tab" data-toggle="tab">Anuladas</a></li>
@@ -172,10 +151,7 @@ if (!isset($_SESSION['cargo']) == 1) {
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade in active" id="profile_settings">
                                         <h5 class="panel-title">Ventas Aceptadas<a class="heading-elements-toggle"><i class="icon-more"></i></a></h5>
-
                                         <a style="margin-top:20px;" onClick="javascript:reportePDF();" title="Reporte" class="btn btn-danger"><i class="material-icons">print</i> Imprimir Reporte<span><img src="../../assets/img/cargando.gif" class="cargando hide"></span></a>
-
-
                                         <form class="form-inline" method="POST" action="" style="margin-top:30px;">
                                             <label>Fecha desde:</label>
                                             <input type="date" class="form-control" placeholder="Start" id="date1" />
@@ -184,37 +160,25 @@ if (!isset($_SESSION['cargo']) == 1) {
                                             <button id="rango_fecha" class="btn btn-primary"><i class="material-icons">search</i>Consultar</button>
 
                                         </form>
-
-
                                         <div class="table-responsive" style="margin-top:30px;">
-
                                             <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                                 <thead>
                                                     <tr>
                                                         <th>Comprobante</th>
-
                                                         <th>Fecha</th>
                                                         <th>Clientes</th>
                                                         <th>Tipo pago</th>
                                                         <th>Total</th>
                                                         <th>Estado</th>
                                                         <th>Opciones</th>
-
-
                                                     </tr>
                                                 </thead>
                                                 <tbody id="actualizar">
-
-
                                                     <?php include('../venta/imprimir_fe.php'); ?>
-
                                                 </tbody>
-
-
                                             </table>
                                         </div>
                                     </div>
-
                                     <div role="tabpanel" class="tab-pane fade in" id="change_password_settings">
                                         <h5 class="panel-title">Compras Anuladas<a class="heading-elements-toggle"><i class="icon-more"></i></a></h5>
                                         <a style="margin-top:20px;" onClick="javascript:reporteAPDF();" title="Reporte" class="btn btn-danger"><i class="material-icons">print</i> Imprimir Reporte<span><img src="../../assets/img/cargando.gif" class="cargando hide"></span></a>
@@ -227,43 +191,30 @@ if (!isset($_SESSION['cargo']) == 1) {
                                             <button class="btn btn-primary" name="search"><i class="material-icons">search</i>Consultar</button>
 
                                         </form>
-
-
                                         <div class="table-responsive" style="margin-top:30px;">
-
                                             <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                                 <thead>
                                                     <tr>
-                                                        <th>Comprobante</th>
-
+                                                        <!-- <th>Comprobante</th> -->
                                                         <th>Fecha</th>
-                                                        <th>Proveedor</th>
+                                                        <!-- <th>Proveedor</th>
                                                         <th>Tipo pago</th>
                                                         <th>Total</th>
                                                         <th>Estado</th>
-                                                        <th>Opciones</th>
-
-
+                                                        <th>Opciones</th> -->
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php include '../venta/range_anulada.php' ?>
-
                                                 </tbody>
-
-
                                             </table>
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
             <!-- #END# Exportable Table -->
         </div>

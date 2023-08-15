@@ -86,7 +86,7 @@ if (!isset($_SESSION['cargo']) == 1) {
     <!-- #Top Bar -->   
 
     <!-- Menu -->
-    <?php include('../menu.php');?>
+    <?php include_once __DIR__ . '../../menu.php'; ?>
 
     <!--============================CONTENIDO DE LA PÁGINA ==========================================================-->
 
