@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	include('../../assets/db/config.php');
 
 	if(isset($_GET['id'])){
