@@ -1,6 +1,8 @@
 ﻿<?php
 session_start();
 
+require_once '../../assets/db/config.php';
+
 if (!isset($_SESSION['cargo']) == 1) {
     header('location: ../pages-login');
 }
@@ -108,11 +110,8 @@ if (!isset($_SESSION['cargo']) == 1) {
 
                         <div class="body">
                             <?php
-                            function connect()
-                            {
-                                return new mysqli("localhost", "root", "", "vetdog");
-                            }
-                            $con = connect();
+                            $db = new Database();
+                            $con = $db->getMysqli();
                             $id = $_GET['id'];
                             $sql = "SELECT products.id_prod, products.codigo, category.id_cate, category.nomcate, products.foto, products.nompro, products.peso, supplier.id_prove, supplier.nomprove, supplier.ruc, supplier.direcc, supplier.tele, supplier.pais, supplier.corre,products.descp, products.preciC, products.precV, products.stock, products.estado, products.fere FROM products INNER JOIN category ON products.id_cate =category.id_cate INNER JOIN supplier ON products.id_prove = supplier.id_prove  WHERE id_prod= '$id'";
                             $query  = $con->query($sql);
@@ -151,19 +150,8 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                 <select class="form-control show-tick" name="id_cate">
                                                     <option value="<?php echo $d->id_cate; ?>"><?php echo $d->nomcate; ?></option>
                                                     <?php
-                                                    $dbhost = 'localhost';
-                                                    $dbname = 'vetdog';
-                                                    $dbuser = 'root';
-                                                    $dbpass = '';
-
-                                                    try {
-
-                                                        $dbcon = new PDO("mysql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
-                                                        $dbcon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                                    } catch (PDOException $ex) {
-
-                                                        die($ex->getMessage());
-                                                    }
+                                                    $db = new Database();
+                                                    $dbcon = $db->open();
                                                     $stmt = $dbcon->prepare('SELECT * FROM category');
                                                     $stmt->execute();
 
@@ -174,8 +162,6 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                     <?php
                                                     }
                                                     ?>
-                                                    ?>
-
                                                 </select>
                                             </div>
 
@@ -184,19 +170,8 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                 <select class="form-control show-tick" name="id_prove">
                                                     <option value="<?php echo $d->id_prove; ?>"><?php echo $d->nomprove; ?></option>
                                                     <?php
-                                                    $dbhost = 'localhost';
-                                                    $dbname = 'vetdog';
-                                                    $dbuser = 'root';
-                                                    $dbpass = '';
-
-                                                    try {
-
-                                                        $dbcon = new PDO("mysql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
-                                                        $dbcon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                                    } catch (PDOException $ex) {
-
-                                                        die($ex->getMessage());
-                                                    }
+                                                    $db = new Database();
+                                                    $dbcon = $db->open();
                                                     $stmt = $dbcon->prepare('SELECT * FROM supplier');
                                                     $stmt->execute();
 
@@ -206,7 +181,6 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                         <option value="<?php echo $id_prove; ?>"><?php echo $nomprove; ?></option>
                                                     <?php
                                                     }
-                                                    ?>
                                                     ?>
                                                 </select>
                                             </div>
@@ -255,20 +229,15 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
 
                                         <div class="container-fluid" align="center">
                                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                                             </div>
-
                                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                                                 <a type="button" href="../../folder/productos" class="btn bg-red"><i class="material-icons">cancel</i> CANCELAR </a>
                                             </div>
-
                                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-
-
                                                 <button class="btn bg-green" name="update">ACTUALIZAR<i class="material-icons">save</i></button>
                                             </div>
 
@@ -342,7 +311,7 @@ if (!isset($_SESSION['cargo']) == 1) {
     ?>
 
 
-        <?php
+        <?php        
         // Validamos si hay resultados
         if (mysqli_num_rows($result) > 0) {
             // Si es mayor a cero imprimimos que ya existe el usuario
@@ -350,50 +319,48 @@ if (!isset($_SESSION['cargo']) == 1) {
             if ($result) {
         ?>
 
-                <script type="text/javascript">
+        <script type="text/javascript">
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
                         text: 'Ya existe el registro a agregar!'
 
                     })
-                </script>
+        </script>
 
-                <?php
+        <?php
             }
         } else {
             // Si no hay resultados, ingresamos el registro a la base de datos
             $sql2 = "insert into category(nomcate,estado) 
 values ('$nomcate','$estado')";
 
-            if (mysqli_query($conn, $sql2)) {
+        if (mysqli_query($conn, $sql2)) {
+            if ($sql2) {
+            ?>
+                <script type="text/javascript">
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Agregado correctamente',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(function() {
+                        window.location = "../../folder/categorias";
+                    });
+                </script>
 
-                if ($sql2) {
-                ?>
+            <?php
+            } else {
+            ?>
+                <script type="text/javascript">
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'No se pudo guardar!'
 
-                    <script type="text/javascript">
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Agregado correctamente',
-                            showConfirmButton: false,
-                            timer: 1500
-                        }).then(function() {
-                            window.location = "../../folder/categorias";
-                        });
-                    </script>
-
-                <?php
-                } else {
-                ?>
-                    <script type="text/javascript">
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'No se pudo guardar!'
-
-                        })
-                    </script>
+                    })
+                </script>
     <?php
 
                 }

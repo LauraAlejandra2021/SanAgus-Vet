@@ -1,6 +1,8 @@
 ﻿<?php
 session_start();
 
+require_once '../../assets/db/config.php';
+
 if (!isset($_SESSION['cargo']) == 1) {
     header('location: ../pages-login');
 }
@@ -27,9 +29,6 @@ if (!isset($_SESSION['cargo']) == 1) {
     <link href="../../css/style.css" rel="stylesheet">
     <link href="../../assets/css/themes/all-themes.css" rel="stylesheet" />
     <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/lll.png" />
-
-
-
 </head>
 
 <body class="theme-red">
@@ -112,34 +111,12 @@ if (!isset($_SESSION['cargo']) == 1) {
 
                         <div class="body">
                             <form method="POST" autocomplete="off" enctype="multipart/form-data">
-                                <div class="row clearfix">
-                                    <?php
-
-                                    class tools
-                                    {
-
-                                        public function randomCode()
-                                        {
-                                            $alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-                                            $pass = array();
-                                            $pass[] = "0";
-                                            $alphaLength = strlen($alphabet) - 1;
-                                            for ($i = 0; $i < 13; $i++) {
-                                                $n = rand(0, $alphaLength);
-                                                $pass[] = $alphabet[$n];
-                                            }
-                                            return implode($pass);
-                                        }
-                                    }
-
-                                    $instancia = new tools();
-                                    $codigo = $instancia->randomCode();
-                                    ?>
+                                <div class="row clearfix">                                    
                                     <div class="col-sm-4">
                                         <label class="control-label">Código de barra del producto</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input id="codigo_barras" readonly value="<?php echo $codigo ?>" type="text" name="codigo" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="14" required class="form-control" placeholder="Código de barra del producto..." />
+                                                <input id="codigo_barras" value="" type="text" name="codigo" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="14" required class="form-control" placeholder="Código de barra del producto..." />
                                             </div>
                                         </div>
                                     </div>
@@ -154,23 +131,12 @@ if (!isset($_SESSION['cargo']) == 1) {
                                     </div>
 
                                     <div class="col-sm-4">
-                                        <label class="control-label">Categoría del producto</label>
-                                        <select class="form-control show-tick" name="id_cate">
+                                        <label class="control-label">Categoría del producto<span class="text-danger">*</span></label>
+                                        <select class="form-control show-tick" required name="id_cate">
                                             <option value="">-- Seleccione una Categoría --</option>
                                             <?php
-                                            $dbhost = 'localhost';
-                                            $dbname = 'vetdog';
-                                            $dbuser = 'root';
-                                            $dbpass = '';
-
-                                            try {
-
-                                                $dbcon = new PDO("mysql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
-                                                $dbcon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                            } catch (PDOException $ex) {
-
-                                                die($ex->getMessage());
-                                            }
+                                            $db = new Database();
+                                            $dbcon = $db->open();
                                             $stmt = $dbcon->prepare('SELECT * FROM category');
                                             $stmt->execute();
 
@@ -191,19 +157,8 @@ if (!isset($_SESSION['cargo']) == 1) {
                                         <select class="form-control show-tick" required name="id_prove">
                                             <option value="">-- Seleccione un proveedor --</option>
                                             <?php
-                                            $dbhost = 'localhost';
-                                            $dbname = 'vetdog';
-                                            $dbuser = 'root';
-                                            $dbpass = '';
-
-                                            try {
-
-                                                $dbcon = new PDO("mysql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
-                                                $dbcon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                            } catch (PDOException $ex) {
-
-                                                die($ex->getMessage());
-                                            }
+                                            $db = new Database();
+                                            $dbcon = $db->open();
                                             $stmt = $dbcon->prepare('SELECT * FROM supplier');
                                             $stmt->execute();
 
@@ -253,6 +208,7 @@ if (!isset($_SESSION['cargo']) == 1) {
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-sm-4">
                                         <label class="control-label">Imagen del producto</label>
                                         <div class="form-group">
@@ -263,42 +219,30 @@ if (!isset($_SESSION['cargo']) == 1) {
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-12">
-                                        <label class="control-label">Descripcion del producto</label>
+                                    <div class="col-sm-4">
+                                        <label class="control-label">Descripción del producto</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <textarea rows="4" name="descp" class="form-control no-resize" placeholder="Descripcion..."></textarea>
+                                                <textarea rows="4" name="descp" class="form-control no-resize" placeholder="Descripción..."></textarea>
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <div class="col-sm-5" style="display:none;">
                                         <select name="estado" class="form-control show-tick">
-
                                             <option value="1">1</option>
-
                                         </select>
                                     </div>
-
-
-
                                 </div>
 
                                 <div class="container-fluid" align="center">
                                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                                     </div>
-
                                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                                         <a type="button" href="../../folder/productos" class="btn bg-red"><i class="material-icons">cancel</i> CANCELAR </a>
                                     </div>
-
                                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-
-
                                         <button class="btn bg-green" name="agregar">GUARDAR<i class="material-icons">save</i></button>
                                     </div>
-
                                 </div>
                             </form>
                         </div>
@@ -370,8 +314,6 @@ if (!isset($_SESSION['cargo']) == 1) {
         $sql = "select * from products where codigo='$codigo'";
         $result = mysqli_query($conn, $sql);
     ?>
-
-
         <?php
         // Validamos si hay resultados
         if (mysqli_num_rows($result) > 0) {
@@ -379,7 +321,6 @@ if (!isset($_SESSION['cargo']) == 1) {
 
             if ($result) {
         ?>
-
                 <script type="text/javascript">
                     swal("Oops...!", "Ya existe el registro a agregar!", "error")
                 </script>
@@ -389,24 +330,18 @@ if (!isset($_SESSION['cargo']) == 1) {
         } else {
             // Si no hay resultados, ingresamos el registro a la base de datos
             $sql2 = "insert into products(codigo,id_cate, foto,nompro,peso,id_prove,descp,preciC,precV,stock,estado) 
-values ('$codigo','$id_cate','$foto','$nompro','$peso','$id_prove','$descp','$preciC','$precV','$stock','$estado')";
+            values ('$codigo','$id_cate','$foto','$nompro','$peso','$id_prove','$descp','$preciC','$precV','$stock','$estado')";
             $foto = $_FILES['foto'];
 
             move_uploaded_file($foto['tmp_name'], "../../assets/img/subidas/" . $foto['name']);
             if (mysqli_query($conn, $sql2)) {
-
                 if ($sql2) {
                 ?>
-
-
-
                     <script type="text/javascript">
                         swal("¡Registrado!", "Agregado correctamente", "success").then(function() {
                             window.location = "../../folder/productos";
                         });
                     </script>
-
-
                 <?php
                 } else {
                 ?>
@@ -414,7 +349,6 @@ values ('$codigo','$id_cate','$foto','$nompro','$peso','$id_prove','$descp','$pr
                         swal("Oops...!", "No se pudo guardar!", "error")
                     </script>
     <?php
-
                 }
             } else {
 

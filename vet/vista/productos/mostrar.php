@@ -244,12 +244,12 @@ if (!isset($_SESSION['cargo']) == 1) {
 
         // Realizamos la consulta para saber si coincide con uno de esos criterios
 
-        $result = mysqli_query($conn);
-    ?>
+        ?>
 
 
-        <?php
-        // Validamos si hay resultados
+<?php       
+        $sql2 = "update products set codigo='$codigo',nompro='$nompro',id_cate='$id_cate',id_prove='$id_prove',preciC='$preciC',precV='$precV',peso='$peso',stock='$stock',descp='$descp' where id_prod='$id'";
+        $result = mysqli_query($conn, $sql2);
         if (mysqli_num_rows($result) > 0) {
             // Si es mayor a cero imprimimos que ya existe el usuario
 
@@ -265,40 +265,36 @@ if (!isset($_SESSION['cargo']) == 1) {
                     })
                 </script>
 
-                <?php
+            <?php
             }
         } else {
             // Si no hay resultados, ingresamos el registro a la base de datos
             $sql2 = "update products set codigo='$codigo',nompro='$nompro',id_cate='$id_cate',id_prove='$id_prove',preciC='$preciC',precV='$precV',peso='$peso',stock='$stock',descp='$descp' where id_prod='$id'";
 
 
-            if (mysqli_query($conn, $sql2)) {
+        if (mysqli_query($conn, $sql2)) {
+            if ($sql2) {
+            ?>
+                <script type="text/javascript">
+                    swal("¡Update!", "Actualizado correctamente", "success").then(function() {
+                        window.location = "productos";
+                    });
+                </script>
 
-                if ($sql2) {
-                ?>
+            <?php
+            } else {
+            ?>
+                <script type="text/javascript">
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'No se pudo guardar!'
 
-                    <script type="text/javascript">
-                        swal("¡Update!", "Actualizado correctamente", "success").then(function() {
-                            window.location = "productos";
-                        });
-                    </script>
-
-                <?php
-                } else {
-                ?>
-                    <script type="text/javascript">
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'No se pudo guardar!'
-
-                        })
-                    </script>
+                    })
+                </script>
     <?php
-
                 }
             } else {
-
                 echo "Error: " . $sql2 . "" . mysqli_error($conn);
             }
         }
