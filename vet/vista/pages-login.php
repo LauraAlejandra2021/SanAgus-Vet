@@ -2,6 +2,7 @@
 require_once '../assets/db/config.php';
 
 if (isset($_POST['login'])) {
+
     $errMsg = '';
 
     // Get data from FORM

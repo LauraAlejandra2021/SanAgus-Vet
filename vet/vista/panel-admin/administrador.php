@@ -2,7 +2,7 @@
 require_once '../../assets/db/config.php';
 
 if (!isset($_SESSION['cargo']) == 1) {
-    header('location: ../pages-login.php');
+    header('location: ../pages-login');
 }
 $db = new Database();
 $mysqli = $db->getMysqli();
