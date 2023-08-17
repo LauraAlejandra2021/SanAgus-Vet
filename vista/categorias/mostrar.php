@@ -96,7 +96,7 @@ if (!isset($_SESSION['cargo']) == 1) {
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Listado de categorías : <?php echo __DIR__;?>
+                                Listado de categorías :
                             </h2><br>
 
                         </div>
@@ -123,7 +123,7 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                     <td><?php echo $va['nomcate']; ?></td>
                                                     <td><?php echo $va['fere']; ?></td>
 
-                                                    <td><?php
+                                                    <td class="text-center"><?php
 
                                                         if ($va['estado'] == 1) { ?>
                                                             <form method="get" action="javascript:activo('<?php echo $va['id_cate']; ?>')">
@@ -138,11 +138,11 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                         <?php  } ?>
                                                     </td>
 
-                                                    <td><a type="button" href="../vista/categorias/edit?id=<?php echo $va["id_cate"]; ?>" class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
+                                                    <td class="text-center"><a type="button" href="../vista/categorias/edit?id=<?php echo $va["id_cate"]; ?>" class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
                                                             <i class="material-icons">edit</i>
                                                         </a>
                                                         <a type="button" href="../vista/categorias/borrar?id=<?php echo $va["id_cate"]; ?>" class="btn bg-red btn-circle waves-effect waves-circle waves-float">
-                                                            <i class="material-icons">delete</i>
+                                                            <i class="material-icons">delete forever</i>
                                                         </a>
 
 

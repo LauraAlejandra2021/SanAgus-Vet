@@ -126,14 +126,10 @@ GROUP_CONCAT( products.nompro, '..', products.codigo, '..',products.preciC, '..'
                                         <tr>
                                             <th>COMPROBANTE</th>
                                             <th>FECHA</th>
-
                                             <th>TOTAL</th>
                                             <th>PROVEDDOR</th>
-
                                             <th>ESTADO</th>
                                             <th>DETALLES</th>
-
-
                                         </tr>
                                     </thead>
 
@@ -148,7 +144,7 @@ GROUP_CONCAT( products.nompro, '..', products.codigo, '..',products.preciC, '..'
                                                 <td>S/.<?php echo $compra->total ?></td>
                                                 <td><?php echo $compra->nomprove ?></td>
 
-                                                <td>
+                                                <td class="text-center">
                                                     <?php
 
                                                     if ($compra->estado == 1) { ?>
@@ -163,22 +159,18 @@ GROUP_CONCAT( products.nompro, '..', products.codigo, '..',products.preciC, '..'
                                                         </form>
                                                     <?php  } ?>
                                                 </td>
-                                                <td>
+                                                <td class="text-center">
                                                     <a type="button" href="../vista/compra/detalles?id=<?php echo $compra->id_compra; ?>" class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
                                                         <i class="material-icons">remove_red_eye</i>
 
                                                     </a>
                                                 </td>
-
-
                                             </tr>
                                         <?php } ?>
                                     </tbody>
-
                                 </table>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
