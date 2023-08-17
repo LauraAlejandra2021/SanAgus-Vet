@@ -88,22 +88,7 @@
                             <a href="/vet/folder/proveedores">Listar / Modificar</a>
                         </li>
                     </ul>
-                </li>
-                <!--======================================================================================================-->
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">person_pin</i>
-                        <span>VETERINARIOS</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="/vet/vista/veterinarios/nuevo">Registrar</a>
-                        </li>
-                        <li>
-                            <a href="/vet/folder/veterinarios">Listar / Modificar</a>
-                        </li>
-                    </ul>
-                </li>
+                </li>               
                 <!--======================================================================================================-->
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
@@ -190,10 +175,10 @@
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="/vet/vista/veterinarios/nuevo">Registrar</a>
+                            <a href="/vet/vista/usuarios/nuevo">Registrar</a>
                         </li>
                         <li>
-                            <a href="/vet/folder/veterinarios">Listar / Modificar</a>
+                            <a href="/vet/folder/usuarios">Listar / Modificar</a>
                         </li>
                     </ul>
                 </li>               
