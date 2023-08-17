@@ -138,12 +138,11 @@ if (!isset($_SESSION['cargo']) == 1) {
 
                                     <li role="presentation" class="active"><span class="badge badge-purple"><?php echo  $total; ?></span><a href="#profile_settings" aria-controls="settings" role="tab" data-toggle="tab">Aceptadas</a></li>
 
-                                    <?php
-                                    $db = new Database();
-                                    $dbcon = $db->open();
+                                    <?php                                   
                                     $sql = "SELECT COUNT(*) total FROM venta WHERE estado = '0'";
                                     $result = $dbcon->query($sql); //$pdo sería el objeto conexión
                                     $total = $result->fetchColumn();
+                                    $db->close();
                                     ?>
                                     <li role="presentation"><span class="badge badge-danger"><?php echo  $total; ?></span><a href="#change_password_settings" aria-controls="settings" role="tab" data-toggle="tab">Anuladas</a></li>
                                 </ul>
@@ -195,17 +194,17 @@ if (!isset($_SESSION['cargo']) == 1) {
                                             <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                                 <thead>
                                                     <tr>
-                                                        <!-- <th>Comprobante</th> -->
+                                                        <th>Comprobante</th>
                                                         <th>Fecha</th>
-                                                        <!-- <th>Proveedor</th>
+                                                        <th>Proveedor</th>
                                                         <th>Tipo pago</th>
                                                         <th>Total</th>
                                                         <th>Estado</th>
-                                                        <th>Opciones</th> -->
+                                                        <th>Opciones</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php include '../venta/range_anulada.php' ?>
+                                                    <?php include '../venta/range_anulada.php'; ?>
                                                 </tbody>
                                             </table>
                                         </div>
