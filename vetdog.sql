@@ -384,8 +384,8 @@ CREATE TABLE `quotes` (
 
 INSERT INTO `quotes` (`id`, `id_vet`, `id_tiM`, `id_servi`, `title`, `nommas`, `dueno`, `color`, `start`, `end`, `estado`, `precio`) VALUES
 (1, 1, 2, 1, 'EJEMPLO DE CITA', 'pelusa', 'Sebastian Yatra', '#ff0000', '2021-12-20 13:00:00', '2021-12-20 14:00:00', '1', '120.00'),
-(3, 8, 2, 2, 'Ejemplo de cita 222', 'Violeta', 'Luis Sebastian Rumina', '#66ff00', '2021-12-22 15:00:00', '2021-12-22 16:00:00', '1', '80.00'),
-(4, 8, 2, 4, 'cita numero 3', 'Linos', 'Mauricio Carbajal', '#66ff00', '2021-12-21 09:00:00', '2021-12-21 10:00:00', '0', '80.00'),
+(3, 1, 2, 2, 'Ejemplo de cita 222', 'Violeta', 'Luis Sebastian Rumina', '#66ff00', '2021-12-22 15:00:00', '2021-12-22 16:00:00', '1', '80.00'),
+(4, 1, 2, 4, 'cita numero 3', 'Linos', 'Mauricio Carbajal', '#66ff00', '2021-12-21 09:00:00', '2021-12-21 10:00:00', '0', '80.00'),
 (5, 1, 2, 1, 'cita de ejemploss', 'Pelusa', 'Jose Torres', '#ff0000', '2021-12-27 09:00:00', '2021-12-27 10:00:00', '0', '50.00');
 
 -- --------------------------------------------------------
@@ -480,9 +480,14 @@ INSERT INTO `supplier` (`id_prove`, `nomprove`, `ruc`, `direcc`, `pais`, `tele`,
 
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `dni` char(20) COLLATE utf8_unicode_ci NOT NULL,
+  `nombre` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `usuario` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `correo` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `direcc` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `sexo` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `fijo` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `movil` char(13) COLLATE utf8_unicode_ci NOT NULL,
   `contra` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `cargo` int(11) NOT NULL,
   `estado` char(1) COLLATE utf8_unicode_ci NOT NULL,
@@ -493,8 +498,8 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `correo`, `contra`, `cargo`, `estado`, `fecre`) VALUES
-(1, 'Jordan Roke Seminario', 'jjroker', 'jjroker@ucv.edu.pe', 'b0baee9d279d34fa1dfd71aadb908c3f', 1, '1', '2021-12-04 00:54:56');
+INSERT INTO `usuarios` (`id`, `dni`, `nombre`, `usuario`, `correo`, `direcc`, `sexo`,`fijo`, `movil`, `contra`, `cargo`, `estado`, `fecre`) VALUES
+(1, '1035427139', 'Camilo agudelo', 'camilo', 'jjroker@ucv.edu.pe', 'Cra 46 b # 47  26', 'Masculino', '4010909', '3146582449', 'b0baee9d279d34fa1dfd71aadb908c3f', 1, '1', '2021-12-04 00:54:56');
 
 -- --------------------------------------------------------
 
@@ -537,31 +542,31 @@ INSERT INTO `venta` (`id_venta`, `fecha`, `numfact`, `estado`, `id_due`, `total`
 -- Estructura de tabla para la tabla `veterinarian`
 --
 
-CREATE TABLE `veterinarian` (
-  `id_vet` int(11) NOT NULL,
-  `dnivet` char(8) COLLATE utf8_unicode_ci NOT NULL,
-  `nomvet` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
-  `apevet` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
-  `direcc` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `sexo` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
-  `correo` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `foto` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `fijo` char(6) COLLATE utf8_unicode_ci NOT NULL,
-  `movil` char(9) COLLATE utf8_unicode_ci NOT NULL,
-  `usuario` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `contra` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `cargo` int(11) NOT NULL,
-  `estado` char(1) COLLATE utf8_unicode_ci NOT NULL,
-  `fere` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+-- CREATE TABLE `veterinarian` (
+--   `id_vet` int(11) NOT NULL,
+--   `dnivet` char(8) COLLATE utf8_unicode_ci NOT NULL,
+--   `nomvet` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
+--   `apevet` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
+--   `direcc` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+--   `sexo` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+--   `correo` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+--   `foto` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+--   `fijo` char(6) COLLATE utf8_unicode_ci NOT NULL,
+--   `movil` char(9) COLLATE utf8_unicode_ci NOT NULL,
+--   `usuario` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+--   `contra` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+--   `cargo` int(11) NOT NULL,
+--   `estado` char(1) COLLATE utf8_unicode_ci NOT NULL,
+--   `fere` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `veterinarian`
 --
 
-INSERT INTO `veterinarian` (`id_vet`, `dnivet`, `nomvet`, `apevet`, `direcc`, `sexo`, `correo`, `foto`, `fijo`, `movil`, `usuario`, `contra`, `cargo`, `estado`, `fere`) VALUES
-(1, '76666666', 'Elizabeth', 'Goméz Chunga', 'Ica', 'Femenino', 'elizaGo@gmail.com', 'seven.png', '454322', '998876767', 'eliza21', 'b0baee9d279d34fa1dfd71aadb908c3f', 3, '1', '2021-12-01 14:09:49'),
-(8, '74849349', 'Jose Luis', 'Flores Yovera', 'talaarita', 'Masculino', 'jjoseluis@gmail.com', 'profeico.png', '435323', '939838383', 'jooseluis21', 'b0baee9d279d34fa1dfd71aadb908c3f', 3, '1', '2021-12-04 20:03:43');
+-- INSERT INTO `veterinarian` (`id_vet`, `dnivet`, `nomvet`, `apevet`, `direcc`, `sexo`, `correo`, `foto`, `fijo`, `movil`, `usuario`, `contra`, `cargo`, `estado`, `fere`) VALUES
+-- (1, '76666666', 'Elizabeth', 'Goméz Chunga', 'Ica', 'Femenino', 'elizaGo@gmail.com', 'seven.png', '454322', '998876767', 'eliza21', 'b0baee9d279d34fa1dfd71aadb908c3f', 3, '1', '2021-12-01 14:09:49'),
+-- (8, '74849349', 'Jose Luis', 'Flores Yovera', 'talaarita', 'Masculino', 'jjoseluis@gmail.com', 'profeico.png', '435323', '939838383', 'jooseluis21', 'b0baee9d279d34fa1dfd71aadb908c3f', 3, '1', '2021-12-04 20:03:43');
 
 --
 -- Índices para tablas volcadas
@@ -690,8 +695,8 @@ ALTER TABLE `venta`
 --
 -- Indices de la tabla `veterinarian`
 --
-ALTER TABLE `veterinarian`
-  ADD PRIMARY KEY (`id_vet`);
+-- ALTER TABLE `veterinarian`
+--   ADD PRIMARY KEY (`id_vet`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -791,7 +796,8 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2,
+  ADD FOREIGN KEY (cargo) REFERENCES cargo(id);;
 
 --
 -- AUTO_INCREMENT de la tabla `venta`
@@ -802,8 +808,8 @@ ALTER TABLE `venta`
 --
 -- AUTO_INCREMENT de la tabla `veterinarian`
 --
-ALTER TABLE `veterinarian`
-  MODIFY `id_vet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+-- ALTER TABLE `veterinarian`
+--   MODIFY `id_vet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
@@ -819,7 +825,7 @@ ALTER TABLE `compra`
 -- Filtros para la tabla `historycli`
 --
 ALTER TABLE `historycli`
-  ADD CONSTRAINT `historycli_ibfk_1` FOREIGN KEY (`id_vet`) REFERENCES `veterinarian` (`id_vet`),
+  ADD CONSTRAINT `historycli_ibfk_1` FOREIGN KEY (`id_vet`) REFERENCES `usuarios` (`id`),
   ADD CONSTRAINT `historycli_ibfk_2` FOREIGN KEY (`id_pet`) REFERENCES `pet` (`id_pet`),
   ADD CONSTRAINT `historycli_ibfk_3` FOREIGN KEY (`id_due`) REFERENCES `owner` (`id_due`);
 
@@ -856,7 +862,7 @@ ALTER TABLE `products`
 -- Filtros para la tabla `quotes`
 --
 ALTER TABLE `quotes`
-  ADD CONSTRAINT `quotes_ibfk_1` FOREIGN KEY (`id_vet`) REFERENCES `veterinarian` (`id_vet`),
+  ADD CONSTRAINT `quotes_ibfk_1` FOREIGN KEY (`id_vet`) REFERENCES `usuarios` (`id`),
   ADD CONSTRAINT `quotes_ibfk_2` FOREIGN KEY (`id_tiM`) REFERENCES `pet_type` (`id_tiM`),
   ADD CONSTRAINT `quotes_ibfk_3` FOREIGN KEY (`id_servi`) REFERENCES `service` (`id_servi`);
 
