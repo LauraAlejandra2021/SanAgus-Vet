@@ -113,7 +113,13 @@ if (!isset($_SESSION['cargo']) == 1) {
                             }
                             $con = connect();
                             $id = $_GET['id'];
-                            $sql = "SELECT quotes.id, veterinarian.id_vet, veterinarian.dnivet, veterinarian.nomvet, veterinarian.apevet, pet_type.id_tiM, pet_type.noTiM, service.id_servi, service.nomser, quotes.title, quotes.nommas, quotes.dueno, quotes.color, quotes.start, quotes.end, quotes.estado, quotes.precio FROM quotes INNER JOIN veterinarian ON quotes.id_vet = veterinarian.id_vet INNER JOIN pet_type ON quotes.id_tiM = pet_type.id_tiM INNER JOIN service ON quotes.id_servi = service.id_servi  WHERE id= '$id'";
+                            $sql = "SELECT q.id, u.id, u.dni, u.nombre, p.id_tiM, p.noTiM, s.id_servi, 
+                                    s.nomser, q.title, q.nommas, q.dueno,  q.color, q.start, q.end, q.estado, q.precio 
+                                    FROM quotes q
+                                    INNER JOIN usuarios u ON q.id = u.id 
+                                    INNER JOIN pet_type p ON q.id_tiM = p.id_tiM 
+                                    INNER JOIN service s ON q.id_servi = s.id_servi 
+                                    WHERE q.id= '$id'";
                             $query  = $con->query($sql);
                             $data =  array();
                             if ($query) {
@@ -139,7 +145,7 @@ if (!isset($_SESSION['cargo']) == 1) {
                                             <div class="col-sm-4">
                                                 <label class="control-label">Veterinario</label>
                                                 <select class="form-control show-tick" name="id_vet" id="vete">
-                                                    <option value="<?php echo $d->id_vet; ?>"><?php echo $d->nomvet; ?>&nbsp;<?php echo $d->apevet; ?></option>
+                                                    <option value="<?php echo $d->id; ?>"><?php echo $d->nombre; ?></option>
                                                     <?php
                                                     $dbhost = 'localhost';
                                                     $dbname = 'vetdog';
@@ -154,13 +160,13 @@ if (!isset($_SESSION['cargo']) == 1) {
 
                                                         die($ex->getMessage());
                                                     }
-                                                    $stmt = $dbcon->prepare('SELECT * FROM veterinarian');
+                                                    $stmt = $dbcon->prepare('SELECT * FROM usuarios');
                                                     $stmt->execute();
 
                                                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                                         extract($row);
                                                     ?>
-                                                        <option value="<?php echo $id_vet; ?>"><?php echo $nomvet; ?>&nbsp;<?php echo $apevet; ?></option>
+                                                        <option value="<?php echo $id; ?>"><?php echo $nombre; ?></option>
                                                     <?php
                                                     }
                                                     ?>

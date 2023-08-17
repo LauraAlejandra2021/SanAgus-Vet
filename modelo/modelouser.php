@@ -1,33 +1,30 @@
 <?php
+
 class Modelo{
 
-  private $pet;
+  private $usuario;
   private $db;
 
   public function __construct(){
-      $this->quotes=array();
+      $this->usuario=array();
       $this->db=new PDO('mysql:host=localhost;dbname=vetdog',"root","");
   }
   public function mostrar($tabla,$condicion){
-      $consulta="SELECT q.id, u.id, u.dni, u.nombre, 
-                p.id_tiM, p.noTiM, s.id_servi, s.nomser, 
-                q.title, q.nommas, q.dueno, q.color, q.start, q.end, q.estado 
-                FROM quotes q
-                INNER JOIN usuarios u ON q.id = u.id 
-                INNER JOIN pet_type p ON q.id_tiM = p.id_tiM 
-                INNER JOIN service s ON q.id_servi = s.id_servi";
+      $consulta="SELECT u.id, u.dni, u.nombre, u.correo, u.direcc, c.descripcion, u.fijo, u.movil, u.estado 
+      FROM usuarios u
+      INNER JOIN cargo c ON u.cargo = c.id";
 
       $resultado=$this->db->query($consulta);
       while ($tabla=$resultado->fetchAll(PDO::FETCH_ASSOC)) {
-          $this->quotes[]=$tabla;
+          $this->usuario[]=$tabla;
       }
-      return $this->quotes;
+      return $this->usuario;
     }
     public function  insertar(Modelo $data){
     try {
-    $query="INSERT INTO quotes (id_vet, id_tiM)VALUES(?,?)";
+    $query="INSERT INTO usuarios (dni,  nom)VALUES(?,?)";
 
-      $this->db->prepare($query)->execute(array($data->id_vet, $data->id_tiM));
+      $this->db->prepare($query)->execute(array($data->dni, $data->nombre));
 
     }catch (Exception $e) {
 

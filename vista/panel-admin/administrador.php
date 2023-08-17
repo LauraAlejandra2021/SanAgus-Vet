@@ -1,7 +1,7 @@
 ﻿<?php
 require_once '../../assets/db/config.php';
 
-if (!isset($_SESSION['cargo']) == 1) {
+if (!isset($_SESSION['cargo']) == 2) {
     header('location: ../pages-login');
 }
 $db = new Database();
@@ -234,7 +234,7 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-cyan hover-expand-effect">
-                        <a href="../../folder/veterinarios">
+                        <a href="../../folder/usuaios">
                             <div class="icon">
                                 <i class="material-icons">person_pin</i>
                             </div>
@@ -243,7 +243,7 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         <?php
                         $db = new Database();
                         $conn = $db->open();
-                        $sql = "SELECT COUNT(*) total FROM veterinarian";
+                        $sql = "SELECT COUNT(*) total FROM usuarios WHERE cargo = 3";
                         $result = $conn->query($sql); //$pdo sería el objeto conexión
                         $total = $result->fetchColumn();
                         ?>

@@ -130,7 +130,7 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                 <tr>
                                                     <td><?php echo $va['id']; ?></td>
                                                     <td><?php echo $va['dueno']; ?></td>
-                                                    <td><?php echo $va['nomvet']; ?>&nbsp;<?php echo $va['apevet']; ?></td>
+                                                    <td><?php echo $va['nombre']; ?></td>
                                                     <td><?php echo $va['title']; ?></td>
                                                     <td><?php echo $va['nommas']; ?></td>
                                                     <td><?php echo $va['noTiM']; ?></td>

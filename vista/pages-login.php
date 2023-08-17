@@ -42,6 +42,12 @@ if (isset($_POST['login'])) {
                         if ($_SESSION['cargo'] == 1) {
                             header('Location: panel-admin/administrador');
                         }
+                        if ($_SESSION['cargo'] == 2) {
+                            header('Location: panel-admin/administrador');
+                        }
+                        if ($_SESSION['cargo'] == 3) {
+                            header('Location: panel-admin/administrador');
+                        }
                         // Otros casos de redirección
                         exit;
                     } else {

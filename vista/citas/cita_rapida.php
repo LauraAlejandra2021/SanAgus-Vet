@@ -140,13 +140,13 @@ if (!isset($_SESSION['cargo']) == 1) {
 
                                                 die($ex->getMessage());
                                             }
-                                            $stmt = $dbcon->prepare('SELECT * FROM veterinarian');
+                                            $stmt = $dbcon->prepare('SELECT * FROM usuarios');
                                             $stmt->execute();
 
                                             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                                 extract($row);
                                             ?>
-                                                <option value="<?php echo $id_vet; ?>"><?php echo $nomvet; ?>&nbsp;<?php echo $apevet; ?></option>
+                                                <option value="<?php echo $id; ?>"><?php echo $nombre; ?></option>
                                             <?php
                                             }
                                             ?>
