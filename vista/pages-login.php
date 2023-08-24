@@ -9,7 +9,7 @@ if (isset($_POST['login'])) {
 
     // Get data from FORM
     $usuario = $_POST['usuario'];
-    $contra = MD5($_POST['contra']);
+    $contra = hash('sha256', $_POST['contra']);
 
     if ($usuario == '') {
         $errMsg = 'Digite su usuario';
