@@ -331,7 +331,7 @@ if (!isset($_SESSION['cargo']) == 1) {
         $correo = $_POST['correo'];
         $fijo = $_POST['fijo'];
         $movil = $_POST['movil'];
-        $contra = MD5($_POST['contra']);
+        $contra = hash('sha256', $_POST['contra']);
         $cargo = $_POST['cargo'];
 
 
