@@ -1,4 +1,6 @@
 ﻿<?php
+require_once '../../assets/db/config.php';
+
 session_start();
 
 if (!isset($_SESSION['cargo']) == 1) {
@@ -87,7 +89,7 @@ if (!isset($_SESSION['cargo']) == 1) {
     <!-- #Top Bar -->
 
     <!-- Menu -->
-    <?php include('../menu'); ?>
+    <?php include_once __DIR__ . '../../menu.php'; ?>
 
     <!--============================CONTENIDO DE LA PÁGINA ==========================================================-->
 

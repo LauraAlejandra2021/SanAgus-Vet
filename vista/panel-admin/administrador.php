@@ -1,4 +1,5 @@
 ﻿<?php
+session_start();
 require_once '../../assets/db/config.php';
 
 if (!isset($_SESSION['cargo']) == 2) {
@@ -197,7 +198,7 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         <?php
                         $db = new Database();
                         $conn = $db->open();
-                        $sql = "SELECT SUM(total) FROM compra;";
+                        $sql = "SELECT SUM(total) FROM compra WHERE DATE(fecha) = CURRENT_DATE();";
                         $result = $conn->query($sql); //$pdo sería el objeto conexión
                         $total = $result->fetchColumn();
                         ?>
@@ -264,12 +265,12 @@ $click = json_encode(array_column($click, 'count'), JSON_NUMERIC_CHECK);
                         <?php
                         $db = new Database();
                         $conn = $db->open();
-                        $sql = "SELECT SUM(total) FROM venta;";
+                        $sql = "SELECT SUM(total) FROM venta WHERE DATE(fecha) = CURRENT_DATE();";
                         $result = $conn->query($sql); //$pdo sería el objeto conexión
                         $total = $result->fetchColumn();
                         ?>
                         <div class="content">
-                            <div class="text">VENTAS</div>
+                            <div class="text">VENTAS HOY</div>
                             <div class="number count-to" data-from="0" data-to="<?php echo  $total; ?> " data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
