@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once '../../assets/db/config.php';
     
     if(isset($_POST['update'])){

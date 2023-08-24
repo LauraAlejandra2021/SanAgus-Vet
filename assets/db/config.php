@@ -1,6 +1,4 @@
 <?php
-
-session_start();
 class Database {
     private $dbhost = 'localhost';
     private $dbuser = 'root';
