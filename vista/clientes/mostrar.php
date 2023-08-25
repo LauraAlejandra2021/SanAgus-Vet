@@ -1,4 +1,6 @@
 ﻿<?php
+include __DIR__ . '../../../assets/db/config.php';
+
 session_start();
 
 if (!isset($_SESSION['cargo']) == 1) {
@@ -105,13 +107,11 @@ if (!isset($_SESSION['cargo']) == 1) {
                                 <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                     <thead>
                                         <tr>
-                                            <th>Nº</th>
-                                            <th>DNI</th>
+                                            <th>CC</th>
                                             <th>DATOS</th>
                                             <th>MOVIL</th>
                                             <th>CORREO</th>
                                             <th>DIRECCION</th>
-                                            <th>ESTADO</th>
                                             <th>ACCIONES</th>
 
                                         </tr>
@@ -122,35 +122,15 @@ if (!isset($_SESSION['cargo']) == 1) {
                                         foreach ($dato as $key => $value) {
                                             foreach ($value as $va) { ?>
                                                 <tr>
-                                                    <td><?php echo $va['id_due']; ?></td>
                                                     <td><?php echo $va['dni_due']; ?></td>
                                                     <td><?php echo $va['nom_due']; ?>&nbsp;<?php echo $va['ape_due']; ?></td>
                                                     <td><?php echo $va['movil']; ?></td>
                                                     <td><?php echo $va['correo']; ?></td>
                                                     <td><?php echo $va['direc']; ?></td>
 
-                                                    <td class="text-center"><?php
-
-                                                        if ($va['estado'] == 1) { ?>
-                                                            <form method="get" action="javascript:activo('<?php echo $va['id_due']; ?>')">
-
-                                                                <span class="label label-success">Activo</span>
-                                                            </form>
-                                                        <?php  } else { ?>
-
-                                                            <form method="get" action="javascript:inactivo('<?php echo $va['id_due']; ?>')">
-                                                                <button type="submit" class="btn btn-danger btn-xs">Inactivo</button>
-                                                            </form>
-                                                        <?php  } ?>
-                                                    </td>
-
                                                     <td class="text-center"><a type="button" href="../vista/clientes/edit?id=<?php echo $va["id_due"]; ?>" class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
                                                             <i class="material-icons">edit</i>
                                                         </a>
-                                                        <a type="button" href="../vista/clientes/borrar?id=<?php echo $va["id_due"]; ?>" class="btn bg-red btn-circle waves-effect waves-circle waves-float">
-                                                            <i class="material-icons">delete</i>
-                                                        </a>
-
 
                                                 </tr>
 
