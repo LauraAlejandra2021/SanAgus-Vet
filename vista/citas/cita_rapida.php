@@ -209,7 +209,7 @@ values ('$id_vet','$id_tiM','$id_servi','$title','$nommas','$dueno','$color','$s
                                             <option value="">-- Seleccione un veterinario --</option>
                                             <?php
                                             try {
-
+                                                $db = new Database();
                                                 $dbcon = $db->open();
                                                 $dbcon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                             } catch (PDOException $ex) {
