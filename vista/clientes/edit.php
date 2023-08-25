@@ -132,7 +132,7 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                 <label class="control-label">CC del cliente</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <input type="text" value="<?php echo $d->dni_due; ?>" name="dni_due" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="8" required class="form-control" placeholder="DNI del cliente..." />
+                                                        <input type="text" value="<?php echo $d->dni_due; ?>" name="dni_due" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="15" required class="form-control" placeholder="DNI del cliente..." />
                                                     </div>
                                                 </div>
                                             </div>
@@ -159,7 +159,7 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                 <label class="control-label">Telefono movil del cliente</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <input type="text" required value="<?php echo $d->movil; ?>" name="movil" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="9" class="form-control" placeholder="Telefono movil..." />
+                                                        <input type="text" required value="<?php echo $d->movil; ?>" name="movil" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" class="form-control" placeholder="Telefono movil..." />
                                                     </div>
                                                 </div>
                                             </div>
@@ -168,7 +168,7 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                 <label class="control-label">Telefono fijo del cliente</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <input type="text" value="<?php echo $d->fijo; ?>" name="fijo" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="6" class="form-control" placeholder="Telefono fijo..." />
+                                                        <input type="text" value="<?php echo $d->fijo; ?>" name="fijo" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="7" class="form-control" placeholder="Telefono fijo..." />
                                                     </div>
                                                 </div>
                                             </div>
