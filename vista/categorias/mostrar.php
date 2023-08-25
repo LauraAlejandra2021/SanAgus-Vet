@@ -1,9 +1,63 @@
 ﻿<?php
+include __DIR__ . '../../../assets/db/config.php';
 session_start();
 
 if (!isset($_SESSION['cargo']) == 1) {
     header('location: ../vista/pages-login');
 }
+
+if (isset($_POST["update"])) {
+    // Creamos la conexión
+    $db = new Database();
+    $conn = $db->getMysqli();
+
+    // Revisamos la conexión
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $id = $_GET['id'];
+
+    $nomcate = $_POST['nomcate'];
+
+
+    // Realizamos la consulta para saber si coincide con uno de esos criterios
+    $sql2 = "select id_cate from category where nomcate='$nomcate'";
+    $result = mysqli_query($conn, $sql2);
+
+  
+    // Si no hay resultados, ingresamos el registro a la base de datos
+    $sql2 = "update category set nomcate='$nomcate'where id_cate='$id'";
+
+
+    if (mysqli_query($conn, $sql2)) {
+        if ($sql2) {
+        ?>
+            <script type="text/javascript">
+                swal("¡Update!", "Actualizado correctamente", "success").then(function() {
+                    window.location = "categorias";
+                });
+            </script>
+
+        <?php
+        } else {
+        ?>
+        <script type="text/javascript">
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'No se pudo guardar!'
+
+            })
+        </script>
+        <?php
+            }
+        } else {
+            echo "Error: " . $sql2 . "" . mysqli_error($conn);
+        }
+    // Cerramos la conexión
+    $conn->close();
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -193,65 +247,7 @@ if (!isset($_SESSION['cargo']) == 1) {
     <!-- Demo Js -->
     <script src="../assets/js/demo.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    <!--------------------------------script edit cate----------------------------->
-    <?php
-    
-    if (isset($_POST["update"])) {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "vetdog";
 
-        // Creamos la conexión
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Revisamos la conexión
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-        $id = $_GET['id'];
-
-        $nomcate = $_POST['nomcate'];
-
-
-        // Realizamos la consulta para saber si coincide con uno de esos criterios
-        $sql2 = "select id_cate from category where nomcate='$nomcate'";
-        $result = mysqli_query($conn, $sql2);
-    
-      
-        // Si no hay resultados, ingresamos el registro a la base de datos
-        $sql2 = "update category set nomcate='$nomcate'where id_cate='$id'";
-
-
-        if (mysqli_query($conn, $sql2)) {
-            if ($sql2) {
-            ?>
-                <script type="text/javascript">
-                    swal("¡Update!", "Actualizado correctamente", "success").then(function() {
-                        window.location = "categorias";
-                    });
-                </script>
-
-            <?php
-            } else {
-            ?>
-            <script type="text/javascript">
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'No se pudo guardar!'
-
-                })
-            </script>
-            <?php
-                }
-            } else {
-                echo "Error: " . $sql2 . "" . mysqli_error($conn);
-            }
-        // Cerramos la conexión
-        $conn->close();
-    }
-    ?>
 </body>
 
 </html>
