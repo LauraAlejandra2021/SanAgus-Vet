@@ -1,36 +1,12 @@
 <?php
-    session_start();
-    Class Connection{
- 
-    private $server = "mysql:host=localhost;dbname=vetdog";
-    private $username = "root";
-    private $password = "";
-    private $options  = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,);
-    protected $conn;
-    
-    public function open(){
-        try{
-            $this->conn = new PDO($this->server, $this->username, $this->password, $this->options);
-            return $this->conn;
-        }
-        catch (PDOException $e){
-            echo "Hubo un problema con la conexión: " . $e->getMessage();
-        }
- 
-    }
- 
-    public function close(){
-        $this->conn = null;
-    }
- 
-}
+require_once '../../assets/db/config.php';
 
+    session_start();
     if(isset($_POST['update'])){
-        $database = new Connection();
+        $database = new Database();
         $db = $database->open();
         try{
             $id = $_GET['id'];
-           
             
             $dni_due  = $_POST['dni_due'];
             $nom_due =htmlspecialchars($_POST['nom_due']);
