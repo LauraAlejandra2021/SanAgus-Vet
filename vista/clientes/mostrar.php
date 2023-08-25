@@ -108,11 +108,11 @@ if (!isset($_SESSION['cargo']) == 1) {
                                     <thead>
                                         <tr>
                                             <th>CC</th>
-                                            <th>DATOS</th>
+                                            <th>NOMBRE</th>
                                             <th>MOVIL</th>
                                             <th>CORREO</th>
                                             <th>DIRECCION</th>
-                                            <th>ACCIONES</th>
+                                            <th>EDITAR</th>
 
                                         </tr>
                                     </thead>

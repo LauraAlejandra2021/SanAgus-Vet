@@ -129,7 +129,7 @@ if (!isset($_SESSION['cargo']) == 1) {
 
                                         <div class="row clearfix">
                                             <div class="col-sm-6">
-                                                <label class="control-label">DNI del cliente</label>
+                                                <label class="control-label">CC del cliente</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
                                                         <input type="text" value="<?php echo $d->dni_due; ?>" name="dni_due" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="8" required class="form-control" placeholder="DNI del cliente..." />
@@ -156,19 +156,10 @@ if (!isset($_SESSION['cargo']) == 1) {
                                             </div>
 
                                             <div class="col-sm-6">
-                                                <label class="control-label">Nacimiento del cliente</label>
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <input type="text" value="<?php echo $d->fecnaci; ?>" name="fecnaci" class="datepicker form-control" placeholder="Seleccione la Fecha de nacimiento...">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-6">
                                                 <label class="control-label">Telefono movil del cliente</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <input type="text" value="<?php echo $d->movil; ?>" name="movil" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="9" class="form-control" placeholder="Telefono movil..." />
+                                                        <input type="text" required value="<?php echo $d->movil; ?>" name="movil" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="9" class="form-control" placeholder="Telefono movil..." />
                                                     </div>
                                                 </div>
                                             </div>
@@ -186,7 +177,7 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                 <label class="control-label">Correo del cliente</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <input type="email" value="<?php echo $d->correo; ?>" name="correo" required class="form-control" placeholder="Correo..." />
+                                                        <input type="email" value="<?php echo $d->correo; ?>" name="correo" class="form-control" placeholder="Correo..." />
                                                     </div>
                                                 </div>
                                             </div>
@@ -195,20 +186,10 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                 <label class="control-label">Direccion del cliente</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <input type="text" value="<?php echo $d->direc; ?>" name="direc" required class="form-control" placeholder="Direccion..." />
+                                                        <input type="text" value="<?php echo $d->direc; ?>" name="direc" class="form-control" placeholder="Direccion..." />
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="col-sm-6">
-                                                <label class="control-label">Usuario del cliente</label>
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <input type="text" value="<?php echo $d->usuario; ?>" name="usuario" required class="form-control" placeholder="Usuario..." />
-                                                    </div>
-                                                </div>
-                                            </div>
-
                                         </div>
 
                                         <div class="container-fluid" align="center">
