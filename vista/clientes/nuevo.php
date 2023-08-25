@@ -7,91 +7,6 @@ if (!isset($_SESSION['cargo']) == 1) {
     header('location: ../pages-login');
 }
 
-
-if (isset($_POST["agregar"])) {
-    // Creamos la conexión
-    $db = new Database();
-    $conn = $db->getMysqli();
-
-    // Revisamos la conexión
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    $dni_due = $_POST['dni_due'];
-    $nom_due = $_POST['nom_due'];
-    $ape_due = $_POST['ape_due'];
-
-    $movil = $_POST['movil'];
-    $fijo = $_POST['fijo'];
-    $correo = $_POST['correo'];
-    $direc = $_POST['direc'];
-    $estado = $_POST['estado'];
-    $usuario = $_POST['usuario'];
-    $contra = MD5($_POST['contra']);
-    $cargo = $_POST['cargo'];
-    $foto = $_FILES['foto']['name'];
-
-    // Realizamos la consulta para saber si coincide con uno de esos criterios
-    $sql = "select * from owner where dni_due='$dni_due' or movil='$movil' or fijo='$fijo'";
-    $result = mysqli_query($conn, $sql);
-?>
-
-
-    <?php
-    // Validamos si hay resultados
-    if (mysqli_num_rows($result) > 0) {
-        // Si es mayor a cero imprimimos que ya existe el usuario
-
-        if ($result) {
-    ?>
-
-            <script type="text/javascript">
-                swal("Oops...!", "Ya existe el registro a agregar!", "error")
-            </script>
-
-
-
-            <?php
-        }
-    } else {
-        // Si no hay resultados, ingresamos el registro a la base de datos
-        $sql2 = "insert into owner(dni_due,nom_due,ape_due,movil,fijo,correo,direc,estado,usuario,contra,cargo,foto) 
-values ('$dni_due','$nom_due','$ape_due','$movil','$fijo','$correo','$direc','$estado','$usuario',
-'$contra','$cargo','$foto')";
-        $foto = $_FILES['foto'];
-
-        move_uploaded_file($foto['tmp_name'], "../../assets/img/subidas/" . $foto['name']);
-        if (mysqli_query($conn, $sql2)) {
-
-            if ($sql2) {
-            ?>
-
-
-                <script type="text/javascript">
-                    swal("¡Registrado!", "Agregado correctamente", "success").then(function() {
-                        window.location = "../../folder/clientes";
-                    });
-                </script>
-
-            <?php
-            } else {
-            ?>
-                <script type="text/javascript">
-                    swal("Oops...!", "No se pudo guardar!", "error")
-                </script>
-
-
-<?php
-
-            }
-        } else {
-
-            echo "Error: " . $sql2 . "" . mysqli_error($conn);
-        }
-    }
-    // Cerramos la conexión
-    $conn->close();
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -364,6 +279,94 @@ values ('$dni_due','$nom_due','$ape_due','$movil','$fijo','$correo','$direc','$e
 
 
     <!--------------------------------script nuevo----------------------------->
+
+<?php
+if (isset($_POST["agregar"])) {
+    // Creamos la conexión
+    $db = new Database();
+    $conn = $db->getMysqli();
+
+    // Revisamos la conexión
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $dni_due = $_POST['dni_due'];
+    $nom_due = $_POST['nom_due'];
+    $ape_due = $_POST['ape_due'];
+
+    $movil = $_POST['movil'];
+    $fijo = $_POST['fijo'];
+    $correo = $_POST['correo'];
+    $direc = $_POST['direc'];
+    $estado = $_POST['estado'];
+    $usuario = $_POST['usuario'];
+    $contra = MD5($_POST['contra']);
+    $cargo = $_POST['cargo'];
+    $foto = $_FILES['foto']['name'];
+
+    // Realizamos la consulta para saber si coincide con uno de esos criterios
+    $sql = "select * from owner where dni_due='$dni_due' or movil='$movil' or fijo='$fijo'";
+    $result = mysqli_query($conn, $sql);
+?>
+
+
+    <?php
+    // Validamos si hay resultados
+    if (mysqli_num_rows($result) > 0) {
+        // Si es mayor a cero imprimimos que ya existe el usuario
+
+        if ($result) {
+    ?>
+
+            <script type="text/javascript">
+                swal("Oops...!", "Ya existe el registro a agregar!", "error")
+            </script>
+
+
+
+            <?php
+        }
+    } else {
+        // Si no hay resultados, ingresamos el registro a la base de datos
+        $sql2 = "insert into owner(dni_due,nom_due,ape_due,movil,fijo,correo,direc,estado,usuario,contra,cargo,foto) 
+values ('$dni_due','$nom_due','$ape_due','$movil','$fijo','$correo','$direc','$estado','$usuario',
+'$contra','$cargo','$foto')";
+        $foto = $_FILES['foto'];
+
+        move_uploaded_file($foto['tmp_name'], "../../assets/img/subidas/" . $foto['name']);
+        if (mysqli_query($conn, $sql2)) {
+
+            if ($sql2) {
+            ?>
+
+
+                <script type="text/javascript">
+                    swal("¡Registrado!", "Agregado correctamente", "success").then(function() {
+                        window.location = "../../folder/clientes";
+                    });
+                </script>
+
+            <?php
+            } else {
+            ?>
+                <script type="text/javascript">
+                    swal("Oops...!", "No se pudo guardar!", "error")
+                </script>
+
+
+<?php
+
+            }
+        } else {
+
+            echo "Error: " . $sql2 . "" . mysqli_error($conn);
+        }
+    }
+    // Cerramos la conexión
+    $conn->close();
+}
+?>
+
     <script>
         function readURL(input) {
             if (input.files && input.files[0]) {
