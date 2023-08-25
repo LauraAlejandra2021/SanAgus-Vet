@@ -1,8 +1,94 @@
 ﻿<?php
+
+require_once ('../../assets/db/config.php');
 session_start();
 
 if (!isset($_SESSION['cargo']) == 1) {
     header('location: ../pages-login');
+}
+
+
+if (isset($_POST["agregar"])) {
+
+    // Creamos la conexión
+    $db = new Database();
+    $conn = $db -> getMysqli();
+
+    // Revisamos la conexión
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $nomcate = $_POST['nomcate'];
+    $estado = $_POST['estado'];
+
+    // Realizamos la consulta para saber si coincide con uno de esos criterios
+    $sql = "select * from category where nomcate='$nomcate'";
+    $result = mysqli_query($conn, $sql);
+?>
+
+
+    <?php
+    // Validamos si hay resultados
+    if (mysqli_num_rows($result) > 0) {
+        // Si es mayor a cero imprimimos que ya existe el usuario
+
+        if ($result) {
+    ?>
+
+            <script type="text/javascript">
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Ya existe el registro a agregar!'
+
+                })
+            </script>
+
+            <?php
+        }
+    } else {
+        // Si no hay resultados, ingresamos el registro a la base de datos
+        $sql2 = "insert into category(nomcate,estado) 
+values ('$nomcate','$estado')";
+
+        if (mysqli_query($conn, $sql2)) {
+
+            if ($sql2) {
+            ?>
+
+                <script type="text/javascript">
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Agregado correctamente',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(function() {
+                        window.location = "../../folder/categorias";
+                    });
+                </script>
+
+            <?php
+            } else {
+            ?>
+                <script type="text/javascript">
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'No se pudo guardar!'
+
+                    })
+                </script>
+<?php
+
+            }
+        } else {
+
+            echo "Error: " . $sql2 . "" . mysqli_error($conn);
+        }
+    }
+    // Cerramos la conexión
+    $conn->close();
 }
 ?>
 <!DOCTYPE html>
@@ -107,11 +193,8 @@ if (!isset($_SESSION['cargo']) == 1) {
 
                         <div class="body">
                             <?php
-                            function connect()
-                            {
-                                return new mysqli("localhost", "root", "", "vetdog");
-                            }
-                            $con = connect();
+                            $db = new Database();
+                            $con = $db -> getMysqli();
                             $id = $_GET['id'];
                             $sql = "SELECT q.id, u.id, u.dni, u.nombre, p.id_tiM, p.noTiM, s.id_servi, 
                                     s.nomser, q.title, q.nommas, q.dueno,  q.color, q.start, q.end, q.estado, q.precio 
@@ -147,14 +230,9 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                 <select class="form-control show-tick" name="id_vet" id="vete">
                                                     <option value="<?php echo $d->id; ?>"><?php echo $d->nombre; ?></option>
                                                     <?php
-                                                    $dbhost = 'localhost';
-                                                    $dbname = 'vetdog';
-                                                    $dbuser = 'root';
-                                                    $dbpass = '';
-
                                                     try {
 
-                                                        $dbcon = new PDO("mysql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
+                                                        $dbcon = $db->open();
                                                         $dbcon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                                     } catch (PDOException $ex) {
 
@@ -179,14 +257,9 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                 <select class="form-control show-tick" name="id_tiM">
                                                     <option value="<?php echo $d->id_tiM; ?>"><?php echo $d->noTiM; ?></option>
                                                     <?php
-                                                    $dbhost = 'localhost';
-                                                    $dbname = 'vetdog';
-                                                    $dbuser = 'root';
-                                                    $dbpass = '';
-
                                                     try {
 
-                                                        $dbcon = new PDO("mysql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
+                                                        $dbcon = $db->open();
                                                         $dbcon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                                     } catch (PDOException $ex) {
 
@@ -214,14 +287,9 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                 <select class="form-control show-tick" name="id_servi">
                                                     <option value="<?php echo $d->id_servi; ?>"><?php echo $d->nomser; ?></option>
                                                     <?php
-                                                    $dbhost = 'localhost';
-                                                    $dbname = 'vetdog';
-                                                    $dbuser = 'root';
-                                                    $dbpass = '';
-
                                                     try {
 
-                                                        $dbcon = new PDO("mysql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
+                                                        $dbcon = $db->open();
                                                         $dbcon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                                     } catch (PDOException $ex) {
 
@@ -357,97 +425,6 @@ if (!isset($_SESSION['cargo']) == 1) {
     <!-- Demo Js -->
 
     <script src="../../assets/js/demo.js"></script>
-
-
-    <!--------------------------------script nuevo----------------------------->
-
-    <?php
-    if (isset($_POST["agregar"])) {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "vetdog";
-
-        // Creamos la conexión
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Revisamos la conexión
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-        $nomcate = $_POST['nomcate'];
-        $estado = $_POST['estado'];
-
-        // Realizamos la consulta para saber si coincide con uno de esos criterios
-        $sql = "select * from category where nomcate='$nomcate'";
-        $result = mysqli_query($conn, $sql);
-    ?>
-
-
-        <?php
-        // Validamos si hay resultados
-        if (mysqli_num_rows($result) > 0) {
-            // Si es mayor a cero imprimimos que ya existe el usuario
-
-            if ($result) {
-        ?>
-
-                <script type="text/javascript">
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Ya existe el registro a agregar!'
-
-                    })
-                </script>
-
-                <?php
-            }
-        } else {
-            // Si no hay resultados, ingresamos el registro a la base de datos
-            $sql2 = "insert into category(nomcate,estado) 
-values ('$nomcate','$estado')";
-
-            if (mysqli_query($conn, $sql2)) {
-
-                if ($sql2) {
-                ?>
-
-                    <script type="text/javascript">
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Agregado correctamente',
-                            showConfirmButton: false,
-                            timer: 1500
-                        }).then(function() {
-                            window.location = "../../folder/categorias";
-                        });
-                    </script>
-
-                <?php
-                } else {
-                ?>
-                    <script type="text/javascript">
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'No se pudo guardar!'
-
-                        })
-                    </script>
-    <?php
-
-                }
-            } else {
-
-                echo "Error: " . $sql2 . "" . mysqli_error($conn);
-            }
-        }
-        // Cerramos la conexión
-        $conn->close();
-    }
-    ?>
 
 </body>
 

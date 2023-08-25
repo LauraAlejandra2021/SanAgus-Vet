@@ -1,4 +1,5 @@
 ﻿<?php
+include __DIR__ . '../../../assets/db/config.php';
 session_start();
 
 if (!isset($_SESSION['cargo']) == 1) {
@@ -194,7 +195,9 @@ if (!isset($_SESSION['cargo']) == 1) {
                             <div class="table-responsive">
                                 <?php
                                 try {
-                                    $bdd = new PDO('mysql:host=localhost;dbname=vetdog;charset=utf8', 'root', '');
+                                    $bd = new Database();
+
+                                    $bdd = $bd->open();
                                 } catch (Exception $e) {
                                     die('Error : ' . $e->getMessage());
                                 }
