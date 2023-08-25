@@ -11,16 +11,13 @@ require_once '../../assets/db/config.php';
             $dni_due  = $_POST['dni_due'];
             $nom_due =htmlspecialchars($_POST['nom_due']);
             $ape_due =htmlspecialchars($_POST['ape_due']);
-            $fecnaci = $_POST['fecnaci'];
             $movil = $_POST['movil'];
             $fijo = $_POST['fijo'];
             $correo = $_POST['correo'];
             $direc = $_POST['direc'];
-            $usuario = $_POST['usuario'];
-
            
             
-$sql = "UPDATE owner SET dni_due = '$dni_due', nom_due = '$nom_due', ape_due = '$ape_due', fecnaci = '$fecnaci', movil = '$movil', fijo = '$fijo',correo = '$correo',direc = '$direc',usuario = '$usuario' WHERE  id_due  = '$id'";
+$sql = "UPDATE owner SET dni_due = '$dni_due', nom_due = '$nom_due', ape_due = '$ape_due', movil = '$movil', fijo = '$fijo',correo = '$correo',direc = '$direc' WHERE  id_due  = '$id'";
             //if-else statement in executing our query
             $_SESSION['message'] = ( $db->exec($sql) ) ? 'Cliente actualizado correctamente' : 'No se puso actualizar el cliente';
 
