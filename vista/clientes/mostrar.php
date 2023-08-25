@@ -1,4 +1,6 @@
 ﻿<?php
+include __DIR__ . '../../../assets/db/config.php';
+
 session_start();
 
 if (!isset($_SESSION['cargo']) == 1) {

@@ -1,4 +1,6 @@
 ﻿<?php
+require_once '../../assets/db/config.php';
+
 session_start();
 
 if (!isset($_SESSION['cargo']) == 1) {
@@ -108,11 +110,8 @@ if (!isset($_SESSION['cargo']) == 1) {
 
                         <div class="body">
                             <?php
-                            function connect()
-                            {
-                                return new mysqli("localhost", "root", "", "vetdog");
-                            }
-                            $con = connect();
+                            $db = new Database();
+                            $con = $db->getMysqli();
                             $id = $_GET['id'];
                             $sql = "SELECT * FROM owner  WHERE id_due= '$id'";
                             $query  = $con->query($sql);
