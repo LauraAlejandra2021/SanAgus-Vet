@@ -116,7 +116,7 @@ if (!isset($_SESSION['cargo']) == 1) {
 
                                 <div class="row clearfix">
                                     <div class="col-sm-6">
-                                        <label class="control-label">DNI del cliente<span class="text-danger">*</span></label>
+                                        <label class="control-label">CC del cliente<span class="text-danger">*</span></label>
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <input type="text" name="dni_due" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="8" required class="form-control" placeholder="DNI del cliente..." />
@@ -177,51 +177,6 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                 <input type="text" name="direc" class="form-control" placeholder="Direccion..." />
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <label class="control-label">Usuario<span class="text-danger">*</span></label>
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" name="usuario" required class="form-control" placeholder="Usuario..." />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <label class="control-label">Contraseña<span class="text-danger">*</span></label>
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="password" name="contra" required class="form-control" placeholder="Contraseña..." />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-
-                                        <label class="control-label">Imagen</label>
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="file" id="imagen" name="foto" onchange="readURL(this);" data-toggle="tooltip">
-                                                <img id="blah" src="http://placehold.it/180" alt="your image" style="max-width:90px;" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-5" style="display:none;">
-                                        <select name="estado" class="form-control show-tick">
-
-                                            <option value="1">1</option>
-
-                                        </select>
-                                    </div>
-
-                                    <div class="col-sm-5" style="display:none;">
-                                        <select name="cargo" class="form-control show-tick">
-
-                                            <option value="2">2</option>
-
-                                        </select>
                                     </div>
                                 </div>
 
@@ -298,14 +253,9 @@ if (isset($_POST["agregar"])) {
     $fijo = $_POST['fijo'];
     $correo = $_POST['correo'];
     $direc = $_POST['direc'];
-    $estado = $_POST['estado'];
-    $usuario = $_POST['usuario'];
-    $contra = MD5($_POST['contra']);
-    $cargo = $_POST['cargo'];
-    $foto = $_FILES['foto']['name'];
 
     // Realizamos la consulta para saber si coincide con uno de esos criterios
-    $sql = "select * from owner where dni_due='$dni_due' or movil='$movil' or fijo='$fijo'";
+    $sql = "select * from owner where dni_due='$dni_due' or movil='$movil'";
     $result = mysqli_query($conn, $sql);
 ?>
 
@@ -328,12 +278,9 @@ if (isset($_POST["agregar"])) {
         }
     } else {
         // Si no hay resultados, ingresamos el registro a la base de datos
-        $sql2 = "insert into owner(dni_due,nom_due,ape_due,movil,fijo,correo,direc,estado,usuario,contra,cargo,foto) 
-values ('$dni_due','$nom_due','$ape_due','$movil','$fijo','$correo','$direc','$estado','$usuario',
-'$contra','$cargo','$foto')";
-        $foto = $_FILES['foto'];
+        $sql2 = "insert into owner(dni_due,nom_due,ape_due,movil,fijo,correo,direc) 
+                values ('$dni_due','$nom_due','$ape_due','$movil','$fijo','$correo','$direc')";
 
-        move_uploaded_file($foto['tmp_name'], "../../assets/img/subidas/" . $foto['name']);
         if (mysqli_query($conn, $sql2)) {
 
             if ($sql2) {
