@@ -230,11 +230,6 @@ values ('$nomcate','$estado')";
                                                 <select class="form-control show-tick" name="id_vet" id="vete">
                                                     <option value="<?php echo $d->id; ?>"><?php echo $d->nombre; ?></option>
                                                     <?php
-                                                    $dbhost = 'localhost';
-                                                    $dbname = 'vetdog';
-                                                    $dbuser = 'root';
-                                                    $dbpass = '';
-
                                                     try {
 
                                                         $dbcon = $db->open();
@@ -262,11 +257,6 @@ values ('$nomcate','$estado')";
                                                 <select class="form-control show-tick" name="id_tiM">
                                                     <option value="<?php echo $d->id_tiM; ?>"><?php echo $d->noTiM; ?></option>
                                                     <?php
-                                                    $dbhost = 'localhost';
-                                                    $dbname = 'vetdog';
-                                                    $dbuser = 'root';
-                                                    $dbpass = '';
-
                                                     try {
 
                                                         $dbcon = $db->open();
@@ -297,11 +287,6 @@ values ('$nomcate','$estado')";
                                                 <select class="form-control show-tick" name="id_servi">
                                                     <option value="<?php echo $d->id_servi; ?>"><?php echo $d->nomser; ?></option>
                                                     <?php
-                                                    $dbhost = 'localhost';
-                                                    $dbname = 'vetdog';
-                                                    $dbuser = 'root';
-                                                    $dbpass = '';
-
                                                     try {
 
                                                         $dbcon = $db->open();
