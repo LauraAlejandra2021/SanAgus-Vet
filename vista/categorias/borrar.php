@@ -2,7 +2,7 @@
 	include('../../assets/db/config.php');
 
 	if(isset($_GET['id'])){
-		$database = new Connection();
+		$database = new Database();
 		$db = $database->open();
 		try{
 			$sql = "DELETE FROM category WHERE id_cate = '".$_GET['id']."'";

@@ -6,6 +6,88 @@ session_start();
 if (!isset($_SESSION['cargo']) == 1) {
     header('location: ../pages-login');
 }
+
+if (isset($_POST["agregar"])) {
+    // Creamos la conexión
+    $conn = $db->getMysqli();
+
+    // Revisamos la conexión
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $nomcate = $_POST['nomcate'];
+    $estado = $_POST['estado'];
+
+    // Realizamos la consulta para saber si coincide con uno de esos criterios
+    $sql = "select * from category where nomcate='$nomcate'";
+    $result = mysqli_query($conn, $sql);
+?>
+
+
+    <?php
+    // Validamos si hay resultados
+    if (mysqli_num_rows($result) > 0) {
+        // Si es mayor a cero imprimimos que ya existe el usuario
+
+        if ($result) {
+    ?>
+
+            <script type="text/javascript">
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Ya existe el registro a agregar!'
+
+                })
+            </script>
+
+            <?php
+        }
+    } else {
+        // Si no hay resultados, ingresamos el registro a la base de datos
+        $sql2 = "insert into category(nomcate,estado) 
+values ('$nomcate','$estado')";
+
+        if (mysqli_query($conn, $sql2)) {
+
+            if ($sql2) {
+            ?>
+
+                <script type="text/javascript">
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Agregado correctamente',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(function() {
+                        window.location = "../../folder/categorias";
+                    });
+                </script>
+
+            <?php
+            } else {
+            ?>
+                <script type="text/javascript">
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'No se pudo guardar!'
+
+                    })
+                </script>
+<?php
+
+            }
+        } else {
+
+            echo "Error: " . $sql2 . "" . mysqli_error($conn);
+        }
+    }
+    // Cerramos la conexión
+    $conn->close();
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -192,97 +274,6 @@ if (!isset($_SESSION['cargo']) == 1) {
     <!-- Demo Js -->
 
     <script src="../../assets/js/demo.js"></script>
-
-
-    <!--------------------------------script nuevo----------------------------->
-
-    <?php
-    if (isset($_POST["agregar"])) {        
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "vetdog";
-
-        // Creamos la conexión
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Revisamos la conexión
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-        $nomcate = $_POST['nomcate'];
-        $estado = $_POST['estado'];
-
-        // Realizamos la consulta para saber si coincide con uno de esos criterios
-        $sql = "select * from category where nomcate='$nomcate'";
-        $result = mysqli_query($conn, $sql);
-    ?>
-
-
-        <?php
-        // Validamos si hay resultados
-        if (mysqli_num_rows($result) > 0) {
-            // Si es mayor a cero imprimimos que ya existe el usuario
-
-            if ($result) {
-        ?>
-
-                <script type="text/javascript">
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Ya existe el registro a agregar!'
-
-                    })
-                </script>
-
-                <?php
-            }
-        } else {
-            // Si no hay resultados, ingresamos el registro a la base de datos
-            $sql2 = "insert into category(nomcate,estado) 
-values ('$nomcate','$estado')";
-
-            if (mysqli_query($conn, $sql2)) {
-
-                if ($sql2) {
-                ?>
-
-                    <script type="text/javascript">
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Agregado correctamente',
-                            showConfirmButton: false,
-                            timer: 1500
-                        }).then(function() {
-                            window.location = "../../folder/categorias";
-                        });
-                    </script>
-
-                <?php
-                } else {
-                ?>
-                    <script type="text/javascript">
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'No se pudo guardar!'
-
-                        })
-                    </script>
-    <?php
-
-                }
-            } else {
-
-                echo "Error: " . $sql2 . "" . mysqli_error($conn);
-            }
-        }
-        // Cerramos la conexión
-        $conn->close();
-    }
-    ?>
 
 </body>
 
