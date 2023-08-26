@@ -1,6 +1,6 @@
 ﻿<?php
-session_start();
 require_once '../../assets/db/config.php';
+session_start();
 
 if (!isset($_SESSION['cargo']) == 2) {
     header('location: ../pages-login');
