@@ -1,7 +1,6 @@
 ﻿<?php
-
-session_start();
 require_once '../../assets/db/config.php';
+session_start();
 
 if (!isset($_SESSION['cargo']) == 1) {
     header('location: ../pages-login');
@@ -157,7 +156,6 @@ if (!isset($_SESSION['cargo']) == 1) {
                                         <select class="form-control show-tick" required name="id_prove">
                                             <option value="">-- Seleccione un proveedor --</option>
                                             <?php
-                                            $db = new Database();
                                             $dbcon = $db->open();
                                             $stmt = $dbcon->prepare('SELECT * FROM supplier');
                                             $stmt->execute();
@@ -286,13 +284,9 @@ if (!isset($_SESSION['cargo']) == 1) {
 
     <?php
     if (isset($_POST["agregar"])) {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "vetdog";
-
         // Creamos la conexión
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        $db = new Database();
+        $conn = $db->getMysqli();
 
         // Revisamos la conexión
         if ($conn->connect_error) {

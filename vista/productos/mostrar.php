@@ -1,4 +1,5 @@
 ﻿<?php
+include __DIR__ . '../../../assets/db/config.php';
 session_start();
 
 if (!isset($_SESSION['cargo']) == 1) {
@@ -217,14 +218,11 @@ if (!isset($_SESSION['cargo']) == 1) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <!--------------------------------script edit cate----------------------------->
     <?php
-    if (isset($_POST["update"])) {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "vetdog";
+        if (isset($_POST["update"])) {
 
         // Creamos la conexión
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        $db = new Database();
+        $conn = $db->getMysqli();
 
         // Revisamos la conexión
         if ($conn->connect_error) {
