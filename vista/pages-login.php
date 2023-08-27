@@ -23,22 +23,20 @@ if (isset($_POST['login'])) {
         $mysqli = $db->getMysqli(); // Obtén la conexión mysqli desde common.php
         if ($mysqli) {
             try {
-                $query = 'SELECT id, nombre, usuario, correo, contra, cargo FROM usuarios WHERE usuario = ?';
+                $query = 'SELECT id, nombre, usuario, correo, cargo FROM usuarios WHERE usuario = ? and contra = ?';
                 $stmt = $mysqli->prepare($query);
-                $stmt->bind_param('s', $usuario);
+                $stmt->bind_param('ss', $usuario, $contra);
                 $stmt->execute();
                 $result = $stmt->get_result();
                 $data = $result->fetch_assoc();
 
                 if (!$data) {
-                    $errMsg = "Usuario $usuario no encontrado.";
+                    $errMsg = "los datos estan incorrectos";
                 } else {
-                    if ($contra == $data['contra']) {
                         $_SESSION['id'] = $data['id'];
                         $_SESSION['nombre'] = $data['nombre'];
                         $_SESSION['usuario'] = $data['usuario'];
                         $_SESSION['correo'] = $data['correo'];
-                        $_SESSION['contra'] = $data['contra'];
                         $_SESSION['cargo'] = $data['cargo'];
 
                         if ($_SESSION['cargo'] == 1) {
@@ -52,9 +50,7 @@ if (isset($_POST['login'])) {
                         }
                         // Otros casos de redirección
                         exit;
-                    } else {
-                        $errMsg = 'Contraseña incorrecta.';
-                    }
+                    
                 }
             } catch (Exception $e) {
                 $errMsg = $e->getMessage();
