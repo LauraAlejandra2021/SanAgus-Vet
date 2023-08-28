@@ -1,8 +1,8 @@
 <?php
-    include('../../assets/db/config.php');
+require_once '../../assets/db/config.php';
 
 	if(isset($_GET['id'])){
-		$database = new Connection();
+		$database = new Database();
 		$db = $database->open();
 		try{
 			$sql = "DELETE FROM products WHERE id_prod = '".$_GET['id']."'";
