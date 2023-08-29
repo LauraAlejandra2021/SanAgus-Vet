@@ -10,7 +10,7 @@ if (isset($_POST["agregar"])) {
 
     // Creamos la conexión
     $db = new Database();
-    $conn = $db->getMysqli();;
+    $conn = $db->getMysqli();
 
     // Revisamos la conexión
     if ($conn->connect_error) {
@@ -22,59 +22,59 @@ if (isset($_POST["agregar"])) {
     // Realizamos la consulta para saber si coincide con uno de esos criterios
     $sql = "select * from category where nomcate='$nomcate'";
     $result = mysqli_query($conn, $sql);
-?>
+    ?>
 
-    <?php        
+    <?php
     // Validamos si hay resultados
     if (mysqli_num_rows($result) > 0) {
         // Si es mayor a cero imprimimos que ya existe el usuario
 
         if ($result) {
-    ?>
+            ?>
 
-    <script type="text/javascript">
+            <script type="text/javascript">
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
                     text: 'Ya existe el registro a agregar!'
 
                 })
-    </script>
+            </script>
 
-    <?php
+            <?php
         }
     } else {
         // Si no hay resultados, ingresamos el registro a la base de datos
         $sql2 = "insert into category(nomcate,estado) 
 values ('$nomcate','$estado')";
 
-    if (mysqli_query($conn, $sql2)) {
-        if ($sql2) {
-        ?>
-            <script type="text/javascript">
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Agregado correctamente',
-                    showConfirmButton: false,
-                    timer: 1500
-                }).then(function() {
-                    window.location = "../../folder/categorias";
-                });
-            </script>
+        if (mysqli_query($conn, $sql2)) {
+            if ($sql2) {
+                ?>
+                <script type="text/javascript">
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Agregado correctamente',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(function () {
+                        window.location = "../../folder/categorias";
+                    });
+                </script>
 
-        <?php
-        } else {
-        ?>
-            <script type="text/javascript">
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'No se pudo guardar!'
+                <?php
+            } else {
+                ?>
+                <script type="text/javascript">
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'No se pudo guardar!'
 
-                })
-            </script>
-<?php
+                    })
+                </script>
+                <?php
 
             }
         } else {
@@ -96,7 +96,8 @@ values ('$nomcate','$estado')";
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Vetdog V.1 | Vetdog - Vetdog Admin Template</title>
     <!-- Google Font - Iconos -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+        type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <!-- Bootstrap Select Css -->
     <link href="../../assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
@@ -109,8 +110,12 @@ values ('$nomcate','$estado')";
     <link href="../../css/style.css" rel="stylesheet">
     <link href="../../assets/css/themes/all-themes.css" rel="stylesheet" />
     <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/lll.png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js" integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
+        integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"
+        integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 </head>
@@ -154,7 +159,8 @@ values ('$nomcate','$estado')";
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
                 <a class="navbar-brand" href="../panel-admin/administrador"> VETDOG - DASHBOARD </a>
             </div>
@@ -162,7 +168,8 @@ values ('$nomcate','$estado')";
                 <ul class="nav navbar-nav navbar-right">
 
                     <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i
+                                class="material-icons">search</i></a></li>
                     <!-- #END# Call Search -->
                 </ul>
             </div>
@@ -193,8 +200,8 @@ values ('$nomcate','$estado')";
                             $con = $db->getMysqli();
                             $id = $_GET['id'];
                             $sql = "SELECT products.id_prod, products.codigo, category.id_cate, category.nomcate, products.foto, products.nompro, products.peso, supplier.id_prove, supplier.nomprove, supplier.ruc, supplier.direcc, supplier.tele, supplier.pais, supplier.corre,products.descp, products.preciC, products.precV, products.stock, products.estado, products.fere FROM products INNER JOIN category ON products.id_cate =category.id_cate INNER JOIN supplier ON products.id_prove = supplier.id_prove  WHERE id_prod= '$id'";
-                            $query  = $con->query($sql);
-                            $data =  array();
+                            $query = $con->query($sql);
+                            $data = array();
                             if ($query) {
                                 while ($r = $query->fetch_object()) {
                                     $data[] = $r;
@@ -202,15 +209,19 @@ values ('$nomcate','$estado')";
                             }
 
                             ?>
-                            <?php if (count($data) > 0) : ?>
-                                <?php foreach ($data as $d) : ?>
-                                    <form method="POST" autocomplete="off" action="../../folder/productos?id=<?php echo $d->id_prod; ?>">
+                            <?php if (count($data) > 0): ?>
+                                <?php foreach ($data as $d): ?>
+                                    <form method="POST" autocomplete="off"
+                                        action="../../folder/productos?id=<?php echo $d->id_prod; ?>">
                                         <div class="row clearfix">
                                             <div class="col-sm-4">
                                                 <label class="control-label">Código del producto</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <input type="text" name="codigo" value="<?php echo $d->codigo; ?>" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="8" required class="form-control" placeholder="Código del producto..." />
+                                                        <input type="text" name="codigo" value="<?php echo $d->codigo; ?>"
+                                                            onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+                                                            maxlength="8" required class="form-control"
+                                                            placeholder="Código del producto..." />
                                                     </div>
                                                 </div>
                                             </div>
@@ -219,7 +230,9 @@ values ('$nomcate','$estado')";
                                                 <label class="control-label">Nombre del producto</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <input type="text" name="nompro" value="<?php echo $d->nompro; ?>" required class="form-control" placeholder="Nombre del producto..." />
+                                                        <input type="text" name="nompro" value="<?php echo $d->nompro; ?>"
+                                                            required class="form-control"
+                                                            placeholder="Nombre del producto..." />
                                                     </div>
                                                 </div>
                                             </div>
@@ -227,7 +240,8 @@ values ('$nomcate','$estado')";
                                             <div class="col-sm-5">
                                                 <label class="control-label">Categoria del producto</label>
                                                 <select class="form-control show-tick" name="id_cate">
-                                                    <option value="<?php echo $d->id_cate; ?>"><?php echo $d->nomcate; ?></option>
+                                                    <option value="<?php echo $d->id_cate; ?>"><?php echo $d->nomcate; ?>
+                                                    </option>
                                                     <?php
                                                     $dbcon = $db->open();
                                                     $stmt = $dbcon->prepare('SELECT * FROM category');
@@ -235,9 +249,9 @@ values ('$nomcate','$estado')";
 
                                                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                                         extract($row);
-                                                    ?>
+                                                        ?>
                                                         <option value="<?php echo $id_cate; ?>"><?php echo $nomcate; ?></option>
-                                                    <?php
+                                                        <?php
                                                     }
                                                     ?>
                                                 </select>
@@ -246,7 +260,8 @@ values ('$nomcate','$estado')";
                                             <div class="col-sm-5">
                                                 <label class="control-label">Nombre del proveedor</label>
                                                 <select class="form-control show-tick" name="id_prove">
-                                                    <option value="<?php echo $d->id_prove; ?>"><?php echo $d->nomprove; ?></option>
+                                                    <option value="<?php echo $d->id_prove; ?>"><?php echo $d->nomprove; ?>
+                                                    </option>
                                                     <?php
                                                     $dbcon = $db->open();
                                                     $stmt = $dbcon->prepare('SELECT * FROM supplier');
@@ -254,9 +269,9 @@ values ('$nomcate','$estado')";
 
                                                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                                         extract($row);
-                                                    ?>
+                                                        ?>
                                                         <option value="<?php echo $id_prove; ?>"><?php echo $nomprove; ?></option>
-                                                    <?php
+                                                        <?php
                                                     }
                                                     ?>
                                                 </select>
@@ -266,7 +281,9 @@ values ('$nomcate','$estado')";
                                                 <label class="control-label">Precio compra</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <input type="text" value="<?php echo $d->preciC; ?>" name="preciC" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required class="form-control" placeholder="Precio compra..." />
+                                                        <input type="text" value="<?php echo $d->preciC; ?>" name="preciC"
+                                                            onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+                                                            required class="form-control" placeholder="Precio compra..." />
                                                     </div>
                                                 </div>
                                             </div>
@@ -275,7 +292,9 @@ values ('$nomcate','$estado')";
                                                 <label class="control-label">Precio venta</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <input type="text" name="precV" value="<?php echo $d->precV; ?>" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required class="form-control" placeholder="Precio venta..." />
+                                                        <input type="text" name="precV" value="<?php echo $d->precV; ?>"
+                                                            onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+                                                            required class="form-control" placeholder="Precio venta..." />
                                                     </div>
                                                 </div>
                                             </div>
@@ -284,7 +303,8 @@ values ('$nomcate','$estado')";
                                                 <label class="control-label">Peso del producto</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <input type="text" value="<?php echo $d->peso; ?>" name="peso" maxlength="5" required class="form-control" placeholder="Peso..." />
+                                                        <input type="text" value="<?php echo $d->peso; ?>" name="peso"
+                                                            maxlength="5" required class="form-control" placeholder="Peso..." />
                                                     </div>
                                                 </div>
                                             </div>
@@ -293,7 +313,21 @@ values ('$nomcate','$estado')";
                                                 <label class="control-label">Stock del producto</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <input type="text" value="<?php echo $d->stock; ?>" maxlength="2" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue  = false;" name="stock" required class="form-control" placeholder="Stock..." />
+                                                        <input type="text" value="<?php echo $d->stock; ?>" maxlength="2"
+                                                            onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue  = false;"
+                                                            name="stock" required class="form-control" placeholder="Stock..." />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <label class="control-label">Imagen del producto</label>
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <input type="file" id="imagen" name="foto" onchange="readURL(this);"
+                                                            data-toggle="tooltip">
+                                                        <img id="blah" src="http://placehold.it/180" alt="your image"
+                                                            style="max-width:90px;" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -302,7 +336,9 @@ values ('$nomcate','$estado')";
                                                 <label class="control-label">Descripcion del producto</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <textarea rows="4" name="descp" value="<?php echo $d->descp; ?>" class="form-control no-resize" placeholder="Descripcion..."><?php echo $d->descp; ?></textarea>
+                                                        <textarea rows="4" name="descp" value="<?php echo $d->descp; ?>"
+                                                            class="form-control no-resize"
+                                                            placeholder="Descripcion..."><?php echo $d->descp; ?></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -312,22 +348,25 @@ values ('$nomcate','$estado')";
                                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                                             </div>
                                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                                                <a type="button" href="../../folder/productos" class="btn bg-red"><i class="material-icons">cancel</i> CANCELAR </a>
+                                                <a type="button" href="../../folder/productos" class="btn bg-red"><i
+                                                        class="material-icons">cancel</i> CANCELAR </a>
                                             </div>
                                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                                                <button class="btn bg-green" name="update">ACTUALIZAR<i class="material-icons">save</i></button>
+                                                <button class="btn bg-green" name="update">ACTUALIZAR<i
+                                                        class="material-icons">save</i></button>
                                             </div>
 
                                         </div>
                                     </form>
-                        </div>
-                    <?php endforeach; ?>
+                                </div>
+                            <?php endforeach; ?>
 
-                <?php else : ?>
-                    <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
-                        No hay datos
-                    </span>
-                <?php endif; ?>
+                        <?php else: ?>
+                            <span
+                                class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
+                                No hay datos
+                            </span>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
