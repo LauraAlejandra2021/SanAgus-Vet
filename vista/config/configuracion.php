@@ -1,4 +1,5 @@
 ﻿<?php
+require_once('../../assets/db/config.php');
 session_start();
 
 if (!isset($_SESSION['cargo']) == 1) {
@@ -14,7 +15,8 @@ if (!isset($_SESSION['cargo']) == 1) {
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Vetdog V.1 | Vetdog - Vetdog Admin Template</title>
     <!-- Google Font - Iconos -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+        type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <!-- Bootstrap Select Css -->
     <link href="../../assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
@@ -71,7 +73,8 @@ if (!isset($_SESSION['cargo']) == 1) {
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
                 <a class="navbar-brand" href="../panel-admin/administrador"> VETDOG - DASHBOARD </a>
             </div>
@@ -79,7 +82,8 @@ if (!isset($_SESSION['cargo']) == 1) {
                 <ul class="nav navbar-nav navbar-right">
 
                     <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i
+                                class="material-icons">search</i></a></li>
                     <!-- #END# Call Search -->
                 </ul>
             </div>
@@ -88,7 +92,7 @@ if (!isset($_SESSION['cargo']) == 1) {
     <!-- #Top Bar -->
 
     <!-- Menu -->
-        <?php include_once __DIR__ . '../../menu.php'; ?>
+    <?php include_once __DIR__ . '../../menu.php'; ?>
     <!--============================CONTENIDO DE LA PÁGINA ==========================================================-->
 
     <section class="content">
@@ -107,15 +111,12 @@ if (!isset($_SESSION['cargo']) == 1) {
                             </h2>
                         </div>
                         <?php
-                        function connect()
-                        {
-                            return new mysqli("localhost", "root", "", "vetdog");
-                        }
-                        $con = connect();
+                        $db = new Database();
+                        $con = $db->getMysqli();
 
                         $sql = "SELECT * FROM business";
-                        $query  = $con->query($sql);
-                        $data =  array();
+                        $query = $con->query($sql);
+                        $data = array();
                         if ($query) {
                             while ($r = $query->fetch_object()) {
                                 $data[] = $r;
@@ -123,18 +124,23 @@ if (!isset($_SESSION['cargo']) == 1) {
                         }
 
                         ?>
-                        <?php if (count($data) > 0) : ?>
-                            <?php foreach ($data as $d) : ?>
+                        <?php if (count($data) > 0): ?>
+                            <?php foreach ($data as $d): ?>
 
                                 <div class="body">
-                                    <form method="POST" action="../config/editar?id=<?php echo $d->id_buss; ?>" autocomplete="off" enctype="multipart/form-data">
+                                    <form method="POST" action="../config/editar?id=<?php echo $d->id_buss; ?>"
+                                        autocomplete="off" enctype="multipart/form-data">
                                         <div class="row clearfix">
 
                                             <div class="col-sm-4">
                                                 <label class="control-label">RUC de la empresa</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <input id="codigo_barras" value="<?php echo $d->ruc; ?>" type="text" name="ruc" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="14" required class="form-control" placeholder="Nombre de la empresa..." />
+                                                        <input id="codigo_barras" value="<?php echo $d->ruc; ?>" type="text"
+                                                            name="ruc"
+                                                            onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+                                                            maxlength="14" required class="form-control"
+                                                            placeholder="Nombre de la empresa..." />
                                                     </div>
                                                 </div>
                                             </div>
@@ -143,7 +149,9 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                 <label class="control-label">Nombre de la empresa</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <input value="<?php echo $d->noemp; ?>" type="text" name="noemp" required class="form-control" placeholder="Nombre de la empresa..." />
+                                                        <input value="<?php echo $d->noemp; ?>" type="text" name="noemp"
+                                                            required class="form-control"
+                                                            placeholder="Nombre de la empresa..." />
                                                     </div>
                                                 </div>
                                             </div>
@@ -152,27 +160,31 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                 <label class="control-label">Direccion de la empresa</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <input value="<?php echo $d->direcc; ?>" type="text" name="direcc" required class="form-control" placeholder="Direccion de la empresa..." />
+                                                        <input value="<?php echo $d->direcc; ?>" type="text" name="direcc"
+                                                            required class="form-control"
+                                                            placeholder="Direccion de la empresa..." />
                                                     </div>
                                                 </div>
                                             </div>
-
 
                                             <div class="col-sm-4">
                                                 <label class="control-label">Correo de la empresa</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <input value="<?php echo $d->correo; ?>" type="text" name="correo" required class="form-control" placeholder="Correo de la empresa..." />
+                                                        <input value="<?php echo $d->correo; ?>" type="text" name="correo"
+                                                            required class="form-control"
+                                                            placeholder="Correo de la empresa..." />
                                                     </div>
                                                 </div>
                                             </div>
-
 
                                             <div class="col-sm-4">
                                                 <label class="control-label">Telefono de la empresa</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <input value="<?php echo $d->telef; ?>" type="text" name="telef" required class="form-control" placeholder="Telefono de la empresa..." />
+                                                        <input value="<?php echo $d->telef; ?>" type="text" name="telef"
+                                                            required class="form-control"
+                                                            placeholder="Telefono de la empresa..." />
                                                     </div>
                                                 </div>
                                             </div>
@@ -181,21 +193,25 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                 <label class="control-label">Descripcion de la empresa</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <textarea rows="4" value="<?php echo $d->descp; ?>" name="descp" class="form-control no-resize" placeholder="Descripcion..."><?php echo $d->descp; ?></textarea>
+                                                        <textarea rows="4" value="<?php echo $d->descp; ?>" name="descp"
+                                                            class="form-control no-resize"
+                                                            placeholder="Descripcion..."><?php echo $d->descp; ?></textarea>
                                                     </div>
                                                 </div>
                                             </div>
-
 
                                             <div class="col-sm-4">
                                                 <label class="control-label">Foto de la empresa</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <img src="../../assets/img/subidas/<?php echo $d->foto; ?>" alt="" style="" width="190px" height="200px">
+                                                        <img src="../../assets/img/subidas/<?php echo $d->foto; ?>" alt=""
+                                                            style="" width="190px" height="200px">
                                                         <p style="margin-left:60px;">Antigua</p>
 
-                                                        <input type="file" class="form-control" name="foto" id="imagen" maxlength="256" placeholder="Imagen">
-                                                        <input type="hidden" class="form-control" name="imagenactual" id="imagenactual">
+                                                        <input type="file" class="form-control" name="foto" id="imagen"
+                                                            maxlength="256" placeholder="Imagen">
+                                                        <input type="hidden" class="form-control" name="imagenactual"
+                                                            id="imagenactual">
                                                         <img src="" width="150px" height="120px" id="imagenmuestra">
 
                                                     </div>
@@ -209,13 +225,15 @@ if (!isset($_SESSION['cargo']) == 1) {
                                             </div>
 
                                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                                                <a type="button" href="../panel-admin/administrador" class="btn bg-red"><i class="material-icons">cancel</i> CANCELAR </a>
+                                                <a type="button" href="../panel-admin/administrador" class="btn bg-red"><i
+                                                        class="material-icons">cancel</i> CANCELAR </a>
                                             </div>
 
                                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 
 
-                                                <button class="btn bg-green" name="update">EDITAR<i class="material-icons">save</i></button>
+                                                <button class="btn bg-green" name="update">EDITAR<i
+                                                        class="material-icons">save</i></button>
                                             </div>
 
                                         </div>
@@ -224,8 +242,9 @@ if (!isset($_SESSION['cargo']) == 1) {
 
                             <?php endforeach; ?>
 
-                        <?php else : ?>
-                            <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
+                        <?php else: ?>
+                            <span
+                                class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
                                 No hay datos
                             </span>
                         <?php endif; ?>
@@ -263,22 +282,20 @@ if (!isset($_SESSION['cargo']) == 1) {
     <script src="../../assets/js/demo.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
-
     <!--------------------------------script nuevo----------------------------->
     <script>
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     // Asignamos el atributo src a la tag de imagen
                     $('#imagenmuestra').attr('src', e.target.result);
                 }
                 reader.readAsDataURL(input.files[0]);
             }
         }
-
         // El listener va asignado al input
-        $("#imagen").change(function() {
+        $("#imagen").change(function () {
             readURL(this);
         });
     </script>
