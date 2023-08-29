@@ -332,7 +332,7 @@ values ('$nomcate','$estado')";
                                                     </div>
                                                 </div>
                                             </div>
-
+                                            
                                             <div class="col-sm-12">
                                                 <label class="control-label">Descripcion del producto</label>
                                                 <div class="form-group">
