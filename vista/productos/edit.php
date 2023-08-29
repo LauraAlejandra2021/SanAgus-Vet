@@ -11,7 +11,6 @@ if (isset($_POST["agregar"])) {
     // Creamos la conexión
     $db = new Database();
     $conn = $db->getMysqli();
-    ;
 
     // Revisamos la conexión
     if ($conn->connect_error) {
