@@ -1,4 +1,5 @@
 ﻿<?php
+require_once('../../assets/db/config.php');
 session_start();
 
 if (!isset($_SESSION['cargo']) == 1) {
@@ -14,7 +15,8 @@ if (!isset($_SESSION['cargo']) == 1) {
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Vetdog V.1 | Vetdog - Vetdog Admin Template</title>
     <!-- Google Font - Iconos -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+        type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <!-- Bootstrap Core Css -->
     <link href="../../assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -25,8 +27,6 @@ if (!isset($_SESSION['cargo']) == 1) {
     <link href="../../css/style.css" rel="stylesheet">
     <link href="../../assets/css/themes/all-themes.css" rel="stylesheet" />
     <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/lll.png" />
-
-
 
 </head>
 
@@ -69,7 +69,8 @@ if (!isset($_SESSION['cargo']) == 1) {
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
                 <a class="navbar-brand" href="../panel-admin/administrador"> VETDOG - DASHBOARD </a>
             </div>
@@ -77,7 +78,8 @@ if (!isset($_SESSION['cargo']) == 1) {
                 <ul class="nav navbar-nav navbar-right">
 
                     <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i
+                                class="material-icons">search</i></a></li>
                     <!-- #END# Call Search -->
                 </ul>
             </div>
@@ -86,13 +88,14 @@ if (!isset($_SESSION['cargo']) == 1) {
     <!-- #Top Bar -->
 
     <!-- Menu -->
-        <?php include_once __DIR__ . '../../menu.php'; ?>
+    <?php include_once __DIR__ . '../../menu.php'; ?>
     <!--============================CONTENIDO DE LA PÁGINA ==========================================================-->
 
     <section class="content">
         <div class="container-fluid">
             <div class="alert alert-info">
-                <strong>Estimado usuario!</strong> Los campos remarcados con <span class="text-danger">*</span> son necesarios.
+                <strong>Estimado usuario!</strong> Los campos remarcados con <span class="text-danger">*</span> son
+                necesarios.
             </div>
             <!-- Input -->
             <div class="row clearfix">
@@ -109,41 +112,50 @@ if (!isset($_SESSION['cargo']) == 1) {
                             <form method="POST" autocomplete="off" enctype="multipart/form-data">
                                 <div class="row clearfix">
                                     <div class="col-sm-6">
-                                        <label class="control-label">RUC del proveedor<span class="text-danger">*</span></label>
+                                        <label class="control-label">RUC del proveedor<span
+                                                class="text-danger">*</span></label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" id="documento" name="ruc" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="14" required class="form-control" placeholder="RUC del proveedor..." />
+                                                <input type="text" id="documento" name="ruc"
+                                                    onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+                                                    maxlength="14" required class="form-control"
+                                                    placeholder="RUC del proveedor..." />
                                             </div>
                                         </div>
 
-
-                                        <button type="button" class="btn btn-default" id="buscar"><i class="material-icons">search</i></button>
-
+                                        <button type="button" class="btn btn-default" id="buscar"><i
+                                                class="material-icons">search</i></button>
                                     </div>
 
                                     <div class="col-sm-6">
-                                        <label class="control-label">Nombre del proveedor<span class="text-danger">*</span></label>
+                                        <label class="control-label">Nombre del proveedor<span
+                                                class="text-danger">*</span></label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="nomprove" id="nombre" readonly class="form-control" placeholder="Nombre del proveedor..." />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <label class="control-label">Direccion del proveedor<span class="text-danger">*</span></label>
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" id="direccion" name="direcc" readonly class="form-control" placeholder="Direccion..." />
+                                                <input type="text" name="nomprove" id="nombre" class="form-control"
+                                                    placeholder="Nombre del proveedor..." />
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
-                                        <label class="control-label">Pais del proveedor<span class="text-danger">*</span></label>
+                                        <label class="control-label">Direccion del proveedor<span
+                                                class="text-danger">*</span></label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" id="provincia" name="pais" readonly class="form-control" placeholder="Pais..." />
+                                                <input type="text" id="direccion" name="direcc" class="form-control"
+                                                    placeholder="Direccion..." />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <label class="control-label">Pais del proveedor<span
+                                                class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" id="provincia" name="pais" class="form-control"
+                                                    placeholder="Pais..." />
                                             </div>
                                         </div>
                                     </div>
@@ -152,7 +164,9 @@ if (!isset($_SESSION['cargo']) == 1) {
                                         <label class="control-label">Telefono del proveedor</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="tele" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="9" class="form-control" placeholder="Telefono..." />
+                                                <input type="text" name="tele"
+                                                    onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+                                                    maxlength="10" class="form-control" placeholder="Telefono..." />
                                             </div>
                                         </div>
                                     </div>
@@ -161,7 +175,8 @@ if (!isset($_SESSION['cargo']) == 1) {
                                         <label class="control-label">Correo del proveedor</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="email" name="corre" class="form-control" placeholder="Correo..." />
+                                                <input type="email" name="corre" class="form-control"
+                                                    placeholder="Correo..." />
                                             </div>
                                         </div>
                                     </div>
@@ -180,13 +195,14 @@ if (!isset($_SESSION['cargo']) == 1) {
                                     </div>
 
                                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                                        <a type="button" href="../../folder/proveedores" class="btn bg-red"><i class="material-icons">cancel</i> CANCELAR </a>
+                                        <a type="button" href="../../folder/proveedores" class="btn bg-red"><i
+                                                class="material-icons">cancel</i> CANCELAR </a>
                                     </div>
 
                                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 
-
-                                        <button class="btn bg-green" name="agregar">GUARDAR<i class="material-icons">save</i></button>
+                                        <button class="btn bg-green" name="agregar">GUARDAR<i
+                                                class="material-icons">save</i></button>
                                     </div>
 
                                 </div>
@@ -231,13 +247,9 @@ if (!isset($_SESSION['cargo']) == 1) {
 
     <?php
     if (isset($_POST["agregar"])) {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "vetdog";
-
         // Creamos la conexión
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        $db = new Database();
+        $conn = $db->getMysqli();
 
         // Revisamos la conexión
         if ($conn->connect_error) {
@@ -252,72 +264,67 @@ if (!isset($_SESSION['cargo']) == 1) {
         $estado = $_POST['estado'];
 
         // Realizamos la consulta para saber si coincide con uno de esos criterios
-        $sql = "select * from supplier where ruc='$ruc' or corre='$corre'";
+        $sql = "select * from supplier where ruc='$ruc' or nomprove='$nomprove'";
         $result = mysqli_query($conn, $sql);
-    ?>
-
-
-        <?php
-        // Validamos si hay resultados
-        if (mysqli_num_rows($result) > 0) {
-            // Si es mayor a cero imprimimos que ya existe el usuario
-
-            if ($result) {
         ?>
 
-                <script type="text/javascript">
-                    swal("Oops...!", "Ya existe el registro a agregar!", "error")
-                </script>
+    <?php
+    // Validamos si hay resultados
+    if (mysqli_num_rows($result) > 0) {
+        // Si es mayor a cero imprimimos que ya existe el usuario
 
+        if ($result) {
+            ?>
 
+    <script type="text/javascript">
+        swal("Oops...!", "Ya existe el registro a agregar!", "error")
+    </script>
 
-                <?php
-            }
-        } else {
-            // Si no hay resultados, ingresamos el registro a la base de datos
-            $sql2 = "insert into supplier (nomprove,ruc,direcc,pais,tele,corre,estado) 
+    <?php
+        }
+    } else {
+        // Si no hay resultados, ingresamos el registro a la base de datos
+        $sql2 = "insert into supplier (nomprove,ruc,direcc,pais,tele,corre,estado) 
 values ('$nomprove','$ruc','$direcc','$pais','$tele','$corre','$estado')";
-            if (mysqli_query($conn, $sql2)) {
+        if (mysqli_query($conn, $sql2)) {
 
-                if ($sql2) {
+            if ($sql2) {
                 ?>
+                
+    <script type="text/javascript">
+        swal("¡Registrado!", "Agregado correctamente", "success").then(function () {
+            window.location = "../../folder/proveedores";
+        });
+    </script>
 
-
-                    <script type="text/javascript">
-                        swal("¡Registrado!", "Agregado correctamente", "success").then(function() {
-                            window.location = "../../folder/proveedores";
-                        });
-                    </script>
-
-                <?php
-                } else {
+    <?php
+            } else {
                 ?>
-                    <script type="text/javascript">
-                        swal("Oops...!", "No se pudo guardar!", "error")
-                    </script>
-
+    <script type="text/javascript">
+        swal("Oops...!", "No se pudo guardar!", "error")
+    </script>
 
     <?php
 
-                }
-            } else {
-
-                echo "Error: " . $sql2 . "" . mysqli_error($conn);
             }
+        } else {
+
+            echo "Error: " . $sql2 . "" . mysqli_error($conn);
         }
-        // Cerramos la conexión
-        $conn->close();
+    }
+    // Cerramos la conexión
+    $conn->close();
     }
     ?>
     <script>
-        $('#buscar').click(function() {
+        $('#buscar').click(function () {
             dni = $('#documento').val();
             $.ajax({
                 url: 'consultaRUC',
                 type: 'post',
                 data: 'dni=' + dni,
                 dataType: 'json',
-                success: function(r) {
+                success: function (r) {
                     if (r.numeroDocumento == dni) {
                         $('#nombre').val(r.nombre);
                         $('#direccion').val(r.direccion);
@@ -331,8 +338,6 @@ values ('$nomprove','$ruc','$direcc','$pais','$tele','$corre','$estado')";
             });
         });
     </script>
-
-
 </body>
 
 </html>

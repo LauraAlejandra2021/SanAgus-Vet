@@ -1,4 +1,5 @@
 ﻿<?php
+require_once('../../assets/db/config.php');
 session_start();
 
 if (!isset($_SESSION['cargo']) == 1) {
@@ -27,7 +28,6 @@ if (!isset($_SESSION['cargo']) == 1) {
     <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/lll.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js" integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 
 </head>
 
@@ -105,11 +105,8 @@ if (!isset($_SESSION['cargo']) == 1) {
 
                         <div class="body">
                             <?php
-                            function connect()
-                            {
-                                return new mysqli("localhost", "root", "", "vetdog");
-                            }
-                            $con = connect();
+                            $db = new Database();
+                            $con = $db->getMysqli();
                             $id = $_GET['id'];
                             $sql = "SELECT * FROM supplier  WHERE id_prove= '$id'";
                             $query  = $con->query($sql);
@@ -165,7 +162,7 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                 <label class="control-label">Telefono del proveedor</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <input type="text" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="9" name="tele" value="<?php echo $d->tele; ?>" class="form-control" placeholder="Telefono del proveedor..." />
+                                                        <input type="text" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="10" name="tele" value="<?php echo $d->tele; ?>" class="form-control" placeholder="Telefono del proveedor..." />
                                                     </div>
                                                 </div>
                                             </div>
@@ -244,14 +241,9 @@ if (!isset($_SESSION['cargo']) == 1) {
 
     <?php
     if (isset($_POST["agregar"])) {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "vetdog";
-
         // Creamos la conexión
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
+        $db = new Database();
+        $conn = $db->getMysqli();
         // Revisamos la conexión
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
@@ -263,7 +255,6 @@ if (!isset($_SESSION['cargo']) == 1) {
         $sql = "select * from category where nomcate='$nomcate'";
         $result = mysqli_query($conn, $sql);
     ?>
-
 
         <?php
         // Validamos si hay resultados

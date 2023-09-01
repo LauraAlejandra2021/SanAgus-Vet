@@ -1,4 +1,5 @@
 ﻿<?php
+include __DIR__ . '../../../assets/db/config.php';
 session_start();
 
 if (!isset($_SESSION['cargo']) == 1) {
@@ -13,7 +14,8 @@ if (!isset($_SESSION['cargo']) == 1) {
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Vetdog V.1 | Vetdog - Vetdog Admin Template</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+        type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <!-- Bootstrap Core Css -->
     <link href="../assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -70,7 +72,8 @@ if (!isset($_SESSION['cargo']) == 1) {
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
                 <a class="navbar-brand" href="../vista/panel-admin/administrador"> VETDOG - DASHBOARD </a>
             </div>
@@ -78,7 +81,8 @@ if (!isset($_SESSION['cargo']) == 1) {
                 <ul class="nav navbar-nav navbar-right">
 
                     <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i
+                                class="material-icons">search</i></a></li>
                     <!-- #END# Call Search -->
                 </ul>
             </div>
@@ -87,7 +91,8 @@ if (!isset($_SESSION['cargo']) == 1) {
     <!-- #Top Bar -->
 
     <!-- Menu -->
-        <?php include_once __DIR__ . '../../menu.php'; ?>    <!--=============================================================CONTENIDO DE LA PÁGINA =============================================================-->
+    <?php include_once __DIR__ . '../../menu.php'; ?>
+    <!--=============================================================CONTENIDO DE LA PÁGINA =============================================================-->
     <section class="content">
         <div class="container-fluid">
             <div class="row clearfix">
@@ -121,39 +126,59 @@ if (!isset($_SESSION['cargo']) == 1) {
                                         foreach ($dato as $key => $value) {
                                             foreach ($value as $va) { ?>
                                                 <tr>
-                                                    <td><?php echo $va['id_prove']; ?></td>
-                                                    <td><?php echo $va['ruc']; ?></td>
-                                                    <td><?php echo $va['nomprove']; ?></td>
-                                                    <td><?php echo $va['corre']; ?></td>
-                                                    <td><?php echo $va['direcc']; ?></td>
-                                                    <td><?php echo $va['pais']; ?></td>
+                                                    <td>
+                                                        <?php echo $va['id_prove']; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $va['ruc']; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $va['nomprove']; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $va['corre']; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $va['direcc']; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $va['pais']; ?>
+                                                    </td>
 
-                                                    <td class="text-center"><?php
+                                                    <td class="text-center">
+                                                        <?php
 
                                                         if ($va['estado'] == 1) { ?>
-                                                            <form method="get" action="javascript:activo('<?php echo $va['id_prove']; ?>')">
+                                                            <form method="get"
+                                                                action="javascript:activo('<?php echo $va['id_prove']; ?>')">
 
                                                                 <span class="label label-success">Activo</span>
                                                             </form>
-                                                        <?php  } else { ?>
+                                                        <?php } else { ?>
 
-                                                            <form method="get" action="javascript:inactivo('<?php echo $va['id_prove']; ?>')">
-                                                                <button type="submit" class="btn btn-danger btn-xs">Inactivo</button>
+                                                            <form method="get"
+                                                                action="javascript:inactivo('<?php echo $va['id_prove']; ?>')">
+                                                                <button type="submit"
+                                                                    class="btn btn-danger btn-xs">Inactivo</button>
                                                             </form>
-                                                        <?php  } ?>
+                                                        <?php } ?>
                                                     </td>
 
-                                                    <td class="text-center"><a type="button" href="../vista/proveedores/edit?id=<?php echo $va["id_prove"]; ?>" class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
+                                                    <td class="text-center"><a type="button"
+                                                            href="../vista/proveedores/edit?id=<?php echo $va["id_prove"]; ?>"
+                                                            class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
                                                             <i class="material-icons">edit</i>
                                                         </a>
-                                                        <a type="button" href="../vista/proveedores/borrar?id=<?php echo $va["id_prove"]; ?>" class="btn bg-red btn-circle waves-effect waves-circle waves-float">
+                                                        <a type="button"
+                                                            href="../vista/proveedores/borrar?id=<?php echo $va["id_prove"]; ?>"
+                                                            class="btn bg-red btn-circle waves-effect waves-circle waves-float">
                                                             <i class="material-icons">delete</i>
                                                         </a>
 
 
                                                 </tr>
 
-                                        <?php
+                                                <?php
                                             }
                                         }
                                         ?>
@@ -201,13 +226,9 @@ if (!isset($_SESSION['cargo']) == 1) {
     <!--------------------------------script edit cate----------------------------->
     <?php
     if (isset($_POST["update"])) {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "vetdog";
-
         // Creamos la conexión
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        $db = new Database();
+        $conn = $db->getMysqli();
 
         // Revisamos la conexión
         if ($conn->connect_error) {
@@ -222,59 +243,58 @@ if (!isset($_SESSION['cargo']) == 1) {
         $tele = $_POST['tele'];
         $corre = $_POST['corre'];
 
-
         // Realizamos la consulta para saber si coincide con uno de esos criterios
-
-        $result = mysqli_query($conn);
-    ?>
-
-
-        <?php
-        // Validamos si hay resultados
-        if (mysqli_num_rows($result) > 0) {
-            // Si es mayor a cero imprimimos que ya existe el usuario
-
-            if ($result) {
+        $sql = "UPDATE supplier SET id_prove = '$id_prove',nomprove = '$nomprove',ruc = '$ruc',direcc = '$direcc',pais = '$pais',tele = '$tele',corre = '$corre', estado = '$estado' WHERE  id_prove  = '$id_prove'";
+        $result = mysqli_query($conn, $sql);
         ?>
 
-                <script type="text/javascript">
-                    swal("Oops...!", "Ya existe el registro a agregar!", "error")
-                </script>
 
-                <?php
-            }
-        } else {
-            // Si no hay resultados, ingresamos el registro a la base de datos
-            $sql2 = "update supplier set nomprove='$nomprove',ruc='$ruc',direcc='$direcc',pais='$pais',tele='$tele',corre='$corre' where id_prove='$id'";
+    <?php
+    // Validamos si hay resultados
+    if (mysqli_num_rows($result) > 0) {
+        // Si es mayor a cero imprimimos que ya existe el usuario
+
+        if ($result) {
+            ?>
+
+    <script type="text/javascript">
+        swal("Oops...!", "Ya existe el registro a agregar!", "error")
+    </script>
+
+    <?php
+        }
+    } else {
+        // Si no hay resultados, ingresamos el registro a la base de datos
+        $sql2 = "update supplier set nomprove='$nomprove',ruc='$ruc',direcc='$direcc',pais='$pais',tele='$tele',corre='$corre' where id_prove='$id'";
 
 
-            if (mysqli_query($conn, $sql2)) {
+        if (mysqli_query($conn, $sql2)) {
 
-                if ($sql2) {
+            if ($sql2) {
                 ?>
 
-                    <script type="text/javascript">
-                        swal("¡Update!", "Actualizado correctamente", "success").then(function() {
-                            window.location = "proveedores";
-                        });
-                    </script>
+    <script type="text/javascript">
+        swal("¡Update!", "Actualizado correctamente", "success").then(function () {
+            window.location = "proveedores";
+        });
+    </script>
 
-                <?php
-                } else {
+    <?php
+            } else {
                 ?>
-                    <script type="text/javascript">
-                        swal("Oops...!", "No se pudo guardar!", "error")
-                    </script>
+    <script type="text/javascript">
+        swal("Oops...!", "No se pudo guardar!", "error")
+    </script>
     <?php
 
-                }
-            } else {
-
-                echo "Error: " . $sql2 . "" . mysqli_error($conn);
             }
+        } else {
+
+            echo "Error: " . $sql2 . "" . mysqli_error($conn);
         }
-        // Cerramos la conexión
-        $conn->close();
+    }
+    // Cerramos la conexión
+    $conn->close();
     }
     ?>
 </body>
