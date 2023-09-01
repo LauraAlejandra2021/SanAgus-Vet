@@ -123,8 +123,7 @@ foreach($results as $rowq)
 }
 
 foreach(explode('__', $row['products']) as $articulosConcatenados){ 
-    $products = explode("..", $articulosConcatenados)
-
+    $products = explode("..", $articulosConcatenados);
     $pdf->Cell($w[0],6,$products['0'],1);
 
 }

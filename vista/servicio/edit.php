@@ -1,4 +1,5 @@
 ﻿<?php
+require_once('../../assets/db/config.php');
 session_start();
 
 if (!isset($_SESSION['cargo']) == 1) {
@@ -105,11 +106,8 @@ if (!isset($_SESSION['cargo']) == 1) {
 
                         <div class="body">
                             <?php
-                            function connect()
-                            {
-                                return new mysqli("localhost", "root", "", "vetdog");
-                            }
-                            $con = connect();
+                            $db = new Database();
+                            $con = $db->getMysqli();
                             $id = $_GET['id'];
                             $sql = "SELECT * FROM service  WHERE id_servi= '$id'";
                             $query  = $con->query($sql);
@@ -119,7 +117,6 @@ if (!isset($_SESSION['cargo']) == 1) {
                                     $data[] = $r;
                                 }
                             }
-
                             ?>
                             <?php if (count($data) > 0) : ?>
                                 <?php foreach ($data as $d) : ?>
@@ -144,8 +141,6 @@ if (!isset($_SESSION['cargo']) == 1) {
                                             </div>
 
                                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-
-
                                                 <button class="btn bg-green" name="update">ACTUALIZAR<i class="material-icons">save</i></button>
                                             </div>
 
@@ -192,10 +187,6 @@ if (!isset($_SESSION['cargo']) == 1) {
     <!-- Demo Js -->
 
     <script src="../../assets/js/demo.js"></script>
-
-
-    <!--------------------------------script nuevo----------------------------->
-
 </body>
 
 </html>

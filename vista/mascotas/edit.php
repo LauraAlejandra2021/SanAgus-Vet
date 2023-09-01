@@ -1,4 +1,5 @@
 ﻿<?php
+require_once('../../assets/db/config.php');
 session_start();
 
 if (!isset($_SESSION['cargo']) == 1) {
@@ -106,11 +107,8 @@ if (!isset($_SESSION['cargo']) == 1) {
 
                         <div class="body">
                             <?php
-                            function connect()
-                            {
-                                return new mysqli("localhost", "root", "", "vetdog");
-                            }
-                            $con = connect();
+                            $db = new Database();
+                            $con = $db->getMysqli();
                             $id = $_GET['id'];
                             $sql = "SELECT pet.id_pet, pet.nomas, pet_type.id_tiM, pet_type.noTiM, raza.id_raza, raza.nomraza, pet.sexo, pet.edad, pet.tamano, pet.peso, owner.id_due, owner.dni_due, owner.nom_due, owner.ape_due, owner.fecnaci, owner.movil, owner.fijo, owner.correo, owner.direc, pet.obser, pet.estado, pet.fere FROM pet INNER JOIN pet_type ON pet.id_tiM =  pet_type.id_tiM INNER JOIN raza ON pet.id_raza =raza.id_raza INNER JOIN owner ON pet.id_due = owner.id_due  WHERE id_pet= '$id'";
                             $query  = $con->query($sql);
@@ -162,14 +160,8 @@ if (!isset($_SESSION['cargo']) == 1) {
                                                         <select class="form-control show-tick" name="id_due">
                                                             <option value="<?php echo $d->id_due; ?>"><?php echo $d->nom_due; ?></option>
                                                             <?php
-                                                            $dbhost = 'localhost';
-                                                            $dbname = 'vetdog';
-                                                            $dbuser = 'root';
-                                                            $dbpass = '';
-
                                                             try {
-
-                                                                $dbcon = new PDO("mysql:host={$dbhost};dbname={$dbname}", $dbuser, $dbpass);
+                                                                $dbcon = $db->open();
                                                                 $dbcon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                                             } catch (PDOException $ex) {
 
@@ -278,11 +270,6 @@ if (!isset($_SESSION['cargo']) == 1) {
     <!-- Demo Js -->
 
     <script src="../../assets/js/demo.js"></script>
-
-
-    <!--------------------------------script nuevo----------------------------->
-
-
 
 </body>
 
