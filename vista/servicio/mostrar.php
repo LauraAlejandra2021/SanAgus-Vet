@@ -1,4 +1,5 @@
 ﻿<?php
+include __DIR__ . '../../../assets/db/config.php';
 session_start();
 
 if (!isset($_SESSION['cargo']) == 1) {
@@ -201,28 +202,20 @@ if (!isset($_SESSION['cargo']) == 1) {
     <!--------------------------------script edit cate----------------------------->
     <?php
     if (isset($_POST["update"])) {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "vetdog";
-
         // Creamos la conexión
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        $db = new Database();
+        $conn = $db->getMysqli();
 
         // Revisamos la conexión
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
         $id = $_GET['id'];
-
         $nomcate = $_POST['nomcate'];
 
-
         // Realizamos la consulta para saber si coincide con uno de esos criterios
-
         $result = mysqli_query($conn);
     ?>
-
 
         <?php
         // Validamos si hay resultados

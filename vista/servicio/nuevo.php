@@ -1,4 +1,5 @@
 ﻿<?php
+require_once('../../assets/db/config.php');
 session_start();
 
 if (!isset($_SESSION['cargo']) == 1) {
@@ -25,8 +26,6 @@ if (!isset($_SESSION['cargo']) == 1) {
     <link href="../../css/style.css" rel="stylesheet">
     <link href="../../assets/css/themes/all-themes.css" rel="stylesheet" />
     <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/lll.png" />
-
-
 
 </head>
 
@@ -179,13 +178,9 @@ if (!isset($_SESSION['cargo']) == 1) {
 
     <?php
     if (isset($_POST["agregar"])) {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "vetdog";
-
         // Creamos la conexión
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        $db = new Database();
+        $conn = $db->getMysqli();
 
         // Revisamos la conexión
         if ($conn->connect_error) {
@@ -224,14 +219,11 @@ values ('$nomser','$estado')";
                 if ($sql2) {
                 ?>
 
-
-
                     <script type="text/javascript">
                         swal("¡Registrado!", "Agregado correctamente", "success").then(function() {
                             window.location = "../../folder/servicio";
                         });
                     </script>
-
 
                 <?php
                 } else {
@@ -253,5 +245,4 @@ values ('$nomser','$estado')";
     ?>
 
 </body>
-
 </html>
