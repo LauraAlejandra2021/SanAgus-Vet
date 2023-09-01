@@ -9,7 +9,7 @@ class Modelo{
       $this->db=new PDO('mysql:host=localhost;dbname=vetdog',"root","");
   }
   public function mostrar($tabla,$condicion){
-      $consulta="SELECT venta.id_venta,venta.fecha, venta.estado, owner.id_due, owner.dni_due, owner.nom_due, owner.ape_due, owner.fecnaci, owner.movil, owner.fijo, owner.correo, owner.direc, venta.total, venta.tipoc, venta.tipopa, venta.numtarj, venta.nomtarj FROM venta INNER JOIN owner ON venta.id_due  =  owner.id_due";
+      $consulta="SELECT venta.id_venta,venta.fecha, venta.estado, owner.id_due, owner.dni_due, owner.nom_due, owner.ape_due, owner.movil, owner.fijo, owner.correo, owner.direc, venta.total, venta.tipoc, venta.tipopa, venta.numtarj, venta.nomtarj FROM venta INNER JOIN owner ON venta.id_due  =  owner.id_due";
 
       $resultado=$this->db->query($consulta);
       while ($tabla=$resultado->fetchAll(PDO::FETCH_ASSOC)) {

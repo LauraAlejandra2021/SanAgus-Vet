@@ -65,7 +65,7 @@ $db = new dbConexion();
 $connString = $db->getConexion();
 $display_heading = array('canti'=>'UNIDADES', 'nompro'=> 'PRODUCTOS', 'preciC'=> 'PRECIO UNIT');
 
-$result = mysqli_query($connString, "SELECT  venta.fecha,venta.numfact, venta.id_venta,venta.estado, venta.total,venta.tipoc, venta.tipopa, owner.id_due, owner.dni_due, owner.nom_due, owner.ape_due, owner.fecnaci, owner.movil, owner.fijo, owner.correo, owner.direc,venta.numtarj, venta.typetarj, venta.nomtarj, venta.expmon, venta.expyear, venta.cvc, venta.recibir , venta.cambio,
+$result = mysqli_query($connString, "SELECT  venta.fecha,venta.numfact, venta.id_venta,venta.estado, venta.total,venta.tipoc, venta.tipopa, owner.id_due, owner.dni_due, owner.nom_due, owner.ape_due, owner.movil, owner.fijo, owner.correo, owner.direc,venta.numtarj, venta.typetarj, venta.nomtarj, venta.expmon, venta.expyear, venta.cvc, venta.recibir , venta.cambio,
 GROUP_CONCAT( products.nompro, '..', products.codigo, '..',products.precV, '..', productos_vendidos.canti SEPARATOR '__') AS products FROM venta INNER JOIN productos_vendidos ON productos_vendidos.id_venta = venta.id_venta INNER JOIN products ON products.id_prod = productos_vendidos.id_prod INNER JOIN owner ON venta.id_due =owner.id_due  WHERE venta.id_venta= '$id' GROUP BY venta.id_venta ORDER BY venta.id_venta") or die("database error:". mysqli_error($connString));
 $header = mysqli_query($connString, "SHOW columns FROM venta");
 
