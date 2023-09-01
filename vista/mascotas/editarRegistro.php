@@ -16,7 +16,7 @@ if (isset($_POST['update'])) {
         $peso = $_POST['peso'];
         $obser = $_POST['obser'];
 
-        $sql = "UPDATE pet SET nomas = '$nomas',sexo = '$sexo',edad = '$edad',id_due = '$id_due',tamano = '$tamano',peso = '$peso',obser = '$obser' WHERE  id_pet  = '$id'";
+        $sql = "UPDATE pet SET nomas = '$nomas',sexo = '$sexo',edad = '$edad',id_due = '$id_due',tamano = '$tamano',peso = '$peso',obser = '$obser' WHERE  id_pet  = '$id_pet'";
         //if-else statement in executing our query
         $_SESSION['message'] = ($db->exec($sql)) ? 'Mascota actualizado correctamente' : 'No se puso actualizar ñla mascota';
 

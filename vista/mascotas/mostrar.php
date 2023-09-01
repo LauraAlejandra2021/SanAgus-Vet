@@ -238,7 +238,7 @@ if (!isset($_SESSION['cargo']) == 1) {
         $nomcate = $_POST['nomcate'];
 
         // Realizamos la consulta para saber si coincide con uno de esos criterios
-        $sql = "UPDATE pet SET nomas = '$nomas',sexo = '$sexo',edad = '$edad',id_due = '$id_due',tamano = '$tamano',peso = '$peso',obser = '$obser' WHERE  id_pet  = '$id'";
+        $sql = "UPDATE pet SET nomas = '$nomas',sexo = '$sexo',edad = '$edad',id_due = '$id_due',tamano = '$tamano',peso = '$peso',obser = '$obser' WHERE  id_pet  = '$id_pet'";
         $result = mysqli_query($conn,$sql);
         ?>
 
