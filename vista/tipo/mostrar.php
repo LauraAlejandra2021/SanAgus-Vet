@@ -218,7 +218,8 @@ if (!isset($_SESSION['cargo']) == 1) {
 
         // Realizamos la consulta para saber si coincide con uno de esos criterios
 
-        $result = mysqli_query($conn);
+        $sql = "update pet_type set noTiM='$noTiM'where id_tiM='$id_tiM'";
+        $result = mysqli_query($conn, $sql);
     ?>
 
 
@@ -226,7 +227,6 @@ if (!isset($_SESSION['cargo']) == 1) {
         // Validamos si hay resultados
         if (mysqli_num_rows($result) > 0) {
             // Si es mayor a cero imprimimos que ya existe el usuario
-
             if ($result) {
         ?>
 
