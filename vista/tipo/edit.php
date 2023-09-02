@@ -1,4 +1,5 @@
 ﻿<?php
+require_once('../../assets/db/config.php');
 session_start();
 
 if (!isset($_SESSION['cargo']) == 1) {
@@ -14,7 +15,8 @@ if (!isset($_SESSION['cargo']) == 1) {
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Vetdog V.1 | Vetdog - Vetdog Admin Template</title>
     <!-- Google Font - Iconos -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+        type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <!-- Bootstrap Core Css -->
     <link href="../../assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -25,8 +27,12 @@ if (!isset($_SESSION['cargo']) == 1) {
     <link href="../../css/style.css" rel="stylesheet">
     <link href="../../assets/css/themes/all-themes.css" rel="stylesheet" />
     <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/lll.png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js" integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
+        integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"
+        integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 </head>
@@ -70,7 +76,8 @@ if (!isset($_SESSION['cargo']) == 1) {
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
                 <a class="navbar-brand" href="../panel-admin/administrador"> VETDOG - DASHBOARD </a>
             </div>
@@ -78,7 +85,8 @@ if (!isset($_SESSION['cargo']) == 1) {
                 <ul class="nav navbar-nav navbar-right">
 
                     <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i
+                                class="material-icons">search</i></a></li>
                     <!-- #END# Call Search -->
                 </ul>
             </div>
@@ -87,7 +95,7 @@ if (!isset($_SESSION['cargo']) == 1) {
     <!-- #Top Bar -->
 
     <!-- Menu -->
-        <?php include_once __DIR__ . '../../menu.php'; ?>
+    <?php include_once __DIR__ . '../../menu.php'; ?>
     <!--============================CONTENIDO DE LA PÁGINA ==========================================================-->
 
     <section class="content">
@@ -105,15 +113,13 @@ if (!isset($_SESSION['cargo']) == 1) {
 
                         <div class="body">
                             <?php
-                            function connect()
-                            {
-                                return new mysqli("localhost", "root", "", "vetdog");
-                            }
-                            $con = connect();
+                            $db = new Database();
+                            $conn = $db->getMysqli();
+
                             $id = $_GET['id'];
                             $sql = "SELECT * FROM pet_type  WHERE id_tiM= '$id'";
-                            $query  = $con->query($sql);
-                            $data =  array();
+                            $query = $con->query($sql);
+                            $data = array();
                             if ($query) {
                                 while ($r = $query->fetch_object()) {
                                     $data[] = $r;
@@ -121,15 +127,16 @@ if (!isset($_SESSION['cargo']) == 1) {
                             }
 
                             ?>
-                            <?php if (count($data) > 0) : ?>
-                                <?php foreach ($data as $d) : ?>
+                            <?php if (count($data) > 0): ?>
+                                <?php foreach ($data as $d): ?>
                                     <form method="POST" autocomplete="off" action="editarRegistro?id=<?php echo $d->id_tiM; ?>">
                                         <div class="row clearfix">
                                             <div class="col-sm-12">
                                                 <label class="control-label">Nombre del tipo</label>
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <input type="text" name="noTiM" value="<?php echo $d->noTiM; ?>" class="form-control" placeholder="Nombre del tipo..." />
+                                                        <input type="text" name="noTiM" value="<?php echo $d->noTiM; ?>"
+                                                            class="form-control" placeholder="Nombre del tipo..." />
                                                     </div>
                                                 </div>
                                             </div>
@@ -140,25 +147,28 @@ if (!isset($_SESSION['cargo']) == 1) {
                                             </div>
 
                                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                                                <a type="button" href="../../folder/tipo" class="btn bg-red"><i class="material-icons">cancel</i> CANCELAR </a>
+                                                <a type="button" href="../../folder/tipo" class="btn bg-red"><i
+                                                        class="material-icons">cancel</i> CANCELAR </a>
                                             </div>
 
                                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 
 
-                                                <button class="btn bg-green" name="update">ACTUALIZAR<i class="material-icons">save</i></button>
+                                                <button class="btn bg-green" name="update">ACTUALIZAR<i
+                                                        class="material-icons">save</i></button>
                                             </div>
 
                                         </div>
                                     </form>
-                        </div>
-                    <?php endforeach; ?>
+                                </div>
+                            <?php endforeach; ?>
 
-                <?php else : ?>
-                    <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
-                        No hay datos
-                    </span>
-                <?php endif; ?>
+                        <?php else: ?>
+                            <span
+                                class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
+                                No hay datos
+                            </span>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -198,13 +208,10 @@ if (!isset($_SESSION['cargo']) == 1) {
 
     <?php
     if (isset($_POST["agregar"])) {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "vetdog";
 
         // Creamos la conexión
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        $db = new Database();
+        $conn = $db ->getMysqli();
 
         // Revisamos la conexión
         if ($conn->connect_error) {
@@ -216,71 +223,71 @@ if (!isset($_SESSION['cargo']) == 1) {
         // Realizamos la consulta para saber si coincide con uno de esos criterios
         $sql = "select * from category where nomcate='$nomcate'";
         $result = mysqli_query($conn, $sql);
-    ?>
-
-
-        <?php
-        // Validamos si hay resultados
-        if (mysqli_num_rows($result) > 0) {
-            // Si es mayor a cero imprimimos que ya existe el usuario
-
-            if ($result) {
         ?>
 
-                <script type="text/javascript">
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Ya existe el registro a agregar!'
 
-                    })
-                </script>
+    <?php
+    // Validamos si hay resultados
+    if (mysqli_num_rows($result) > 0) {
+        // Si es mayor a cero imprimimos que ya existe el usuario
 
-                <?php
-            }
-        } else {
-            // Si no hay resultados, ingresamos el registro a la base de datos
-            $sql2 = "insert into category(nomcate,estado) 
+        if ($result) {
+            ?>
+
+    <script type="text/javascript">
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ya existe el registro a agregar!'
+
+        })
+    </script>
+
+    <?php
+        }
+    } else {
+        // Si no hay resultados, ingresamos el registro a la base de datos
+        $sql2 = "insert into category(nomcate,estado) 
 values ('$nomcate','$estado')";
 
-            if (mysqli_query($conn, $sql2)) {
+        if (mysqli_query($conn, $sql2)) {
 
-                if ($sql2) {
+            if ($sql2) {
                 ?>
 
-                    <script type="text/javascript">
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Agregado correctamente',
-                            showConfirmButton: false,
-                            timer: 1500
-                        }).then(function() {
-                            window.location = "../../folder/categorias";
-                        });
-                    </script>
+    <script type="text/javascript">
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Agregado correctamente',
+            showConfirmButton: false,
+            timer: 1500
+        }).then(function () {
+            window.location = "../../folder/categorias";
+        });
+    </script>
 
-                <?php
-                } else {
+    <?php
+            } else {
                 ?>
-                    <script type="text/javascript">
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'No se pudo guardar!'
+    <script type="text/javascript">
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No se pudo guardar!'
 
-                        })
-                    </script>
+        })
+    </script>
     <?php
 
-                }
-            } else {
-
-                echo "Error: " . $sql2 . "" . mysqli_error($conn);
             }
+        } else {
+
+            echo "Error: " . $sql2 . "" . mysqli_error($conn);
         }
-        // Cerramos la conexión
-        $conn->close();
+    }
+    // Cerramos la conexión
+    $conn->close();
     }
     ?>
 
