@@ -1,6 +1,8 @@
 <?php
+require_once('../../assets/db/config.php');
 
-$conexion = mysqli_connect("localhost","root","","vetdog");
+$db = new Database();
+$conexion = $db->getMysqli();
 
 $query = $conexion->query("SELECT * FROM owner");
 
@@ -10,3 +12,4 @@ while ( $row = $query->fetch_assoc() )
 {
 	echo '<option value="' . $row['id_due']. '">' . $row['nom_due'] . '</option>' . "\n";
 }
+?>
