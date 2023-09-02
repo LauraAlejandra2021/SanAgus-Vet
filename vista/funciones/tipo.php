@@ -1,17 +1,12 @@
 <?php
-
-
-
-$conexion = mysqli_connect("localhost","root","","vetdog");
+require_once('../../assets/db/config.php');
+$db = new Database();
+$conexion = $db->getMysqli();
 
 $query = $conexion->query("SELECT * FROM pet_type");
 
-while ( $row = $query->fetch_assoc() )
-{
-	echo '<option value="' . $row['id_tiM']. '">' . $row['noTiM'] . '</option>' . "\n";
+while ($row = $query->fetch_assoc()) {
+	echo '<option value="' . $row['id_tiM'] . '">' . $row['noTiM'] . '</option>' . "\n";
 
 }
-
-
-
 ?>
