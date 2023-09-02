@@ -1,4 +1,5 @@
 ﻿<?php
+include __DIR__ . '../../../assets/db/config.php';
 session_start();
 
 if (!isset($_SESSION['cargo']) == 1) {
@@ -13,7 +14,8 @@ if (!isset($_SESSION['cargo']) == 1) {
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Vetdog V.1 | Vetdog - Vetdog Admin Template</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+        type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <!-- Bootstrap Core Css -->
     <link href="../assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -70,7 +72,8 @@ if (!isset($_SESSION['cargo']) == 1) {
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
                 <a class="navbar-brand" href="../vista/panel-admin/administrador"> VETDOG - DASHBOARD </a>
             </div>
@@ -78,7 +81,8 @@ if (!isset($_SESSION['cargo']) == 1) {
                 <ul class="nav navbar-nav navbar-right">
 
                     <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i
+                                class="material-icons">search</i></a></li>
                     <!-- #END# Call Search -->
                 </ul>
             </div>
@@ -87,7 +91,7 @@ if (!isset($_SESSION['cargo']) == 1) {
     <!-- #Top Bar -->
 
     <!-- Menu -->
-        <?php include_once __DIR__ . '../../menu.php'; ?>    
+    <?php include_once __DIR__ . '../../menu.php'; ?>
     <!--=============================================================CONTENIDO DE LA PÁGINA =============================================================-->
     <section class="content">
         <div class="container-fluid">
@@ -113,7 +117,6 @@ if (!isset($_SESSION['cargo']) == 1) {
                                             <th>Nº</th>
                                             <th>NOMBRE</th>
                                             <th>TIPO</th>
-
                                             <th>ESTADO</th>
                                             <th>ACCIONES</th>
 
@@ -125,37 +128,47 @@ if (!isset($_SESSION['cargo']) == 1) {
                                         foreach ($dato as $key => $value) {
                                             foreach ($value as $va) { ?>
                                                 <tr>
-                                                    <td><?php echo $va['id_raza']; ?></td>
-                                                    <td><?php echo $va['nomraza']; ?></td>
-                                                    <td><?php echo $va['noTiM']; ?></td>
+                                                    <td>
+                                                        <?php echo $va['id_raza']; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $va['nomraza']; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $va['noTiM']; ?>
+                                                    </td>
 
-
-                                                    <td class="text-center"><?php
+                                                    <td class="text-center">
+                                                        <?php
 
                                                         if ($va['estado'] == 1) { ?>
-                                                            <form method="get" action="javascript:activo('<?php echo $va['id_raza']; ?>')">
+                                                            <form method="get"
+                                                                action="javascript:activo('<?php echo $va['id_raza']; ?>')">
 
                                                                 <span class="label label-success">Activo</span>
                                                             </form>
-                                                        <?php  } else { ?>
+                                                        <?php } else { ?>
 
-                                                            <form method="get" action="javascript:inactivo('<?php echo $va['id_raza']; ?>')">
-                                                                <button type="submit" class="btn btn-danger btn-xs">Inactivo</button>
+                                                            <form method="get"
+                                                                action="javascript:inactivo('<?php echo $va['id_raza']; ?>')">
+                                                                <button type="submit"
+                                                                    class="btn btn-danger btn-xs">Inactivo</button>
                                                             </form>
-                                                        <?php  } ?>
+                                                        <?php } ?>
                                                     </td>
 
-                                                    <td class="text-center"><a type="button" href="../vista/raza/edit?id=<?php echo $va["id_raza"]; ?>" class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
+                                                    <td class="text-center"><a type="button"
+                                                            href="../vista/raza/edit?id=<?php echo $va["id_raza"]; ?>"
+                                                            class="btn bg-blue btn-circle waves-effect waves-circle waves-float">
                                                             <i class="material-icons">edit</i>
                                                         </a>
-                                                        <a type="button" href="../vista/raza/borrar?id=<?php echo $va["id_raza"]; ?>" class="btn bg-red btn-circle waves-effect waves-circle waves-float">
+                                                        <a type="button"
+                                                            href="../vista/raza/borrar?id=<?php echo $va["id_raza"]; ?>"
+                                                            class="btn bg-red btn-circle waves-effect waves-circle waves-float">
                                                             <i class="material-icons">delete</i>
                                                         </a>
-
-
                                                 </tr>
-
-                                        <?php
+                                                <?php
                                             }
                                         }
                                         ?>
