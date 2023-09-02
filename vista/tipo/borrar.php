@@ -1,5 +1,5 @@
 <?php
-require_once ('../../assets/db/config.php');
+require_once('../../assets/db/config.php');
 session_start();
 
 if (isset($_GET['id'])) {

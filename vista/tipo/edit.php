@@ -34,7 +34,6 @@ if (!isset($_SESSION['cargo']) == 1) {
         integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-
 </head>
 
 <body class="theme-red">
@@ -114,7 +113,7 @@ if (!isset($_SESSION['cargo']) == 1) {
                         <div class="body">
                             <?php
                             $db = new Database();
-                            $conn = $db->getMysqli();
+                            $con = $db->getMysqli();
 
                             $id = $_GET['id'];
                             $sql = "SELECT * FROM pet_type  WHERE id_tiM= '$id'";

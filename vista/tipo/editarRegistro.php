@@ -1,5 +1,5 @@
 <?php
-require_once ('../../assets/db/config.php');
+require_once('../../assets/db/config.php');
 session_start();
 
 if (isset($_POST['update'])) {
@@ -7,8 +7,6 @@ if (isset($_POST['update'])) {
     $db = $database->open();
     try {
         $id = $_GET['id'];
-
-
         $noTiM = $_POST['noTiM'];
 
         $sql = "UPDATE pet_type SET noTiM = '$noTiM' WHERE  id_tiM  = '$id'";
