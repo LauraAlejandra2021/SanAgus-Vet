@@ -54,67 +54,11 @@ if (!isset($_SESSION['cargo']) == 1) {
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
 
-    <!-- LUPA -->
-    <div class="search-bar">
-        <div class="search-icon">
-            <i class="material-icons"></i>
-        </div>
-        <input type="text" placeholder="Buscar...">
-        <div class="close-search">
-            <i class="material-icons">X</i>
-        </div>
-    </div>
-    <!-- //LUPA -->
-
-    <!-- Top Bar -->
-    <nav class="navbar">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
-                <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="../panel-admin/administrador"> VETDOG - DASHBOARD </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-
-                    <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
-                    <!-- #END# Call Search -->
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- #Top Bar -->
-
-    <section>
-        <!-- Left Sidebar -->
-        <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
-            <div class="user-info">
-                <div class="image">
-                    <img src="../../assets/img/mujerico.png" width="48" height="48" alt="User" />
-                </div>
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ucfirst($_SESSION['nombre']); ?></div>
-                    <div class="email"><?php echo ucfirst($_SESSION['correo']); ?></div>
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="../config/configuracion"><i class="material-icons">brightness_low</i>Mi Cuenta</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li role="separator" class="divider"></li>
-
-                            <li><a href="../pages-logout"><i class="material-icons">input</i>Cerrar Sesión</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- #User Info -->
-
+    <!-- Header -->
+    <?php include_once __DIR__ . '../../commons/header.php'; ?>   
 
     <!-- Menu -->
     <?php include_once __DIR__ . '../../menu.php'; ?>
-    </section>
 
     <!--============================CONTENIDO DE LA PÁGINA ==========================================================-->
 
