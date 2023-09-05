@@ -34,39 +34,8 @@ if (!isset($_SESSION['cargo']) == 1) {
 </head>
 
 <body class="theme-red">
-    <!-- Page Loader -->
-    <div class="page-loader-wrapper">
-        <div class="loader">
-            <div class="preloader">
-                <div class="spinner-layer pl-red">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-            </div>
-            <p>Cargando...</p>
-        </div>
-    </div>
-    <!-- #END# Page Loader -->
-
-    <!-- Overlay For Sidebars -->
-    <div class="overlay"></div>
-    <!-- #END# Overlay For Sidebars -->
-
-    <!-- LUPA -->
-    <div class="search-bar">
-        <div class="search-icon">
-            <i class="material-icons"></i>
-        </div>
-        <input type="text" placeholder="Buscar...">
-        <div class="close-search">
-            <i class="material-icons">X</i>
-        </div>
-    </div>
-    <!-- //LUPA -->
+    <!-- Loading -->
+    <?php include_once __DIR__ . '../../commons/loading.php'; ?>
 
     <!-- Header -->
     <?php include_once __DIR__ . '../../commons/header.php'; ?>
